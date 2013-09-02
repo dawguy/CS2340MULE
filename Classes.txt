@@ -1,0 +1,61 @@
+Classes-Rough Draft
+
+Player
+Screen
+World/Map
+MapGenerator
+Land
+Food
+Energy
+Mineral
+Crystalite
+Auction
+Mule
+Score
+GameController
+Level
+Tiles(type)
+PlayerManager
+Property
+Town
+Assay Office
+Terrain
+Mountain
+River
+Plain
+Races (Human,Flapper,Bonzoid,Ugaite,Buzzite)
+Login
+Store
+AI
+Network
+LandOffice
+StartUp
+RandomEvent
+
+
+___________________________________________________________________________
+
+
+
+Clean Draft
+
+Player
+Screen(abstract)
+Map
+Tile
+Resources(super)
+	Food
+	Energy
+	Ore
+	Crystalite
+	Mule
+Auction
+GameController
+PlayerManager
+Town
+TownInterface
+Store
+AI
+Network
+StartUp
+RandomEvent
