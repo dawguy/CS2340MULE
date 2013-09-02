@@ -39,23 +39,16 @@ ___________________________________________________________________________
 
 Clean Draft
 
-Player
-Screen(abstract)
-Map
-Tile
-Resources(super)
-	Food
-	Energy
-	Ore
-	Crystalite
-	Mule
-Auction
-GameController
-PlayerManager
-Town
-TownInterface
-Store
-AI
-Network
-StartUp
-RandomEvent
+Player~
+Map~
+Tile~
+Resources~
+Auction~
+GameController~
+PlayerManager~
+Town~
+AssayOffice~
+LandOffice~
+Store~
+StartUp~
+RandomEvent~
