@@ -1,0 +1,5 @@
+package interfaces;
+
+public class InputHandler implements Input{
+
+}
