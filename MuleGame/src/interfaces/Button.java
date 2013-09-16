@@ -19,7 +19,7 @@ public class Button {
 	public Button(Texture t){
 		super();
 		image = t;
-		rect = new Rectangle(0, 0, image.getHeight(), image.getWidth());
+		rect = new Rectangle(0, 0, image.getWidth(), image.getHeight());
 	}
 	
 	public Button(Texture t, int x, int y){

@@ -15,6 +15,7 @@ import screens.*;
 public class Mule extends Game {
 
 	public static TitleScreen TITLESCREEN;
+	public static SettingsScreen SETTINGSCREEN;
 	
 	public static InputHandler INPUT;
 	
@@ -24,6 +25,7 @@ public class Mule extends Game {
 	@Override
 	public void create() {
 		TITLESCREEN = new TitleScreen(this);
+		SETTINGSCREEN = new SettingsScreen(this);
 		INPUT = new InputHandler();
 		this.setScreen(TITLESCREEN);
 	}

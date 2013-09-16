@@ -22,13 +22,15 @@ public class TitleScreen implements Screen{
 	private SpriteBatch batch;
 	
 	private Button exitGameButton;
+	private Button startGameButton;
 	
 	public TitleScreen(Mule g){
 		Texture.setEnforcePotImages(false);
 		currentGame = g;
 		titleBackground = new Texture(Gdx.files.internal("TitleScreen/TitleScreenBackground.jpeg"));
 		batch = new SpriteBatch();
-		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 150, 150);
+		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 350, 100);
+		startGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")), 350, 200);
 	}
 	
 	@Override
@@ -41,6 +43,7 @@ public class TitleScreen implements Screen{
 		batch.begin();
 		batch.draw(titleBackground, 0, 0);
 		exitGameButton.draw(batch);
+		startGameButton.draw(batch);
 		batch.end();
 	}
 
@@ -48,6 +51,8 @@ public class TitleScreen implements Screen{
 		if(currentGame.INPUT.mouseClicked()){
 			if(exitGameButton.isClicked(currentGame.INPUT)){
 				Gdx.app.exit();
+			} else if(startGameButton.isClicked(currentGame.INPUT)){
+				currentGame.setScreen(Mule.SETTINGSCREEN);
 			}
 		}
 	}
