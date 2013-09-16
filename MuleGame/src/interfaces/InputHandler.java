@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.awt.Point;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -19,5 +21,9 @@ public class InputHandler extends InputListener{
 	
 	public boolean mouseClicked(){
 		return input.isButtonPressed(Input.Buttons.LEFT);
+	}
+	
+	public Point getMousePoint(){
+		return new Point(input.getX(), input.getY());
 	}
 }

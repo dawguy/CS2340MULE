@@ -1,8 +1,13 @@
 package screens;
 
+import interfaces.Button;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.me.mygdxgame.Mule;
 
 /**
@@ -13,19 +18,37 @@ import com.me.mygdxgame.Mule;
 public class TitleScreen implements Screen{
 
 	private Mule currentGame;
+	private Texture titleBackground;
+	private SpriteBatch batch;
+	
+	private Button exitGameButton;
 	
 	public TitleScreen(Mule g){
+		Texture.setEnforcePotImages(false);
 		currentGame = g;
+		titleBackground = new Texture(Gdx.files.internal("TitleScreen/TitleScreenBackground.jpeg"));
+		batch = new SpriteBatch();
+		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 150, 150);
 	}
 	
 	@Override
 	public void render(float delta) {
-		update(delta);		
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
+		update(delta);
+		
+		
+		batch.begin();
+		batch.draw(titleBackground, 0, 0);
+		exitGameButton.draw(batch);
+		batch.end();
 	}
 
 	private void update(float delta){
 		if(currentGame.INPUT.mouseClicked()){
-			Gdx.app.exit();
+			if(exitGameButton.isClicked(currentGame.INPUT)){
+				Gdx.app.exit();
+			}
 		}
 	}
 	
