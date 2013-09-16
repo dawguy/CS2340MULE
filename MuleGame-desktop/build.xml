@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MULE" default="compile" basedir=".">
+	<property name="MuleGameSrc" value="../MuleGame/src" />
+	<property name="MuleDesktopSrc" value="src" />
+	<property name="buildDir" value="Build" />
+	<property name="libgdxlibs" value="../libgdxlibs" />
+	<property name="libclasspath" value="libs:../MuleGame/libs" />
+	<target name="init">
+		<echo> Creating Build Dir : ${buildDir} </echo>
+		<mkdir dir="${buildDir}"/>
+	</target>
+	<target name="compile">
+		<echo>Compiling all source code </echo>
+		<path id="javac.classpath">
+			<fileset dir="${libgdxlibs}">
+				<include name="*.jar" />
+			</fileset>
+		</path>
+		<javac
+			srcdir="${MuleGameSrc}"
+			destdir="${buildDir}"
+			classpathref="javac.classpath">
+		</javac>
+		<javac
+			srcdir="${MuleDesktopSrc}"
+			destdir="${buildDir}"
+			classpathref="javac.classpath">
+		</javac>
+	</target>
+	<target name="run" depends="compile">
+
+		<path id="java.classpath">
+			<fileset dir="${buildDir}">
+				<include name="*.jar"/>
+			</fileset>
+			<fileset dir="${libgdxlibs}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		<java
+			classname="com.me.mygdxgame.Main"
+			classpath="${buildDir}"
+			classpathref="java.classpath"/>
+	</target>
+</project>
