@@ -1,0 +1,57 @@
+package interfaces;
+
+import java.awt.Rectangle;
+
+import com.me.mygdxgame.Mule;
+
+/**
+ * A simple textbox class that allows the user to input data and data can be retrieved
+ * @author antonio
+ * @since 9/17/13
+ */
+public class TextBox {
+
+	private String data;
+	
+	private boolean focused;
+	
+	private Rectangle box;
+	
+	public TextBox(){
+		focused = false;
+		data = "";
+		box = null;
+	}
+	
+	public TextBox(int x, int y, int width, int height){
+		this();
+		box = new Rectangle(x, y, width, height);
+	}
+	
+	public TextBox(String s, int x, int y, int width, int height){
+		this(x, y, width, height);
+		data = s;
+	}
+	
+	public String getData(){
+		return data;
+	}
+	
+	public boolean isFocused(){
+		return focused;
+	}
+	
+	public void setFocused(boolean b){
+		focused = b;
+	}
+	
+	public void update(){
+		if(!focused){
+			checkIfClicked();
+		}
+	}
+	
+	private void checkIfClicked(){
+		Point p = Mule.INPUT.getMousePoint();
+	}
+}

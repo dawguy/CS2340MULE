@@ -1,0 +1,20 @@
+{
+        resources: {
+                com.badlogic.gdx.graphics.g2d.NinePatch: {
+
+                },
+                com.badlogic.gdx.graphics.Color: {
+                        
+                },
+                com.badlogic.gdx.graphics.g2d.BitmapFont: {
+
+                }
+        },
+        styles: {
+                com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+                        default: {
+                                
+                        }
+                }
+        }
+ }

@@ -1,10 +1,13 @@
 package screens;
 
+import interfaces.MyTextInputListener;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.me.mygdxgame.Mule;
 
@@ -21,12 +24,18 @@ public class SettingsScreen implements Screen{
 	private Texture background;
 	
 	private SpriteBatch batch;
-		
+	
+	private MyTextInputListener textListener;
+	
+	private boolean wasMouseClicked;
+	
 	public SettingsScreen(Mule g){
 		super();
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
+		textListener = new MyTextInputListener();
+		wasMouseClicked = true;
 	}
 	
 	@Override
@@ -36,6 +45,18 @@ public class SettingsScreen implements Screen{
 		batch.begin();
 		batch.draw(background, 0, 0);
 		batch.end();
+		
+		update(delta);
+	}
+	
+	private void update(float delta){
+		if(Mule.INPUT.mouseClicked() && !wasMouseClicked){
+			wasMouseClicked = true;
+			Gdx.input.getTextInput(textListener, "Test", "AHH");
+		} else if(!Mule.INPUT.mouseClicked() && wasMouseClicked){
+			wasMouseClicked = false;
+		}
+		System.out.println(textListener.getData());
 	}
 
 	@Override
