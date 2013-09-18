@@ -9,12 +9,14 @@
 <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
 <fullyQualifiedTypeName name="java.awt.Rectangle"/>
 <fullyQualifiedTypeName name="interfaces.Button"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
 <fullyQualifiedTypeName name="sun.awt.X11.Screen"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
 <fullyQualifiedTypeName name="com.me.mygdxgame.Mule"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
 </qualifiedTypeNameHistroy>
