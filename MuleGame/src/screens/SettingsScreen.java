@@ -1,14 +1,22 @@
 package screens;
 
+import gameObjects.Player;
+import gameObjects.PlayerHandler;
 import interfaces.MyTextInputListener;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.me.mygdxgame.Mule;
 
 /**
@@ -25,17 +33,45 @@ public class SettingsScreen implements Screen{
 	
 	private SpriteBatch batch;
 	
-	private MyTextInputListener textListener;
+	private BitmapFont basicFont;
 	
-	private boolean wasMouseClicked;
+	private PlayerHandler players;
+	
+	private Table tableLayout;
+	
+	private TextField field;
+	
+	private TextFieldStyle style;
 	
 	public SettingsScreen(Mule g){
 		super();
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
-		textListener = new MyTextInputListener();
-		wasMouseClicked = true;
+		basicFont = new BitmapFont();
+		players = new PlayerHandler(4);
+		
+		style = new TextFieldStyle();
+		style.font = new BitmapFont();
+		style.fontColor = Color.BLACK;
+		
+		field = new TextField("TEST", style);
+		field.setDisabled(false);
+		field.setMessageText("TEST2");
+		field.setTextFieldListener(new TextFieldListener(){
+
+			@Override
+			public void keyTyped(TextField textField, char key) {
+				textField.setText("" + key);
+				System.out.println("OK");
+			}
+			
+		});
+		tableLayout = new Table();
+		tableLayout.setHeight(100);
+		tableLayout.setWidth(100);
+		tableLayout.setPosition(100, 100);
+		tableLayout.add(field);
 	}
 	
 	@Override
@@ -43,20 +79,18 @@ public class SettingsScreen implements Screen{
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
 		
 		batch.begin();
+		
 		batch.draw(background, 0, 0);
+		
+		tableLayout.draw(batch, 1);		
+		
 		batch.end();
 		
 		update(delta);
 	}
 	
 	private void update(float delta){
-		if(Mule.INPUT.mouseClicked() && !wasMouseClicked){
-			wasMouseClicked = true;
-			Gdx.input.getTextInput(textListener, "Test", "AHH");
-		} else if(!Mule.INPUT.mouseClicked() && wasMouseClicked){
-			wasMouseClicked = false;
-		}
-		System.out.println(textListener.getData());
+
 	}
 
 	@Override
