@@ -3,6 +3,7 @@ package screens;
 import gameObjects.Player;
 import gameObjects.PlayerHandler;
 import interfaces.MyTextInputListener;
+import interfaces.PlayerCreationInput;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -14,7 +15,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.me.mygdxgame.Mule;
@@ -33,45 +36,14 @@ public class SettingsScreen implements Screen{
 	
 	private SpriteBatch batch;
 	
-	private BitmapFont basicFont;
-	
-	private PlayerHandler players;
-	
-	private Table tableLayout;
-	
-	private TextField field;
-	
-	private TextFieldStyle style;
+	private PlayerCreationInput ui;
 	
 	public SettingsScreen(Mule g){
 		super();
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
-		basicFont = new BitmapFont();
-		players = new PlayerHandler(4);
-		
-		style = new TextFieldStyle();
-		style.font = new BitmapFont();
-		style.fontColor = Color.BLACK;
-		
-		field = new TextField("TEST", style);
-		field.setDisabled(false);
-		field.setMessageText("TEST2");
-		field.setTextFieldListener(new TextFieldListener(){
-
-			@Override
-			public void keyTyped(TextField textField, char key) {
-				textField.setText("" + key);
-				System.out.println("OK");
-			}
-			
-		});
-		tableLayout = new Table();
-		tableLayout.setHeight(100);
-		tableLayout.setWidth(100);
-		tableLayout.setPosition(100, 100);
-		tableLayout.add(field);
+		ui = new PlayerCreationInput(0, 0, Mule.WIDTH, Mule.HEIGHT);
 	}
 	
 	@Override
@@ -82,10 +54,9 @@ public class SettingsScreen implements Screen{
 		
 		batch.draw(background, 0, 0);
 		
-		tableLayout.draw(batch, 1);		
-		
 		batch.end();
 		
+		ui.draw();
 		update(delta);
 	}
 	
