@@ -1,3 +1,5 @@
+Eric Rabinowitz
+
 Method Contract for randomEventRoll:
 	Signature:
 	+ randomEventRoll() : void where randomEventRoll is a public instance method of RandomEvent. method returns void
