@@ -7,13 +7,11 @@
 <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
 <fullyQualifiedTypeName name="interfaces.Button"/>
 <fullyQualifiedTypeName name="sun.awt.X11.Screen"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Skin"/>
@@ -24,4 +22,8 @@
 <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.Input.TextInputListener"/>
 <fullyQualifiedTypeName name="interfaces.MyTextInputListener"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="gameObjects.Map"/>
+<fullyQualifiedTypeName name="renderers.MapRenderer"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
 </qualifiedTypeNameHistroy>
