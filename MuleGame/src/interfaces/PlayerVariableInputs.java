@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -80,20 +82,12 @@ public class PlayerVariableInputs {
 		
 		style.background = drawableTemp;
 		
+		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, drawableTemp);
+		style.scrollStyle = new ScrollPane.ScrollPaneStyle(drawableTemp, drawableTemp, drawableTemp, drawableTemp, drawableTemp);
+		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
 		playerRace.setY(positionY - (BUFFER_Y));
-		
-		playerRace.addListener(new MySelectBoxListener());
-	}
-	
-	private class MySelectBoxListener extends ChangeListener{
-
-		@Override
-		public void changed(ChangeEvent event, Actor actor) {
-			System.out.println("OK");			
-		}
-		
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{
