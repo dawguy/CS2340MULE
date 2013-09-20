@@ -29,7 +29,7 @@ public class Mule extends Game {
 		SETTINGSCREEN = new SettingsScreen(this);
 		MAPSCREEN = new MapScreen(this);
 		INPUT = new InputHandler();
-		this.setScreen(TITLESCREEN);
+		this.setScreen(SETTINGSCREEN);
 	}
 	
 }
