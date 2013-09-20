@@ -1,40 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Game"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
-<fullyQualifiedTypeName name="interfaces.InputHandler"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
-<fullyQualifiedTypeName name="interfaces.Button"/>
-<fullyQualifiedTypeName name="sun.awt.X11.Screen"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
-<fullyQualifiedTypeName name="javax.swing.JTextField"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Skin"/>
-<fullyQualifiedTypeName name="java.awt.Rectangle"/>
-<fullyQualifiedTypeName name="com.me.mygdxgame.Mule"/>
-<fullyQualifiedTypeName name="java.awt.Point"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input.TextInputListener"/>
-<fullyQualifiedTypeName name="interfaces.MyTextInputListener"/>
-<fullyQualifiedTypeName name="gameObjects.PlayerHandler"/>
-<fullyQualifiedTypeName name="gameObjects.Player"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Table"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextButton"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.SelectBox"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
-<fullyQualifiedTypeName name="interfaces.PlayerCreationInput"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Sprite"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ChangeListener"/>
 </qualifiedTypeNameHistroy>

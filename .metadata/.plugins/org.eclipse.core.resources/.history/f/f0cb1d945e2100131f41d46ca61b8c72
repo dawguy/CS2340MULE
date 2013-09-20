@@ -1,0 +1,50 @@
+package screens;
+
+import renderers.MapRenderer;
+
+import com.badlogic.gdx.Screen;
+
+public class MapScreen implements Screen{
+	MapRenderer renderer;
+	@Override
+	public void render(float delta) {
+		renderer.render()
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		renderer.setsize(width,height);
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
