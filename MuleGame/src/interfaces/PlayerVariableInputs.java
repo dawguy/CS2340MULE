@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -83,7 +84,10 @@ public class PlayerVariableInputs {
 		style.background = backgroundDrawable;
 		
 		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
-		style.scrollStyle = new ScrollPane.ScrollPaneStyle();
+		
+		ScrollPaneStyle scrollStyle = new ScrollPaneStyle();
+		scrollStyle.background = backgroundDrawable;
+		style.scrollStyle = scrollStyle;
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
