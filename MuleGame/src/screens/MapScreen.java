@@ -11,6 +11,7 @@ public class MapScreen implements Screen{
 	MapRenderer renderer;
 	Mule game;
 	public MapScreen(Mule mule){
+		super();
 		game = mule;
 	}
 	@Override
