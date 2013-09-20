@@ -1,0 +1,10 @@
+package interfaces;
+
+/**
+ * A class that will contain all of the ui for the player creations screen.
+ * @author antonio
+ *
+ */
+public class PlayerCreationInput {
+
+}

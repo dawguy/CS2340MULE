@@ -1,5 +1,0 @@
-package screens;
-
-public class SettingsScreen extends Screen{
-
-}

@@ -14,6 +14,7 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+<<<<<<< HEAD
 	<section name="RefactoringWizard.preview">
 		<item value="400" key="height"/>
 		<item value="600" key="width"/>
@@ -23,13 +24,14 @@
 		<item value="false" key="updateQualifiedNames"/>
 		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateTextualMatches"/>
+=======
+	<section name="quick_assist_proposal_size">
+>>>>>>> 9a43c97b7fe64a89cd456fc4fc4a894a00725166
 	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="false" key="create_main"/>
 		<item value="true" key="create_unimplemented"/>
-	</section>
-	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>

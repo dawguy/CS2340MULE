@@ -1,14 +1,25 @@
 package screens;
 
+import gameObjects.Player;
+import gameObjects.PlayerHandler;
 import interfaces.MyTextInputListener;
+import interfaces.PlayerCreationInput;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.me.mygdxgame.Mule;
 
 /**
@@ -25,17 +36,14 @@ public class SettingsScreen implements Screen{
 	
 	private SpriteBatch batch;
 	
-	private MyTextInputListener textListener;
-	
-	private boolean wasMouseClicked;
+	private PlayerCreationInput ui;
 	
 	public SettingsScreen(Mule g){
 		super();
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
-		textListener = new MyTextInputListener();
-		wasMouseClicked = true;
+		ui = new PlayerCreationInput(0, 0, Mule.WIDTH, Mule.HEIGHT);
 	}
 	
 	@Override
@@ -43,20 +51,17 @@ public class SettingsScreen implements Screen{
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
 		
 		batch.begin();
+		
 		batch.draw(background, 0, 0);
+		
 		batch.end();
 		
+		ui.draw();
 		update(delta);
 	}
 	
 	private void update(float delta){
-		if(Mule.INPUT.mouseClicked() && !wasMouseClicked){
-			wasMouseClicked = true;
-			Gdx.input.getTextInput(textListener, "Test", "AHH");
-		} else if(!Mule.INPUT.mouseClicked() && wasMouseClicked){
-			wasMouseClicked = false;
-		}
-		System.out.println(textListener.getData());
+
 	}
 
 	@Override
