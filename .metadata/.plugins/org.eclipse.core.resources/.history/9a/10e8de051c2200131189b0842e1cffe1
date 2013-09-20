@@ -29,7 +29,7 @@ public class PlayerVariableInputs {
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
 	private final String[] RACES = {"HUMAN", "TEST1", "TEST2"};
-	private final int BUFFER_Y = 25;
+	private final int BUFFER_Y = 75;
 	
 	private TextField playerName;
 	private SelectBox playerRace;
@@ -77,17 +77,19 @@ public class PlayerVariableInputs {
 		style.font = new BitmapFont();
 		style.fontColor = Color.BLACK;
 		
-		Sprite backgroundSprite = new Sprite(new Texture(TEXTBOX_BACKGROUND));
-		SpriteDrawable backgroundDrawable = new SpriteDrawable(backgroundSprite);
+		Sprite spriteTemp = new Sprite(new Texture(TEXTBOX_BACKGROUND));
+		SpriteDrawable drawableTemp = new SpriteDrawable(spriteTemp);
 		
-		style.background = backgroundDrawable;
+		style.background = drawableTemp;
 		
-		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
-		style.scrollStyle = new ScrollPane.ScrollPaneStyle();
+		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, drawableTemp);
+		style.scrollStyle = new ScrollPane.ScrollPaneStyle(drawableTemp, drawableTemp, drawableTemp, drawableTemp, drawableTemp)
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
 		playerRace.setY(positionY - (BUFFER_Y));
+		
+		//playerRace.addListener(new MySelectBoxListener());
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{
