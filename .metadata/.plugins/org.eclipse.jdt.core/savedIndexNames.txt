@@ -1,31 +1,6 @@
-<<<<<<< HEAD
-INDEX VERSION 1.126+/Users/DavidW/Desktop/MULEProj/.metadata/.plugins/org.eclipse.jdt.core
-4094821964.index
-3966564129.index
-2548541102.index
-3516206618.index
-993003486.index
-3986720639.index
-1796137599.index
-484914701.index
-=======
 INDEX VERSION 1.126+/home/antonio/School/MULE/.metadata/.plugins/org.eclipse.jdt.core
 993003486.index
 3986720639.index
-484914701.index
-3721354332.index
 3516206618.index
-1159935248.index
-2898480234.index
-1230503809.index
-2683054613.index
-417373247.index
-2548541102.index
-262802227.index
-3937884183.index
-1825514421.index
-2456322530.index
+484914701.index
 4094821964.index
-1698757907.index
-3422508414.index
->>>>>>> 82493faa0402ecbecdd76319487587bc8b367872
