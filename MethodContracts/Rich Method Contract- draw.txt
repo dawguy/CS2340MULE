@@ -1,0 +1,7 @@
+Method Contract for Map (Rich Li)
+•	Signature:
+•		+draw(sprites : SpriteBatch): void where draw is a public instance method in Map and spirtes is a instance of SpriteBatch. It will iterate through all the tiles and draw the appropriate sprites. Returns void.
+•	Precondition:
+•		Must be on map screen
+•	Postcondition:
+•		All tiles drawn with appropriate sprites and no values changed.
