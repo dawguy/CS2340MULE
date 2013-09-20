@@ -26,7 +26,8 @@ public class PlayerCreationInput {
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
 	
-	private List<TextField> playerNames;
+	private List<PlayerVariableInputs> players;
+	
 	
 	private int positionX;
 	private int positionY;
@@ -50,20 +51,12 @@ public class PlayerCreationInput {
 		positionY = posY;
 		width = w;
 		height = h;
-		playerNames = new ArrayList<TextField>();
+		
+		players = new ArrayList<PlayerVariableInputs>();
 		
 		stage = new Stage(width, height, false);
 		Gdx.input.setInputProcessor(stage);
-		
-		textStyle = new TextFieldStyle();
-		textStyle.font = new BitmapFont();
-		textStyle.fontColor = Color.BLACK;
-		
-		Sprite spriteTemp = new Sprite(new Texture(TEXTBOX_BACKGROUND));
-		SpriteDrawable drawableTemp = new SpriteDrawable(spriteTemp);
-		
-		textStyle.background = drawableTemp;
-		
+			
 		for(int i = 0 ; i < MIN_PLAYERS ; i++){
 			addPlayer();
 		}
@@ -74,26 +67,12 @@ public class PlayerCreationInput {
 	}
 	
 	public boolean addPlayer(){
-		if(playerNames.size() >= MAX_PLAYERS){
+		if(players.size() >= MAX_PLAYERS){
 			return false;
 		}
-		
-		TextField temp = new TextField("Player #" + (playerNames.size() + 1), textStyle);
-		temp.setY(positionY + (BUFFER_Y * playerNames.size()));
-		temp.setTextFieldListener(new TextFieldListener(){
-
-			@Override
-			public void keyTyped(TextField textField, char key) {
-				if((int)key == DELETE_KEY && textField.getText().length() > 0){
-					textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
-				} else if((int) key == ENTER_KEY){
-					
-				}
-			}
-			
-		});
-		playerNames.add(temp);
-		stage.addActor(temp);
+		PlayerVariableInputs temp = new PlayerVariableInputs(positionX, 
+					positionY - (BUFFER_Y * players.size()), stage);
+		players.add(temp);
 		return true;
 	}
 }

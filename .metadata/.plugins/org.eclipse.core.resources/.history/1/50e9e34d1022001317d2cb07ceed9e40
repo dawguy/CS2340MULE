@@ -1,0 +1,19 @@
+package interfaces;
+
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+
+/**
+ * A class that will represent all of the text input for each player. This 
+ * includes the player's name, race, and color. Race and color will need 
+ * to be drop down boxes.
+ * @author antonio
+ *
+ */
+public class PlayerVariableInputs {
+
+	private TextField playerName;
+	private SelectBox playerRace;
+	
+	
+}
