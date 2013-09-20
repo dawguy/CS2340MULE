@@ -79,7 +79,8 @@ public class PlayerCreationInput {
 		}
 		
 		TextField temp = new TextField("Player #" + (playerNames.size() + 1), textStyle);
-		temp.setY(positionY + (BUFFER_Y * playerNames.size()));
+		temp.setY(positionY - (BUFFER_Y * playerNames.size()));
+		temp.setX(positionX);
 		temp.setTextFieldListener(new TextFieldListener(){
 
 			@Override

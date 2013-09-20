@@ -30,6 +30,8 @@ import com.me.mygdxgame.Mule;
  */
 public class SettingsScreen implements Screen{
 
+	private final int BUFFER = 50;
+	
 	public Mule currentGame;
 	
 	private Texture background;
@@ -43,7 +45,7 @@ public class SettingsScreen implements Screen{
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
-		ui = new PlayerCreationInput(0, 0, Mule.WIDTH, Mule.HEIGHT);
+		ui = new PlayerCreationInput(BUFFER, Mule.HEIGHT - BUFFER, Mule.WIDTH, Mule.HEIGHT);
 	}
 	
 	@Override
