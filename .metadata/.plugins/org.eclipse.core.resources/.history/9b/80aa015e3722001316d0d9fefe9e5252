@@ -87,7 +87,7 @@ public class PlayerVariableInputs {
 		
 		ScrollPaneStyle scrollStyle = new ScrollPaneStyle();
 		scrollStyle.background = backgroundDrawable;
-		style.scrollStyle = scrollStyle;
+		style.scrollStyle = scrollStyle
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);

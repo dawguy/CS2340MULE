@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -34,6 +33,7 @@ public class PlayerVariableInputs {
 	
 	private TextField playerName;
 	private SelectBox playerRace;
+	private ScrollPane playerPane;
 	
 	private TextFieldStyle textStyle;
 	
@@ -46,13 +46,17 @@ public class PlayerVariableInputs {
 		positionY = y;
 		
 		createPlayerText();
-		createRaceBox();
+		//createRaceBox();
 		addActorsToStage(s);
 	}
 	
 	private void addActorsToStage(Stage s){
 		s.addActor(playerName);
-		s.addActor(playerRace);
+		//s.addActor(playerRace);
+	}
+	
+	private void createPlayerPane(){
+		
 	}
 	
 	private void createPlayerText(){
@@ -74,7 +78,7 @@ public class PlayerVariableInputs {
 	}
 	
 	private void createRaceBox(){
-		SelectBoxStyle style = new SelectBoxStyle();
+		/*SelectBoxStyle style = new SelectBoxStyle();
 		style.font = new BitmapFont();
 		style.fontColor = Color.BLACK;
 		
@@ -84,14 +88,11 @@ public class PlayerVariableInputs {
 		style.background = backgroundDrawable;
 		
 		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
-		
-		ScrollPaneStyle scrollStyle = new ScrollPaneStyle();
-		scrollStyle.background = backgroundDrawable;
-		style.scrollStyle = scrollStyle;
+		style.scrollStyle = new ScrollPane.ScrollPaneStyle();
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
-		playerRace.setY(positionY - (BUFFER_Y));
+		playerRace.setY(positionY - (BUFFER_Y));*/
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{
