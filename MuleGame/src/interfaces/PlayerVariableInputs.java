@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -27,7 +30,7 @@ public class PlayerVariableInputs {
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
 	private final String[] RACES = {"HUMAN", "TEST1", "TEST2"};
-	private final int BUFFER_Y = 75;
+	private final int BUFFER_Y = 25;
 	
 	private TextField playerName;
 	private SelectBox playerRace;
@@ -75,25 +78,20 @@ public class PlayerVariableInputs {
 		style.font = new BitmapFont();
 		style.fontColor = Color.BLACK;
 		
-		Sprite spriteTemp = new Sprite(new Texture(TEXTBOX_BACKGROUND));
-		SpriteDrawable drawableTemp = new SpriteDrawable(spriteTemp);
+		Sprite backgroundSprite = new Sprite(new Texture(TEXTBOX_BACKGROUND));
+		SpriteDrawable backgroundDrawable = new SpriteDrawable(backgroundSprite);
 		
-		style.background = drawableTemp;
+		style.background = backgroundDrawable;
+		
+		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
+		
+		ScrollPaneStyle scrollStyle = new ScrollPaneStyle();
+		scrollStyle.background = backgroundDrawable;
+		style.scrollStyle = scrollStyle;
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
 		playerRace.setY(positionY - (BUFFER_Y));
-		
-		playerRace.addListener(new MySelectBoxListener());
-	}
-	
-	private class MySelectBoxListener extends ChangeListener{
-
-		@Override
-		public void changed(ChangeEvent event, Actor actor) {
-			System.out.println("OK");			
-		}
-		
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{

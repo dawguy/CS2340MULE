@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <qualifiedTypeNameHistroy/>
-=======
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.TextField"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.SelectBox"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ChangeListener"/>
-</qualifiedTypeNameHistroy>
->>>>>>> 928a4933f25e037a070500bf8ae9208c9c4935e6
