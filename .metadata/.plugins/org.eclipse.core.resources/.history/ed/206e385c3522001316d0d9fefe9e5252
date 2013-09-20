@@ -77,13 +77,13 @@ public class PlayerVariableInputs {
 		style.font = new BitmapFont();
 		style.fontColor = Color.BLACK;
 		
-		Sprite backgroundSprite = new Sprite(new Texture(TEXTBOX_BACKGROUND));
-		SpriteDrawable backgroundDrawable = new SpriteDrawable(backgroundSprite);
+		Sprite spriteTemp = new Sprite(new Texture(TEXTBOX_BACKGROUND));
+		SpriteDrawable drawableTemp = new SpriteDrawable(spriteTemp);
 		
-		style.background = backgroundDrawable;
+		style.background = drawableTemp;
 		
-		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
-		style.scrollStyle = new ScrollPane.ScrollPaneStyle();
+		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, drawableTemp);
+		style.scrollStyle = new ScrollPane.ScrollPaneStyle(drawableTemp, drawableTemp, drawableTemp, drawableTemp, drawableTemp);
 		
 		playerRace = new SelectBox(RACES, style);
 		playerRace.setX(positionX);
