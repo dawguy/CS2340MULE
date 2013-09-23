@@ -1,45 +1,80 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="MULE" default="compile" basedir=".">
-	<property name="MuleGameSrc" value="../MuleGame/src" />
-	<property name="MuleDesktopSrc" value="src" />
-	<property name="buildDir" value="Build" />
-	<property name="libgdxlibs" value="../libgdxlibs" />
-	<property name="libclasspath" value="libs:../MuleGame/libs" />
-	<target name="init">
-		<echo> Creating Build Dir : ${buildDir} </echo>
-		<mkdir dir="${buildDir}"/>
-	</target>
-	<target name="compile">
-		<echo>Compiling all source code </echo>
-		<path id="javac.classpath">
-			<fileset dir="${libgdxlibs}">
-				<include name="*.jar" />
-			</fileset>
-		</path>
-		<javac
-			srcdir="${MuleGameSrc}"
-			destdir="${buildDir}"
-			classpathref="javac.classpath">
-		</javac>
-		<javac
-			srcdir="${MuleDesktopSrc}"
-			destdir="${buildDir}"
-			classpathref="javac.classpath">
-		</javac>
-	</target>
-	<target name="run" depends="compile">
-
-		<path id="java.classpath">
-			<fileset dir="${buildDir}">
-				<include name="*.jar"/>
-			</fileset>
-			<fileset dir="${libgdxlibs}">
-				<include name="*.jar"/>
-			</fileset>
-		</path>
-		<java
-			classname="com.me.mygdxgame.Main"
-			classpath="${buildDir}"
-			classpathref="java.classpath"/>
-	</target>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="MuleGame-desktop">
+    <property environment="env"/>
+    <property name="assets.link" value="../MuleGame-android/assets"/>
+    <property name="ECLIPSE_HOME" value="../../../Tools/eclipse"/>
+    <property name="MuleGame.location" value="../MuleGame"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="MuleGame.classpath">
+        <pathelement location="${MuleGame.location}/bin"/>
+        <pathelement location="${MuleGame.location}/libs/gdx.jar"/>
+    </path>
+    <path id="MuleGame-desktop.classpath">
+        <pathelement location="bin"/>
+        <path refid="MuleGame.classpath"/>
+        <pathelement location="libs/gdx-backend-lwjgl.jar"/>
+        <pathelement location="libs/gdx-backend-lwjgl-natives.jar"/>
+        <pathelement location="libs/gdx-natives.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="${assets.link}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${MuleGame.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${MuleGame.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="${assets.link}"/>
+            <classpath refid="MuleGame-desktop.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Main">
+        <java classname="com.me.mygdxgame.Main" failonerror="true" fork="yes">
+            <classpath refid="MuleGame-desktop.classpath"/>
+        </java>
+    </target>
 </project>

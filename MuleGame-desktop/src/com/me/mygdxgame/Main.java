@@ -8,9 +8,9 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "Mule Game";
 		cfg.useGL20 = false;
-		cfg.width = Mule.WIDTH;
-		cfg.height = Mule.HEIGHT;
+		cfg.width = com.me.mygdxgame.Mule.WIDTH;
+		cfg.height = com.me.mygdxgame.Mule.HEIGHT;
 		
-		new LwjglApplication(new Mule(), cfg);
+		new LwjglApplication(new com.me.mygdxgame.Mule(), cfg);
 	}
 }
