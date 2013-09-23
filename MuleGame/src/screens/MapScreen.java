@@ -1,5 +1,6 @@
 package screens;
 
+import gameObjects.Map;
 import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
@@ -9,10 +10,13 @@ import com.me.mygdxgame.Mule;
 
 public class MapScreen implements Screen{
 	MapRenderer renderer;
+	Map map;
 	Mule game;
 	public MapScreen(Mule mule){
 		super();
+		map = new Map();
 		game = mule;
+		renderer = new MapRenderer(map);
 	}
 	@Override
 	public void render(float delta) {

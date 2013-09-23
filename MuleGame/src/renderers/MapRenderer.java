@@ -31,8 +31,8 @@ public class MapRenderer {
 		map.setPPU(ppuX,ppuY);
 	}
 	
-	public void MapRenderer(Map m){
-		this.map = m;
+	public MapRenderer(Map map){
+		this.map = map;
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
 		this.cam.position.set(CAMERA_WIDTH / 2, CAMERA_HEIGHT / 2, 0);
 		this.cam.update();
@@ -41,7 +41,7 @@ public class MapRenderer {
 	}
 	
 	public void update(float delta){
-		
+		map.update(delta);
 	}
 	
 	public void render(){

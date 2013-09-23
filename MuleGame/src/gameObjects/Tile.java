@@ -56,13 +56,21 @@ public class Tile {
 		batch.draw(textures[tileType], x * MapRenderer.ppuX,MapRenderer.ppuY * y, MapRenderer.ppuX * width, MapRenderer.ppuY * height);
 	}
 	
+	public void setType(int newType){
+		tileType = newType;
+	}
+	
+	public int getTileType(){
+		return tileType;
+	}
+	
 	
 	public static void loadTextures(){
-		textures[0] = new Texture("MapScreen/plains.jpeg");
-		textures[1] = new Texture("MapScreen/river.jpeg");
-		textures[2] = new Texture("MapScreen/town.jpeg");
-		textures[3] = new Texture("MapScreen/oneRidge.jpeg");
-		textures[4] = new Texture("MapScreen/twoRidge.jpeg");
-		textures[5] = new Texture("MapScreen/threeRidge.jpeg");
+		textures[0] = new Texture("MapScreen/plains.jpg");
+		textures[1] = new Texture("MapScreen/river.png");
+		textures[2] = new Texture("MapScreen/town.png");
+		textures[3] = new Texture("MapScreen/oneRidge.png");
+		textures[4] = new Texture("MapScreen/twoRidge.png");
+		textures[5] = new Texture("MapScreen/threeRidge.png");
 	}
 }
