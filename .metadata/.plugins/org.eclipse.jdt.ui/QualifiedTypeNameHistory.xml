@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Game"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
-<fullyQualifiedTypeName name="interfaces.InputHandler"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
-<fullyQualifiedTypeName name="java.awt.Rectangle"/>
-<fullyQualifiedTypeName name="interfaces.Button"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
-<fullyQualifiedTypeName name="java.awt.Point"/>
-<fullyQualifiedTypeName name="sun.awt.X11.Screen"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
-<fullyQualifiedTypeName name="com.me.mygdxgame.Mule"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.maps.Map"/>
+<fullyQualifiedTypeName name="gameObjects.Map"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Stack"/>
 </qualifiedTypeNameHistroy>

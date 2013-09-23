@@ -1,0 +1,20 @@
+Method:
+In the SettingsScreen class
+
+-playerSettingsEntered():boolean This method is called when the player clicks on the button on the SettingsScreen that
+corresponds to the start button. When this is done, this method will call other methods to check that the data entered
+is valid. If the data is valid, the method will pull the data out of the fields in the user interface and it will
+create players for all the data entered. Once done, this will be placed in a PlayerHandler class and will be passed to
+the GameController. From there the screen will be changed to the MapScreen.
+
+Precondition : 
+-The current screen is the SettingsScreen.
+-There is valid data in the given fields.
+-The valid number of players have been created.
+
+Postcondition :
+-The players created have "good" data
+-The number of players is valid, i.e. between 2 and 4.
+-The players have been put in a PlayerHandler and it has
+been passed to the GameController.
+-The screen has been changed to the MapScreen.

@@ -30,4 +30,12 @@ public class Player {
 		name = n;
 		color = c;
 	}
+	
+	public void setName(String s){
+		name = s;
+	}
+	
+	public String getName(){
+		return name;
+	}
 }

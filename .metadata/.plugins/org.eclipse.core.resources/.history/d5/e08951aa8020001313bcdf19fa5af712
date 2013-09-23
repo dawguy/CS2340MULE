@@ -1,0 +1,17 @@
+package renderers;
+
+import java.util.Map;
+
+import com.badlogic.gdx.graphics.OrthographicCamera;
+
+/**
+ * Renders the map.
+ * @author DavidW
+ */
+public class MapRenderer {
+	private static final float CAMERA_WIDTH = 9f; //9 because there are 9 collums tiles on the screen
+	private static final float CAMERA_HEIGHT = 5f; //5 because there are 5 rows of tiles on the scren
+	private Map map;
+	private OrthographicCamera cam;
+	
+}

@@ -17,7 +17,7 @@ public class InputHandler extends InputListener{
 	private Input input = Gdx.input;
 	
 	public InputHandler(){
-		
+
 	}
 	
 	

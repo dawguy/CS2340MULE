@@ -1,0 +1,8 @@
+*~
+*.pyc
+*.save
+.project
+.pydevproject
+.settings
+.metadata
+*.launch
