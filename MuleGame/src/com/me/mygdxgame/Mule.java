@@ -17,6 +17,7 @@ public class Mule extends Game {
 	public static TitleScreen TITLESCREEN;
 	public static SettingsScreen SETTINGSCREEN;
 	public static MapScreen MAPSCREEN;
+	public static TownScreen TOWNSCREEN;
 	
 	public static InputHandler INPUT;
 	
@@ -28,8 +29,9 @@ public class Mule extends Game {
 		TITLESCREEN = new TitleScreen(this);
 		SETTINGSCREEN = new SettingsScreen(this);
 		MAPSCREEN = new MapScreen(this);
+		TOWNSCREEN = new TownScreen(this);
 		INPUT = new InputHandler();
-		this.setScreen(SETTINGSCREEN);
+		this.setScreen(TOWNSCREEN);
 	}
 	
 }

@@ -1,17 +1,27 @@
 package screens;
 
+import gameObjects.Map;
 import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.me.mygdxgame.Mule;
-
+/**
+ * The Screen object for the map.
+ * Includes the game loop for the screen object
+ * @author David Wright
+ *
+ */
 public class MapScreen implements Screen{
 	MapRenderer renderer;
+	Map map;
 	Mule game;
 	public MapScreen(Mule mule){
+		super();
+		map = new Map();
 		game = mule;
+		renderer = new MapRenderer(map);
 	}
 	@Override
 	public void render(float delta) {
