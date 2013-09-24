@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="assets"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="libs/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/David Wright/MULE/libgdxlibs/gdx-tools.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-tools.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

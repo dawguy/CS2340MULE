@@ -1,33 +1,10 @@
-INDEX VERSION 1.126+/Users/DavidW/Desktop/MULEProj/.metadata/.plugins/org.eclipse.jdt.core
-1371124400.index
-853061432.index
-3564128056.index
-4094821964.index
-1271342938.index
-3966564129.index
-1457794228.index
-156905802.index
-655387740.index
-2966779161.index
-2545238116.index
-1833648217.index
-1819685514.index
-1384487945.index
-3490128136.index
-3851953342.index
-3712507179.index
-3321539481.index
-2548541102.index
-3516206618.index
-3302703152.index
-993003486.index
-4238209716.index
-1485746415.index
+INDEX VERSION 1.126+/home/antonio/School/MULE/.metadata/.plugins/org.eclipse.jdt.core
 3986720639.index
-<<<<<<< HEAD
-484914701.index
-3721354332.index
+1724590881.index
 3516206618.index
+3721354332.index
+484914701.index
+1049848876.index
 1159935248.index
 2898480234.index
 1230503809.index
@@ -37,14 +14,7 @@ INDEX VERSION 1.126+/Users/DavidW/Desktop/MULEProj/.metadata/.plugins/org.eclips
 262802227.index
 3937884183.index
 1825514421.index
-3422508414.index
-4094821964.index
 2456322530.index
 1698757907.index
-=======
-3015357502.index
-1796137599.index
-2204176370.index
-3266567714.index
-484914701.index
->>>>>>> 4c60f0576851abcf6741747f44e308baaf0a5a29
+3422508414.index
+4094821964.index

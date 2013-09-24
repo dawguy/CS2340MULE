@@ -1,5 +1,5 @@
 package Utils;
-import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
+//import com.badlogic.gdx.tools.imagepacker.TexturePacker2;
 
 /**
  * Class to help pack images into a single larger Sprite.
@@ -12,8 +12,8 @@ public class TexturePacker {
 		//I am not that worried about having to manually set the file directory
 		String filePath = "C:\\Users\\David Wright\\Images";
 		
-		TexturePacker2.process(filePath,
-				filePath,
-				"textures.pack");
+		//TexturePacker2.process(filePath,
+				//filePath,
+				//"textures.pack");
 	}
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="MULE" default="compile" basedir=".">
 
-	<property name="MuleGameBuildDir" value="build/MuleGame"/>
-	<property name="MuleDesktopBuildDir" value="build/Desktop" />
+	<property name="MuleGameBuildDir" value="build"/>
+	<property name="MuleDesktopBuildDir" value="build" />
 	<property name="MuleGameDir" value="MuleGame" />
-	<property name="MuleDesktopDir" value="MuleGame-desktop" />	
+	<property name="MuleDesktopDir" value="MuleGame-desktop" />
+	<property name="LibClassPath" value="libs/gdx.jar libs/gdx-backend-lwjgl.jar libs/gdx-backend-lwjgl-natives.jar	libs/gdx-natives.jar libs/gdx-tools.jar libs/libgdx-0.9.8.zip" />
 
 	<path id="MuleGame.classpath">
 		<pathelement location="bin" />
@@ -23,8 +24,13 @@
 
 	<target name="init">
 		<mkdir dir="build/" />
-		<mkdir dir="build/MuleGame" />
-		<mkdir dir="build/Desktop" />
+		<mkdir dir="build/libs" />
+		<copy todir="build/libs">
+			<fileset dir="libgdxlibs" />
+		</copy>
+		<copy todir="build/">
+			<fileset dir="${MuleGameDir}/assets" />
+		</copy>
 	</target>
 
 	<target name="compile" depends="init">
@@ -40,11 +46,15 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		<jar destfile="Mule.jar"
-			basedir="${MuleGameDir}"
-			includes="${MuleGameBuildDir};${MuleDesktopBuildDir}">
+		<jar destfile="build/Mule.jar"
+			basedir="build/"
+			includes="">
+			<include name="**/**.class"/>
+			<include name="libs/**.jar" />			
+			<include name="assets/" />
 			<manifest>
-				<attribute name="Main-Class" value="org.me.mygdxgame.Main">
+				<attribute name="Main-Class" value="com.me.mygdxgame.Main" />
+				<attribute name="Class-Path" value="${LibClassPath};./assets/" />
 			</manifest>		
 		</jar>
 	</target>
