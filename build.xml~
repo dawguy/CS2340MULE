@@ -40,6 +40,12 @@
 	</target>
 
 	<target name="jar" depends="compile">
-		
+		<jar destfile="Mule.jar"
+			basedir="${MuleGameDir}"
+			includes="${MuleGameBuildDir};${MuleDesktopBuildDir}">
+			<manifest>
+				<attribute name="Main-Class" value="org.me.mygdxgame.Main">
+			</manifest>		
+		</jar>
 	</target>
 </project>
