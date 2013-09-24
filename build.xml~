@@ -38,4 +38,8 @@
 			<classpath refid="MuleGame-desktop.classpath" />
 		</javac>
 	</target>
+
+	<target name="jar" depends="compile">
+		
+	</target>
 </project>
