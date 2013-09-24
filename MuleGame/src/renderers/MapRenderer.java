@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
- * Renders the map.
+ * In charge of rendering the map screen including all parts of the map screen.
  * @author DavidW
  */
 public class MapRenderer {
-	private static final float CAMERA_WIDTH = 9f; //9 because there are 9 collums tiles on the screen
-	private static final float CAMERA_HEIGHT = 5f; //5 because there are 5 rows of tiles on the scren
+	private static final float CAMERA_WIDTH = 9f; //9 because there are 9 columns tiles on the screen
+	private static final float CAMERA_HEIGHT = 5f; //5 because there are 5 rows of tiles on the screen
 	private Map map;
 	private OrthographicCamera cam;
 	
@@ -22,15 +22,28 @@ public class MapRenderer {
 	public static float ppuY; //Pixels per unit Y
 	
 	SpriteBatch spriteBatch;
+	boolean ppuSet = false;
 	
+	/**
+	 * Changes the size of the screen. libGDX auto handles screen size changing so updating the ppuX and ppuY after the first call is not needed.
+	 * @param w
+	 * @param h
+	 */
 	public void setSize(int w, int h){
 		this.width = w;
 		this.height = h;
-		ppuX = (float)width / CAMERA_WIDTH;
-		ppuY = (float)height / CAMERA_HEIGHT;
-		map.setPPU(ppuX,ppuY);
+		if(!ppuSet){
+			ppuX = (float)w / CAMERA_WIDTH;
+			ppuY = (float)h / CAMERA_HEIGHT;
+			ppuSet = true;
+			map.setPPU(ppuX,ppuY);
+		}
 	}
 	
+	/**
+	 * Sets up the renderer
+	 * @param map
+	 */
 	public MapRenderer(Map map){
 		this.map = map;
 		this.cam = new OrthographicCamera(CAMERA_WIDTH, CAMERA_HEIGHT);
@@ -38,12 +51,20 @@ public class MapRenderer {
 		this.cam.update();
 		spriteBatch = new SpriteBatch();
 		this.map.loadTextures();
+		
 	}
 	
+	/**
+	 * Used for testing purposes. Likely will not need an update method in the finished renderer
+	 * @param delta time difference in fractions of seconds
+	 */
 	public void update(float delta){
 		map.update(delta);
 	}
 	
+	/**
+	 * Passes in the spriteBatch that wants to be rendered to the map object which will in turn ask each portition of the map to render itself
+	 */
 	public void render(){
 		spriteBatch.begin();
 			map.draw(spriteBatch);

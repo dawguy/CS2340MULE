@@ -27,7 +27,7 @@ public class Map {
 	
 	float ppuX, ppuY;
 	Random r = new Random();
-	boolean randomOn = true; //Change this based on whether or not we want a random map
+	boolean randomOn = false; //Change this based on whether or not we want a random map
 	
 	public Map(){
 		if(!randomOn){
@@ -101,17 +101,18 @@ public class Map {
 	}
 	
 	/**
-	 * Used for testing map Generations
+	 * Updates both the map and any potential objects inside the map
 	 * @param detla
 	 */
 	private float count = 0;
 	public void update(float delta){
-		count += delta;
-		if(count > 2){
-			generateRandomMap();
-			count = 0;
+		if(randomOn){
+			count += delta;
+			if(count > 1){
+				generateRandomMap();
+				count = 0;
+			}
 		}
-		System.out.println(count);
 	}
 	
 	public void loadTextures(){

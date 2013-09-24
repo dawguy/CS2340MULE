@@ -21,21 +21,6 @@ public class Tile {
 	
 	private int tileType;
 	private int x,y;
-	private float width,height;
-	
-	/**
-	 * Tile constructor if you have a certain size you need to make
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
-	public Tile(int x, int y, float width, float height){
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-	}
 	
 	/**
 	 * Creates a Tile with only its position in the Grid
@@ -45,15 +30,13 @@ public class Tile {
 	public Tile(int x, int y){
 		this.x = x;
 		this.y = y;
-		this.width = SIZE;
-		this.height = SIZE;
 	}
 	
 	/**
 	 * Draws the tile to the SpriteBatch of the map
 	 */
 	public void draw(SpriteBatch batch){
-		batch.draw(textures[tileType], x * MapRenderer.ppuX,MapRenderer.ppuY * y, MapRenderer.ppuX * width, MapRenderer.ppuY * height);
+		batch.draw(textures[tileType], x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 	}
 	
 	public void setType(int newType){
