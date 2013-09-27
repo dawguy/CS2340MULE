@@ -1,7 +1,0 @@
-package renderers;
-
-public class MapRenderer {
-	private Map map;
-	private OrthographicCamera cam;
-	
-}

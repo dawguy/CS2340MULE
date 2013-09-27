@@ -1,6 +1,0 @@
-INDEX VERSION 1.126+/home/antonio/School/MULE/.metadata/.plugins/org.eclipse.jdt.core
-993003486.index
-3986720639.index
-3516206618.index
-484914701.index
-4094821964.index
