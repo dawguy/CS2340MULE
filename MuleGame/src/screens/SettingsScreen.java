@@ -31,15 +31,15 @@ import com.me.mygdxgame.Mule;
 public class SettingsScreen implements Screen{
 
 	private final int BUFFER = 50;
-	
+
 	public Mule currentGame;
-	
+
 	private Texture background;
-	
+
 	private SpriteBatch batch;
-	
+
 	private PlayerCreationInput ui;
-	
+
 	public SettingsScreen(Mule g){
 		super();
 		currentGame = g;
@@ -47,21 +47,21 @@ public class SettingsScreen implements Screen{
 		batch = new SpriteBatch();
 		ui = new PlayerCreationInput(BUFFER, Mule.HEIGHT - BUFFER, Mule.WIDTH, Mule.HEIGHT);
 	}
-	
+
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
-		
+
 		batch.begin();
-		
+
 		batch.draw(background, 0, 0);
-		
+
 		batch.end();
-		
+
 		ui.draw();
 		update(delta);
 	}
-	
+
 	private void update(float delta){
 
 	}
@@ -69,37 +69,37 @@ public class SettingsScreen implements Screen{
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

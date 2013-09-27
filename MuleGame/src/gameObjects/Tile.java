@@ -21,21 +21,6 @@ public class Tile {
 	
 	private int tileType;
 	private int x,y;
-	private float width,height;
-	
-	/**
-	 * Tile constructor if you have a certain size you need to make
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
-	public Tile(int x, int y, float width, float height){
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-	}
 	
 	/**
 	 * Creates a Tile with only its position in the Grid
@@ -45,24 +30,30 @@ public class Tile {
 	public Tile(int x, int y){
 		this.x = x;
 		this.y = y;
-		this.width = SIZE;
-		this.height = SIZE;
 	}
 	
 	/**
 	 * Draws the tile to the SpriteBatch of the map
 	 */
 	public void draw(SpriteBatch batch){
-		batch.draw(textures[tileType], x * MapRenderer.ppuX,MapRenderer.ppuY * y, MapRenderer.ppuX * width, MapRenderer.ppuY * height);
+		batch.draw(textures[tileType], x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
+	}
+	
+	public void setType(int newType){
+		tileType = newType;
+	}
+	
+	public int getTileType(){
+		return tileType;
 	}
 	
 	
 	public static void loadTextures(){
-		textures[0] = new Texture("MapScreen/plains.jpeg");
-		textures[1] = new Texture("MapScreen/river.jpeg");
-		textures[2] = new Texture("MapScreen/town.jpeg");
-		textures[3] = new Texture("MapScreen/oneRidge.jpeg");
-		textures[4] = new Texture("MapScreen/twoRidge.jpeg");
-		textures[5] = new Texture("MapScreen/threeRidge.jpeg");
+		textures[0] = new Texture("MapScreen/plains.jpg");
+		textures[1] = new Texture("MapScreen/river.png");
+		textures[2] = new Texture("MapScreen/town.png");
+		textures[3] = new Texture("MapScreen/oneRidge.png");
+		textures[4] = new Texture("MapScreen/twoRidge.png");
+		textures[5] = new Texture("MapScreen/threeRidge.png");
 	}
 }
