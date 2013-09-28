@@ -1,9 +1,0 @@
-package renderers;
-
-public class MapRenderer {
-	private stactic final 
-	
-	private Map map;
-	private OrthographicCamera cam;
-	
-}
