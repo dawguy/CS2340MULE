@@ -40,6 +40,8 @@ public class PlayerVariableInputs {
 	private int positionX;
 	private int positionY;
 	
+	private Stage stage;
+	
 	
 	public PlayerVariableInputs(int x, int y, Stage s){
 		positionX = x;
@@ -48,6 +50,8 @@ public class PlayerVariableInputs {
 		createPlayerText();
 		createRaceBox();
 		addActorsToStage(s);
+		stage = s;
+		s.addActor(new DropMenu(new String[]{"HELLO", "BYE", "HI", "OKBABY"}, 100, 100));
 	}
 	
 	private void addActorsToStage(Stage s){
