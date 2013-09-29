@@ -31,6 +31,8 @@ public class DropMenu extends Actor{
 	
 	private BitmapFont font;
 	
+	private boolean drawMenuDown;
+	
 	private DropMenu(){
 		super();
 	}
@@ -44,6 +46,8 @@ public class DropMenu extends Actor{
 		super.setHeight(DEFAULT_HEIGHT);
 		font = new BitmapFont();
 		
+		drawMenuDown = true;
+		
 		super.addListener(new MyClickListener());
 	}
 	
@@ -53,15 +57,26 @@ public class DropMenu extends Actor{
 		setY(y);
 	}
 	
+	public DropMenu(String[] i, int x, int y, boolean b){
+		this(i, x, y);
+		drawMenuDown = b;
+	}
+	
 	private void switchState(){
 		if(isMenu){
 			isMenu = false;
 			super.setWidth(DEFAULT_WIDTH);
 			super.setHeight(DEFAULT_HEIGHT);
+			if(drawMenuDown){
+				super.setPosition(getX(), getY() + (DEFAULT_HEIGHT * (items.length - 1)));
+			}
 		} else{
 			isMenu = true;
 			super.setWidth(DEFAULT_WIDTH);
 			super.setHeight(DEFAULT_HEIGHT * items.length);
+			if(drawMenuDown){
+				super.setPosition(getX(), getY() - (DEFAULT_HEIGHT * (items.length - 1)));
+			}
 		}
 	}
 	
@@ -97,10 +112,14 @@ public class DropMenu extends Actor{
 	
 	private void drawDropMenu(SpriteBatch batch, float parentAlpha){
 		batch.end();
+		int orientationFactor = 1;
+		/*if(!drawMenuDown){
+			orientationFactor *= -1;
+		}*/
 		for(int i = 0 ; i < items.length ; i ++){
-			drawOutlineRect(getX(), getY() + (DEFAULT_HEIGHT * i), DEFAULT_WIDTH, DEFAULT_HEIGHT);
+			drawOutlineRect(getX(), getY() + (DEFAULT_HEIGHT * i * orientationFactor), DEFAULT_WIDTH, DEFAULT_HEIGHT);
 			batch.begin();
-			font.draw(batch, items[i], getX(), getY() + (DEFAULT_HEIGHT * i) + FONT_Y_SPACING);
+			font.draw(batch, items[i], getX(), getY() + (DEFAULT_HEIGHT * i * orientationFactor) + FONT_Y_SPACING);
 			batch.end();
 		}
 		batch.begin();
@@ -113,6 +132,7 @@ public class DropMenu extends Actor{
 	private class MyClickListener extends ClickListener{
 		
 		public void clicked(InputEvent event, float x, float y){
+			System.out.println("OK");
 			int index = (int)(y / DEFAULT_HEIGHT);
 			currentItem = items[index];
 			switchState();

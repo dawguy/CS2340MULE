@@ -23,8 +23,7 @@ public class PlayerCreationInput {
 
 	private final int MAX_PLAYERS = 4;
 	private final int MIN_PLAYERS = 2;
-	private final int ENTER_KEY = 13;
-	private final int DELETE_KEY = 8;
+	
 	
 	private List<PlayerVariableInputs> players;
 	
@@ -37,11 +36,9 @@ public class PlayerCreationInput {
 	
 	private final int BUFFER_Y = 75;
 	
-	private final String TEXTBOX_BACKGROUND = "SettingsScreen/TextboxBackground.jpeg";
+	private Stage stage;  
 	
-	private Stage stage;
-	
-	private TextFieldStyle textStyle;  
+	private Button startGameButton;
 	
 	private PlayerCreationInput(){}
 	

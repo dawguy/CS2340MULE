@@ -33,7 +33,7 @@ public class PlayerVariableInputs {
 	private final int BUFFER_Y = 25;
 	
 	private TextField playerName;
-	private SelectBox playerRace;
+	private DropMenu playerRace;
 	
 	private TextFieldStyle textStyle;
 	
@@ -51,7 +51,6 @@ public class PlayerVariableInputs {
 		createRaceBox();
 		addActorsToStage(s);
 		stage = s;
-		s.addActor(new DropMenu(new String[]{"HELLO", "BYE", "HI", "OKBABY"}, 100, 100));
 	}
 	
 	private void addActorsToStage(Stage s){
@@ -78,24 +77,7 @@ public class PlayerVariableInputs {
 	}
 	
 	private void createRaceBox(){
-		SelectBoxStyle style = new SelectBoxStyle();
-		style.font = new BitmapFont();
-		style.fontColor = Color.BLACK;
-		
-		Sprite backgroundSprite = new Sprite(new Texture(TEXTBOX_BACKGROUND));
-		SpriteDrawable backgroundDrawable = new SpriteDrawable(backgroundSprite);
-		
-		style.background = backgroundDrawable;
-		
-		style.listStyle = new List.ListStyle(new BitmapFont(), Color.RED, Color.BLUE, backgroundDrawable);
-		
-		ScrollPaneStyle scrollStyle = new ScrollPaneStyle();
-		scrollStyle.background = backgroundDrawable;
-		style.scrollStyle = scrollStyle;
-		
-		playerRace = new SelectBox(RACES, style);
-		playerRace.setX(positionX);
-		playerRace.setY(positionY - (BUFFER_Y));
+		playerRace = new DropMenu(RACES,(int) (positionX + playerName.getWidth()), positionY);
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{
