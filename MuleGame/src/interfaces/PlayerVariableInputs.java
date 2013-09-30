@@ -31,6 +31,7 @@ public class PlayerVariableInputs {
 	private final int DELETE_KEY = 8;
 	private final String[] RACES = {"HUMAN", "TEST1", "TEST2"};
 	private final int BUFFER_Y = 25;
+	private final int BUFFER_X = 25;
 	
 	private TextField playerName;
 	private DropMenu playerRace;
@@ -51,6 +52,12 @@ public class PlayerVariableInputs {
 		createRaceBox();
 		addActorsToStage(s);
 		stage = s;
+	}
+	
+	public boolean removeActorsFromStage(Stage s){
+		s.getActors().removeValue(playerName, true);
+		s.getActors().removeValue(playerRace, true);
+		return true;
 	}
 	
 	private void addActorsToStage(Stage s){
@@ -77,7 +84,7 @@ public class PlayerVariableInputs {
 	}
 	
 	private void createRaceBox(){
-		playerRace = new DropMenu(RACES,(int) (positionX + playerName.getWidth()), positionY);
+		playerRace = new DropMenu(RACES,(int) (positionX + playerName.getWidth() + BUFFER_X), positionY);
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{

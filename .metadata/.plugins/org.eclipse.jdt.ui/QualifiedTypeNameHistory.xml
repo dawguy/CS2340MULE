@@ -4,14 +4,16 @@
 <fullyQualifiedTypeName name="gameObjects.Map"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.glutils.ShapeRenderer"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType"/>
-<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
 <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+<fullyQualifiedTypeName name="screens.SettingsScreen"/>
 </qualifiedTypeNameHistroy>

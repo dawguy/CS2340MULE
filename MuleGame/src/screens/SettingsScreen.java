@@ -45,7 +45,7 @@ public class SettingsScreen implements Screen{
 		currentGame = g;
 		background = new Texture("SettingsScreen/GameSettingsScreen.jpeg");
 		batch = new SpriteBatch();
-		ui = new PlayerCreationInput(BUFFER, Mule.HEIGHT - BUFFER, Mule.WIDTH, Mule.HEIGHT);
+		ui = new PlayerCreationInput(BUFFER, Mule.HEIGHT - BUFFER, Mule.WIDTH, Mule.HEIGHT, this);
 	}
 
 	@Override
@@ -63,7 +63,12 @@ public class SettingsScreen implements Screen{
 	}
 
 	private void update(float delta){
-
+		
+	}
+	
+	public boolean startGame(){
+		
+		return true;
 	}
 
 	@Override

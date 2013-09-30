@@ -132,7 +132,6 @@ public class DropMenu extends Actor{
 	private class MyClickListener extends ClickListener{
 		
 		public void clicked(InputEvent event, float x, float y){
-			System.out.println("OK");
 			int index = (int)(y / DEFAULT_HEIGHT);
 			currentItem = items[index];
 			switchState();

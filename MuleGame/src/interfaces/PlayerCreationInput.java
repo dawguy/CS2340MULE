@@ -3,6 +3,8 @@ package interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import screens.SettingsScreen;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,7 +25,9 @@ public class PlayerCreationInput {
 
 	private final int MAX_PLAYERS = 4;
 	private final int MIN_PLAYERS = 2;
-	
+
+	private final String[] DIFFICULTIES = {"NORMAL", "MEDIUM", "HARD"};
+	private final String[] MAPS = {"MAP1", "MAP2", "RANDOM"};
 	
 	private List<PlayerVariableInputs> players;
 	
@@ -34,15 +38,23 @@ public class PlayerCreationInput {
 	private int width;
 	private int height;
 	
-	private final int BUFFER_Y = 75;
+	private final int BUFFER_Y = 85;
+	private final int BUFFER_X = 25;
 	
 	private Stage stage;  
 	
+	private Button addPlayerButton;
+	private Button removePlayerButton;
 	private Button startGameButton;
+	
+	private DropMenu difficultySelect;
+	private DropMenu mapSelect;
+	
+	private SettingsScreen screen;
 	
 	private PlayerCreationInput(){}
 	
-	public PlayerCreationInput(int posX, int posY, int w, int h){
+	public PlayerCreationInput(int posX, int posY, int w, int h, SettingsScreen s){
 		this();
 		positionX = posX;
 		positionY = posY;
@@ -57,6 +69,28 @@ public class PlayerCreationInput {
 		for(int i = 0 ; i < MIN_PLAYERS ; i++){
 			addPlayer();
 		}
+		
+		addButtons();
+		addDropDowns();
+		
+		screen = s;
+	}
+	
+	private void addButtons(){
+		addPlayerButton = new AddPlayerButton(100, 50, this);
+		removePlayerButton = new RemovePlayerButton(175, 50, this);
+		startGameButton = new StartGameButton(500, 50, this);
+		stage.addActor(addPlayerButton);
+		stage.addActor(removePlayerButton);
+		stage.addActor(startGameButton);
+	}
+	
+	private void addDropDowns(){
+		difficultySelect = new DropMenu(DIFFICULTIES, 300, 50, true);
+		mapSelect = new DropMenu(MAPS, 400, 50, true);
+		
+		stage.addActor(difficultySelect);
+		stage.addActor(mapSelect);
 	}
 	
 	public void draw(){
@@ -70,6 +104,21 @@ public class PlayerCreationInput {
 		PlayerVariableInputs temp = new PlayerVariableInputs(positionX, 
 					positionY - (BUFFER_Y * players.size()), stage);
 		players.add(temp);
+		return true;
+	}
+	
+	public boolean removePlayer(){
+		if(players.size() <= MIN_PLAYERS){
+			return false;
+		}
+		PlayerVariableInputs temp = players.get(players.size() - 1);
+		temp.removeActorsFromStage(stage);
+		players.remove(temp);
+		return true;
+	}
+	
+	public boolean startGame(){
+		Gdx.app.exit();
 		return true;
 	}
 }
