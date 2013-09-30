@@ -1,9 +1,14 @@
 package interfaces;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
@@ -11,11 +16,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider.SliderStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
  * A class that will represent all of the text input for each player. This 
@@ -35,7 +43,10 @@ public class PlayerVariableInputs {
 	
 	private TextField playerName;
 	private DropMenu playerRace;
-	
+	private Slider blueSlider;
+	private Slider redSlider;
+	private Slider greenSlider;
+		
 	private TextFieldStyle textStyle;
 	
 	private int positionX;
@@ -50,8 +61,49 @@ public class PlayerVariableInputs {
 		
 		createPlayerText();
 		createRaceBox();
+		createSliders();
 		addActorsToStage(s);
 		stage = s;
+	}
+	
+	private void createSliders(){
+		SliderStyle redStyle = new SliderStyle();
+		SliderStyle greenStyle = new SliderStyle();
+		SliderStyle blueStyle = new SliderStyle();
+		
+		Texture tempTexture = new Texture(Gdx.files.internal("SettingsScreen/SliderBackground.jpg"));
+		TextureRegion tempRegion = new TextureRegion(tempTexture);
+		TextureRegionDrawable tempDrawable = new TextureRegionDrawable(tempRegion);
+		redStyle.background = tempDrawable;
+		blueStyle.background = tempDrawable;
+		greenStyle.background = tempDrawable;
+		
+		Texture blueText = new Texture(Gdx.files.internal("SettingsScreen/BlueKnob.jpg"));
+		TextureRegion blueRegion = new TextureRegion(blueText);
+		TextureRegionDrawable blueDrawable = new TextureRegionDrawable(blueRegion);
+		blueStyle.knob = blueDrawable;
+		
+		Texture redText = new Texture(Gdx.files.internal("SettingsScreen/RedKnob.jpg"));
+		TextureRegion redRegion = new TextureRegion(redText);
+		TextureRegionDrawable redDrawable = new TextureRegionDrawable(redRegion);
+		redStyle.knob = redDrawable;
+		
+		Texture greenText = new Texture(Gdx.files.internal("SettingsScreen/GreenKnob.jpg"));
+		TextureRegion greenRegion = new TextureRegion(greenText);
+		TextureRegionDrawable greenDrawable = new TextureRegionDrawable(greenRegion);
+		greenStyle.knob = greenDrawable;
+		
+		
+		int posX = (int) (BUFFER_X + playerRace.getX() + playerRace.getWidth());
+		
+		blueSlider = new Slider(0, 255, 1, false, blueStyle);
+		blueSlider.setPosition(posX, positionY);
+		
+		redSlider = new Slider(0, 255, 1, false, redStyle);
+		redSlider.setPosition(posX, positionY - blueSlider.getHeight());
+		
+		greenSlider = new Slider(0, 255, 1, false, greenStyle);
+		greenSlider.setPosition(posX, positionY - blueSlider.getHeight() - redSlider.getHeight());
 	}
 	
 	public boolean removeActorsFromStage(Stage s){
@@ -63,6 +115,9 @@ public class PlayerVariableInputs {
 	private void addActorsToStage(Stage s){
 		s.addActor(playerName);
 		s.addActor(playerRace);
+		s.addActor(blueSlider);
+		s.addActor(redSlider);
+		s.addActor(greenSlider);
 	}
 	
 	private void createPlayerText(){
@@ -84,7 +139,17 @@ public class PlayerVariableInputs {
 	}
 	
 	private void createRaceBox(){
-		playerRace = new DropMenu(RACES,(int) (positionX + playerName.getWidth() + BUFFER_X), positionY);
+		playerRace = new DropMenu(RACES,(int) (positionX + playerName.getWidth() + BUFFER_X), positionY, true, "RACE");
+	}
+	
+	public void draw(SpriteBatch batch){
+		Color currentColor = new Color(redSlider.getValue() / 255, greenSlider.getValue() / 255
+				, blueSlider.getValue() / 255, 1);
+		ShapeRenderer sr = new ShapeRenderer();
+		sr.begin(ShapeType.Filled);
+		sr.setColor(currentColor);
+		sr.rect(blueSlider.getX() + blueSlider.getWidth() + BUFFER_X, positionY - 50, 50, 50);
+		sr.end();	
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{

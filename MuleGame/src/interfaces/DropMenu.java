@@ -25,6 +25,8 @@ public class DropMenu extends Actor{
 	
 	private String[] items;
 	
+	private String startString;
+	
 	private String currentItem;
 	
 	private boolean isMenu;
@@ -32,6 +34,8 @@ public class DropMenu extends Actor{
 	private BitmapFont font;
 	
 	private boolean drawMenuDown;
+	
+	private boolean changed;
 	
 	private DropMenu(){
 		super();
@@ -49,6 +53,9 @@ public class DropMenu extends Actor{
 		drawMenuDown = true;
 		
 		super.addListener(new MyClickListener());
+		
+		startString = null;
+		changed = true;
 	}
 	
 	public DropMenu(String[] i, int x, int y){
@@ -62,6 +69,12 @@ public class DropMenu extends Actor{
 		drawMenuDown = b;
 	}
 	
+	public DropMenu(String[] i, int x, int y, boolean b, String defString){
+		this(i, x, y, b);
+		startString = defString;
+		changed = false;
+	}
+	
 	private void switchState(){
 		if(isMenu){
 			isMenu = false;
@@ -71,6 +84,7 @@ public class DropMenu extends Actor{
 				super.setPosition(getX(), getY() + (DEFAULT_HEIGHT * (items.length - 1)));
 			}
 		} else{
+			changed = true;
 			isMenu = true;
 			super.setWidth(DEFAULT_WIDTH);
 			super.setHeight(DEFAULT_HEIGHT * items.length);
@@ -95,7 +109,11 @@ public class DropMenu extends Actor{
 		batch.begin();
 		batch.setColor(Color.BLACK);
 		font.setColor(Color.BLACK);
-		font.draw(batch, currentItem, getX(), getY() + FONT_Y_SPACING);
+		String s = currentItem;
+		if(!changed){
+			s = startString;
+		}
+		font.draw(batch, s, getX(), getY() + FONT_Y_SPACING);
 	}
 	
 	private void drawOutlineRect(float x, float y, float w, float h){

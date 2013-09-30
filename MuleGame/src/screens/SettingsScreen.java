@@ -58,7 +58,7 @@ public class SettingsScreen implements Screen{
 
 		batch.end();
 
-		ui.draw();
+		ui.draw(batch);
 		update(delta);
 	}
 

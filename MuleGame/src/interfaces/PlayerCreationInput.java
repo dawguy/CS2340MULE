@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
@@ -26,8 +27,8 @@ public class PlayerCreationInput {
 	private final int MAX_PLAYERS = 4;
 	private final int MIN_PLAYERS = 2;
 
-	private final String[] DIFFICULTIES = {"NORMAL", "MEDIUM", "HARD"};
-	private final String[] MAPS = {"MAP1", "MAP2", "RANDOM"};
+	private final String[] DIFFICULTIES = {"BEGINNER", "STANDARD", "TOURNAMENT"};
+	private final String[] MAPS = {"STANDARD", "RANDOM"};
 	
 	private List<PlayerVariableInputs> players;
 	
@@ -86,15 +87,18 @@ public class PlayerCreationInput {
 	}
 	
 	private void addDropDowns(){
-		difficultySelect = new DropMenu(DIFFICULTIES, 300, 50, true);
-		mapSelect = new DropMenu(MAPS, 400, 50, true);
+		difficultySelect = new DropMenu(DIFFICULTIES, 300, 50, true, "DIFFICULTY");
+		mapSelect = new DropMenu(MAPS, 400, 50, true, "MAPS");
 		
 		stage.addActor(difficultySelect);
 		stage.addActor(mapSelect);
 	}
 	
-	public void draw(){
+	public void draw(SpriteBatch batch){
 		stage.draw();
+		for(PlayerVariableInputs p : players){
+			p.draw(batch);
+		}
 	}
 	
 	public boolean addPlayer(){
