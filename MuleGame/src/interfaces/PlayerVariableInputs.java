@@ -1,5 +1,7 @@
 package interfaces;
 
+import managers.PlayerManager;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -37,7 +39,7 @@ public class PlayerVariableInputs {
 	private final String TEXTBOX_BACKGROUND = "SettingsScreen/TextboxBackground.jpeg";
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
-	private final String[] RACES = {"HUMAN", "TEST1", "TEST2"};
+	private final String[] RACES = {"HUMAN", "FLAPPER"};
 	private final int BUFFER_Y = 25;
 	private final int BUFFER_X = 25;
 	
@@ -109,6 +111,9 @@ public class PlayerVariableInputs {
 	public boolean removeActorsFromStage(Stage s){
 		s.getActors().removeValue(playerName, true);
 		s.getActors().removeValue(playerRace, true);
+		s.getActors().removeValue(blueSlider, true);
+		s.getActors().removeValue(redSlider, true);
+		s.getActors().removeValue(greenSlider, true);
 		return true;
 	}
 	
@@ -150,6 +155,14 @@ public class PlayerVariableInputs {
 		sr.setColor(currentColor);
 		sr.rect(blueSlider.getX() + blueSlider.getWidth() + BUFFER_X, positionY - 50, 50, 50);
 		sr.end();	
+	}
+	
+	public boolean addPlayer(PlayerManager manager){
+		String name = playerName.getText();
+		String race = playerRace.getCurrentItem();
+		Color c = new Color(redSlider.getValue() / 255, greenSlider.getValue() / 255
+				, blueSlider.getValue() / 255, 1);
+		return manager.addPlayer(name, race, c);
 	}
 	
 	private class MyTextFieldListener implements TextFieldListener{

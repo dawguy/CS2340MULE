@@ -1,7 +1,7 @@
 package screens;
 
+import managers.PlayerManager;
 import gameObjects.Player;
-import gameObjects.PlayerHandler;
 import interfaces.MyTextInputListener;
 import interfaces.PlayerCreationInput;
 
@@ -67,7 +67,10 @@ public class SettingsScreen implements Screen{
 	}
 	
 	public boolean startGame(){
-		
+		PlayerManager manager = new PlayerManager();
+		ui.startGame(manager);
+		System.out.println(manager.toString());
+		Gdx.app.exit();
 		return true;
 	}
 

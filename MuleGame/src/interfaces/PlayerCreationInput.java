@@ -3,6 +3,8 @@ package interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import managers.PlayerManager;
+
 import screens.SettingsScreen;
 
 import com.badlogic.gdx.Gdx;
@@ -57,6 +59,7 @@ public class PlayerCreationInput {
 	
 	public PlayerCreationInput(int posX, int posY, int w, int h, SettingsScreen s){
 		this();
+		screen = s;
 		positionX = posX;
 		positionY = posY;
 		width = w;
@@ -73,14 +76,12 @@ public class PlayerCreationInput {
 		
 		addButtons();
 		addDropDowns();
-		
-		screen = s;
 	}
 	
 	private void addButtons(){
 		addPlayerButton = new AddPlayerButton(100, 50, this);
 		removePlayerButton = new RemovePlayerButton(175, 50, this);
-		startGameButton = new StartGameButton(500, 50, this);
+		startGameButton = new StartGameButton(500, 50, this, screen);
 		stage.addActor(addPlayerButton);
 		stage.addActor(removePlayerButton);
 		stage.addActor(startGameButton);
@@ -121,8 +122,10 @@ public class PlayerCreationInput {
 		return true;
 	}
 	
-	public boolean startGame(){
-		Gdx.app.exit();
+	public boolean startGame(PlayerManager manager){
+		for(PlayerVariableInputs player : players){
+			player.addPlayer(manager);
+		}
 		return true;
 	}
 }

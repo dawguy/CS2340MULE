@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.Color;
 public class Player {
 	
 	private static enum Race {
-		HUMAN
+		HUMAN, FLAPPER
 	};
 	
 	private Race race;
@@ -21,14 +21,32 @@ public class Player {
 	private Color color;
 	
 	public Player(){
+		super();
 		name = "";
 		color = null;
 		race = Race.HUMAN;
 	}
 	
 	public Player(String n, Color c){
+		this();
 		name = n;
 		color = c;
+	}
+	
+	public Player(String name, String race, Color c){
+		this(name, c);
+		this.setRace(race);
+	}
+	
+	public boolean setRace(String s){
+		if(s.toLowerCase().equals("human")){
+			race = Race.HUMAN;
+			return true;
+		} else if(s.toLowerCase().equals("FLAPPER")){
+			race = Race.FLAPPER;
+			return true;
+		}
+		return false;
 	}
 	
 	public void setName(String s){
@@ -37,5 +55,14 @@ public class Player {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public String toString(){
+		String s = "";
+		s += "NAME : " + name;
+		s += "\t RACE : " + race;
+		s += "\t COLOR : " + color;
+		s += "\n";
+		return s;
 	}
 }
