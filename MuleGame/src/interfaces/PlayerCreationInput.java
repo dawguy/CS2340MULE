@@ -3,6 +3,7 @@ package interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import managers.GameManager;
 import managers.PlayerManager;
 
 import screens.SettingsScreen;
@@ -122,10 +123,12 @@ public class PlayerCreationInput {
 		return true;
 	}
 	
-	public boolean startGame(PlayerManager manager){
+	public boolean startGame(PlayerManager manager, GameManager gameManager){
 		for(PlayerVariableInputs player : players){
 			player.addPlayer(manager);
 		}
+		gameManager.setDifficulty(difficultySelect.getCurrentItem());
+		gameManager.setMap(mapSelect.getCurrentItem());
 		return true;
 	}
 }

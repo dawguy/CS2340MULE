@@ -56,4 +56,18 @@ public class Tile {
 		textures[4] = new Texture("MapScreen/twoRidge.png");
 		textures[5] = new Texture("MapScreen/threeRidge.png");
 	}
+	
+	public String toString(){
+		String s = "";
+		if(tileType == 0){
+			s += "P";
+		} else if(tileType == 1){
+			s += "R";
+		} else if(tileType == 2){
+			s += "T";
+		} else{
+			s += "M";
+		}
+		return s;
+	}
 }

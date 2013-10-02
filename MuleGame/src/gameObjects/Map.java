@@ -67,6 +67,12 @@ public class Map {
 		loadTextures();
 	}
 	
+	public Map(boolean random){
+		this();
+		randomOn = random;
+		generateRandomMap();
+	}
+	
 	private void generateRandomMap(){
 		Stack<Integer> tileTypes = new Stack<Integer>();
 		tiles = new Tile[9][5];
@@ -130,5 +136,18 @@ public class Map {
 	public void setPPU(float x, float y){
 		ppuX = x;
 		ppuY = y;
+	}
+	
+	public String toString(){
+		String s = "";
+		s += "RANDOM : " + randomOn;
+		s += "\n";
+		for(int i = 0 ; i < tiles.length ; i ++){
+			for(int j = 0 ; j < tiles[i].length ; j++){
+				s += tiles[i][j];
+			}
+			s += "\n";
+		}
+		return s;
 	}
 }
