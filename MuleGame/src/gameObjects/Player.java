@@ -42,7 +42,7 @@ public class Player {
 		if(s.toLowerCase().equals("human")){
 			race = Race.HUMAN;
 			return true;
-		} else if(s.toLowerCase().equals("FLAPPER")){
+		} else if(s.toLowerCase().equals("flapper")){
 			race = Race.FLAPPER;
 			return true;
 		}
