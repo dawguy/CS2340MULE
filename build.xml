@@ -31,6 +31,7 @@
 		<copy todir="build/">
 			<fileset dir="${MuleGameDir}/assets/" />
 		</copy>
+		<mkdir dir="javadoc/" />
 	</target>
 
 	<target name="compile" depends="init">
@@ -57,5 +58,13 @@
 				<attribute name="Class-Path" value="${LibClassPath};./assets/" />
 			</manifest>		
 		</jar>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<javadoc classpath="MuleGame.classpath" sourcepath="${MuleGameDir}/src" destdir="javadoc" />
+	</target>
+
+	<target name="all" depends="javadoc">
+
 	</target>
 </project>
