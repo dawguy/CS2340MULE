@@ -65,4 +65,8 @@ public class Player {
 		s += "\n";
 		return s;
 	}
+	
+	public Color getColor(){
+		return color;
+	}
 }
