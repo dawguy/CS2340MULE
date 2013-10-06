@@ -4,6 +4,7 @@ import renderers.MapRenderer;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * This class represents a tile in the map. Possible states are
@@ -22,6 +23,8 @@ public class Tile {
 	private int tileType;
 	private int x,y;
 	
+	private Rectangle rect;
+	
 	/**
 	 * Creates a Tile with only its position in the Grid
 	 * @param x
@@ -30,6 +33,7 @@ public class Tile {
 	public Tile(int x, int y){
 		this.x = x;
 		this.y = y;
+		rect = new Rectangle(x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 	}
 	
 	/**
@@ -55,6 +59,10 @@ public class Tile {
 		textures[3] = new Texture("MapScreen/oneRidge.png");
 		textures[4] = new Texture("MapScreen/twoRidge.png");
 		textures[5] = new Texture("MapScreen/threeRidge.png");
+	}
+	
+	public Rectangle getRect(){
+		return rect;
 	}
 	
 	public String toString(){

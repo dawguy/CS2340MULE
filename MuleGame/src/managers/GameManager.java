@@ -43,7 +43,7 @@ public class GameManager {
 		if(s.toLowerCase().equals("random")){
 			map = new Map(true);
 		} else{
-			map = new Map();
+			map = new Map(false);
 		}
 	}
 	

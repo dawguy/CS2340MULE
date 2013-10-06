@@ -19,12 +19,14 @@ public class Player {
 	private Race race;
 	private String name;
 	private Color color;
+	private Resource resources;
 	
 	public Player(){
 		super();
 		name = "";
 		color = null;
 		race = Race.HUMAN;
+		resources = new Resource();
 	}
 	
 	public Player(String n, Color c){
@@ -68,5 +70,17 @@ public class Player {
 	
 	public Color getColor(){
 		return color;
+	}
+	
+	public void loseResources(int resourceType, int amount){
+		resources.loseResource(resourceType, amount);
+	}
+	
+	public void spendResources(int resourceType, int amount){
+		resources.spendResource(resourceType, amount);
+	}
+	
+	public void gainResources(int resourceType, int amount){
+		resources.gainResource(resourceType, amount);
 	}
 }
