@@ -36,6 +36,7 @@ public class MapScreen implements Screen{
 			//MIGHT Have to do certain thigns to the town game here
 			//Because right now all it is doing is straight changing the screen
 			//over to the town screen
+			map.putBelowTown();
 			game.setScreen(game.TOWNSCREEN);
 		}
 	}

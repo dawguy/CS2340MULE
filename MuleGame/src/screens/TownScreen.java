@@ -93,6 +93,8 @@ public class TownScreen implements Screen{
 		stage.draw();	
 		
 		handleInput();
+		
+		checkLocation();
 	}
 	
 	private void handleInput(){
@@ -104,6 +106,15 @@ public class TownScreen implements Screen{
 			token.moveUp();
 		} else if(Gdx.input.isKeyPressed(Keys.DOWN)){
 			token.moveDown();
+		}
+	}
+	
+	private void checkLocation(){
+		if(token.getX() < 0 || token.getX() + token.getWidth() > game.WIDTH ||
+				token.getY() < 0 || token.getY() + token.getHeight() > game.HEIGHT){
+			token.setX(game.WIDTH / 2);
+			token.setY(game.HEIGHT / 2);
+			game.setScreen(game.MAPSCREEN);
 		}
 	}
 
