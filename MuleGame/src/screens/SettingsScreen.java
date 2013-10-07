@@ -70,9 +70,12 @@ public class SettingsScreen implements Screen{
 	public boolean startGame(){
 		PlayerManager manager = new PlayerManager();
 		GameManager gameManager = new GameManager(manager);
+		Mule.gm = gameManager;
+		Mule.pm = manager;
 		ui.startGame(manager, gameManager);	
-		System.out.println(gameManager);
-		Gdx.app.exit();
+		currentGame.setScreen(currentGame.MAPSCREEN);
+		//System.out.println(gameManager);
+		//Gdx.app.exit();
 		return true;
 	}
 

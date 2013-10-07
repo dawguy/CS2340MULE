@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Stack;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.me.mygdxgame.Mule;
 
 /**
  * The Map which holds the tile elements.
@@ -14,63 +15,65 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Map {
 	Tile[][] tiles;
 	/*
-	 * The tile list starts at 0,0 at the top right hand corner
+	 * The tile list starts at 0,0 at the bottom left hand corner
 	 *
-	 *	0,0		1,0		2,0		3,0
-	 *	0,1		1,1		2,1		3,1
-	 *	0,2		1,2		2,2		3,2
 	 *	0,3		1,3		2,3		3,3
+	 *	0,2		1,2		2,2		3,2
+	 *	0,1		1,1		2,1		3,1
+	 *	0,0		1,0		2,0		3,0
 	 *
 	 *	This formating takes the column number as the x and the row number as the y
 	 */
 	
+	PlayerToken playerT;
 	
 	float ppuX, ppuY;
 	Random r = new Random();
 	boolean randomOn = false; //Change this based on whether or not we want a random map
 	
-	public Map(){
+	public Map(boolean randomOn){
+		this.randomOn = randomOn;
 		if(!randomOn){
-			tiles = new Tile[9][5];
-			
-			//Creates Tiles and defaults them to Plains
-			for(int i = 0; i < tiles.length; i++){
-				for(int c = 0; c < tiles[i].length; c++){
-					tiles[i][c] = new Tile(i,c);
-				}
-			}
-			//River
-			for(int i = 0; i < tiles[0].length; i ++){
-				tiles[4][i].setType(1);
-			}
-			//Town
-			tiles[4][2].setType(2);
-			
-			//One Ridge Mountains
-			tiles[2][0].setType(3);
-			tiles[2][3].setType(3);
-			tiles[7][1].setType(3);
-			
-			//Two Ridge Mountains
-			tiles[3][2].setType(4);
-			tiles[6][2].setType(4);
-			tiles[8][4].setType(4);
-			tiles[0][4].setType(4);
-			
-			//Three Ridge Mountains
-			tiles[2][1].setType(5);
-			tiles[5][0].setType(5);
-			tiles[5][3].setType(5);
+			defaultMap();
 		} else {
 			generateRandomMap();
 		}
 		loadTextures();
 	}
 	
-	public Map(boolean random){
-		this();
-		randomOn = random;
-		generateRandomMap();
+	
+	
+	public void defaultMap(){
+		tiles = new Tile[9][5];
+		
+		//Creates Tiles and defaults them to Plains
+		for(int i = 0; i < tiles.length; i++){
+			for(int c = 0; c < tiles[i].length; c++){
+				tiles[i][c] = new Tile(i,c);
+			}
+		}
+		//River
+		for(int i = 0; i < tiles[0].length; i ++){
+			tiles[4][i].setType(1);
+		}
+		//Town
+		tiles[4][2].setType(2);
+		
+		//One Ridge Mountains
+		tiles[2][0].setType(3);
+		tiles[2][3].setType(3);
+		tiles[7][1].setType(3);
+		
+		//Two Ridge Mountains
+		tiles[3][2].setType(4);
+		tiles[6][2].setType(4);
+		tiles[8][4].setType(4);
+		tiles[0][4].setType(4);
+		
+		//Three Ridge Mountains
+		tiles[2][1].setType(5);
+		tiles[5][0].setType(5);
+		tiles[5][3].setType(5);
 	}
 	
 	private void generateRandomMap(){
@@ -112,12 +115,8 @@ public class Map {
 	 */
 	private float count = 0;
 	public void update(float delta){
-		if(randomOn){
-			count += delta;
-			if(count > 1){
-				generateRandomMap();
-				count = 0;
-			}
+		if(playerT == null){
+			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
 		}
 	}
 	
@@ -131,7 +130,39 @@ public class Map {
 				tiles[i][c].draw(sprites);
 			}
 		}
+		playerT.draw(sprites, 2);
 	}
+	
+	public void moveUp(){
+		playerT.moveUp();
+	}
+
+	public void moveRight(){
+		playerT.moveRight();
+	}
+	public void moveDown(){
+		playerT.moveDown();
+	}
+	public void moveLeft(){
+		playerT.moveLeft();
+	}
+	
+	/**
+	 * True if the playerToken and Town tile are overlapping
+	 */
+	public boolean changeToTown(){
+		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
+		float tY = 2.5f * ppuY;
+		float pX = playerT.getX() + 25;	//Center of player
+		float pY = playerT.getY() + 25;
+		
+		float a = (tX - pX) * (tX - pX);
+		float b = (tY - pY) * (tY - pY);
+		float c = (float)Math.sqrt((a * a) + (b * b));
+		if(c < 1000) return true;
+		return false;
+	}
+
 	
 	public void setPPU(float x, float y){
 		ppuX = x;

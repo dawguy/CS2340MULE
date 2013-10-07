@@ -1,10 +1,14 @@
 package com.me.mygdxgame;
 
 import interfaces.InputHandler;
+import managers.GameManager;
+import managers.PlayerManager;
+import screens.MapScreen;
+import screens.SettingsScreen;
+import screens.TitleScreen;
+import screens.TownScreen;
 
 import com.badlogic.gdx.Game;
-
-import screens.*;
 
 /**
  * The setup class for the entire game. This class will instantiate the screens and
@@ -18,6 +22,9 @@ public class Mule extends Game {
 	public static SettingsScreen SETTINGSCREEN;
 	public static MapScreen MAPSCREEN;
 	public static TownScreen TOWNSCREEN;
+	
+	public static GameManager gm;
+	public static PlayerManager pm;
 	
 	public static InputHandler INPUT;
 	

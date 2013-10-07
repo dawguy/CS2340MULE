@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.Color;
 public class PlayerManager {
 
 	private List<Player> players;
+	private int currentPlayer = 0;
 	
 	public PlayerManager(){
 		super();
@@ -36,6 +37,18 @@ public class PlayerManager {
 	public boolean addPlayer(String name, String race, Color c){
 		players.add(new Player(name, race, c));
 		return true;
+	}
+	
+	public void nextPlayer(){
+		currentPlayer = (currentPlayer + 1) % players.size();
+	}
+	
+	public Player getCurrentPlayer(){
+		return players.get(currentPlayer);
+	}
+	
+	public int getCurrentPlayerNumber(){
+		return currentPlayer;
 	}
 	
 	public String toString(){
