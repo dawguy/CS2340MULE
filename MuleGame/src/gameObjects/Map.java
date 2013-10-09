@@ -141,6 +141,7 @@ public class Map {
 				tiles[i][c].draw(sprites);
 			}
 		}
+
 		for(int i = 0; i < tiles[i].length; i++){
 			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
 		}
