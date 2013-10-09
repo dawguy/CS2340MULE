@@ -4,6 +4,7 @@ import interfaces.InputHandler;
 import managers.GameManager;
 import managers.PlayerManager;
 import screens.MapScreen;
+import screens.SelectTilesScreen;
 import screens.SettingsScreen;
 import screens.TitleScreen;
 import screens.TownScreen;
@@ -22,6 +23,7 @@ public class Mule extends Game {
 	public static SettingsScreen SETTINGSCREEN;
 	public static MapScreen MAPSCREEN;
 	public static TownScreen TOWNSCREEN;
+	public static SelectTilesScreen SELECTTILESSCREEN;
 	
 	public static GameManager gm;
 	public static PlayerManager pm;

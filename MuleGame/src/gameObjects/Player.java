@@ -19,14 +19,14 @@ public class Player {
 	private Race race;
 	private String name;
 	private Color color;
-	private Resource resources;
+	//private Resource resources;
 	
 	public Player(){
 		super();
 		name = "";
 		color = null;
 		race = Race.HUMAN;
-		resources = new Resource();
+		//resources = new Resource();
 	}
 	
 	public Player(String n, Color c){
@@ -44,7 +44,7 @@ public class Player {
 		if(s.toLowerCase().equals("human")){
 			race = Race.HUMAN;
 			return true;
-		} else if(s.toLowerCase().equals("FLAPPER")){
+		} else if(s.toLowerCase().equals("flapper")){
 			race = Race.FLAPPER;
 			return true;
 		}
@@ -73,14 +73,14 @@ public class Player {
 	}
 	
 	public void loseResources(int resourceType, int amount){
-		resources.loseResource(resourceType, amount);
+		//resources.loseResource(resourceType, amount);
 	}
 	
 	public void spendResources(int resourceType, int amount){
-		resources.spendResource(resourceType, amount);
+		//resources.spendResource(resourceType, amount);
 	}
 	
 	public void gainResources(int resourceType, int amount){
-		resources.gainResource(resourceType, amount);
+		//resources.gainResource(resourceType, amount);
 	}
 }

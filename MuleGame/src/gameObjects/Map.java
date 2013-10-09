@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.me.mygdxgame.Mule;
 
 /**
@@ -13,6 +15,10 @@ import com.me.mygdxgame.Mule;
  *
  */
 public class Map {
+	
+	private final int TOWN_X = 4;
+	private final int TOWN_Y = 2;
+	
 	Tile[][] tiles;
 	/*
 	 * The tile list starts at 0,0 at the bottom left hand corner
@@ -125,12 +131,22 @@ public class Map {
 	}
 	
 	public void draw(SpriteBatch sprites){
+		ShapeRenderer sr = new ShapeRenderer();
+		
+		sr.begin(ShapeRenderer.ShapeType.Line);
+		sr.setColor(Color.BLACK);
 		for(int i = 0; i < tiles.length; i++){
+			sr.line(i * ppuX, 0, i * ppuX, 5 * ppuY);
 			for(int c = 0; c < tiles[i].length; c++){
 				tiles[i][c].draw(sprites);
 			}
 		}
-		playerT.draw(sprites, .5f);
+
+		for(int i = 0; i < tiles[i].length; i++){
+			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
+		}
+		sr.end();
+		playerT.draw(sprites, 1);
 	}
 	
 	public void moveUp(){
@@ -180,5 +196,10 @@ public class Map {
 			s += "\n";
 		}
 		return s;
+	}
+	
+	public void putBelowTown(){
+		playerT.setX(ppuX * TOWN_X);
+		playerT.setY(ppuY * (TOWN_Y - 1));
 	}
 }

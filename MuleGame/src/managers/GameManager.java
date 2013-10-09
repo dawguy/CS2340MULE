@@ -47,6 +47,10 @@ public class GameManager {
 		}
 	}
 	
+	public Map getMap(){
+		return map;
+	}
+	
 	public String toString(){
 		String s = "";
 		s += "DIFFICULTY : " + difficulty + "\n";
