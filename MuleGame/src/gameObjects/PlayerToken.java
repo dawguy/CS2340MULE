@@ -27,6 +27,7 @@ public class PlayerToken extends Image{
 	public PlayerToken(Player p){
 		super();
 		color = p.getColor();
+		System.out.println(color.toString());
 	}
 	
 	public PlayerToken(Player p, int x, int y){
@@ -41,6 +42,7 @@ public class PlayerToken extends Image{
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
 		sr.setColor(color);
+		System.out.println(color.toString());
 		sr.rect(getX(), getY(), WIDTH, HEIGHT);
 		sr.end();
 	}

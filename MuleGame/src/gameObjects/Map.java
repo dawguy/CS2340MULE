@@ -130,7 +130,7 @@ public class Map {
 				tiles[i][c].draw(sprites);
 			}
 		}
-		playerT.draw(sprites, 2);
+		playerT.draw(sprites, .5f);
 	}
 	
 	public void moveUp(){
