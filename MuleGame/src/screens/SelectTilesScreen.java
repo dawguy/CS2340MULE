@@ -42,7 +42,7 @@ public class SelectTilesScreen implements Screen{
 	public SelectTilesScreen(Mule mule){
 		super();
 		map = game.gm.getMap();
-		tiles = map.getTiles();
+		tiles = null;
 		renderer = new MapRenderer(map);
 		renderer.setSize(Mule.WIDTH, Mule.HEIGHT);
 		map.setDrawPlayer(false);
@@ -86,10 +86,6 @@ public class SelectTilesScreen implements Screen{
 	public void update(float delta){
 		
 
-	}
-	
-	private void update(float delta){
-		getInput();
 	}
 	
 	private void getInput(){
