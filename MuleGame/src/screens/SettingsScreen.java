@@ -75,6 +75,7 @@ public class SettingsScreen implements Screen{
 		ui.startGame(manager, gameManager);	
 		currentGame.SELECTTILESSCREEN = new SelectTilesScreen(currentGame);
 		currentGame.setScreen(currentGame.MAPSCREEN);
+		currentGame.setScreen(currentGame.SELECTTILESSCREEN);
 		//System.out.println(gameManager);
 		//Gdx.app.exit();
 		return true;

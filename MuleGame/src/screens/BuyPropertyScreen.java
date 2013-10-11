@@ -1,14 +1,6 @@
 package screens;
 
-import gameObjects.Map;
-import renderers.MapRenderer;
-import screens.MapScreen
-
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.GL10;
-import com.me.mygdxgame.Mule;
 
 /**
  * The screen for when the player is buying property, both at the beginning and 
@@ -16,6 +8,48 @@ import com.me.mygdxgame.Mule;
  * @arthur Rich Li
  * @version 1.0
  */
-public BuyPropertyScreen extends MapScreen{
+public class BuyPropertyScreen implements Screen{
+
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dispose() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -202,4 +202,8 @@ public class Map {
 		playerT.setX(ppuX * TOWN_X);
 		playerT.setY(ppuY * (TOWN_Y - 1));
 	}
+	
+	public Tile[][] getTiles(){
+		return tiles;
+	}
 }
