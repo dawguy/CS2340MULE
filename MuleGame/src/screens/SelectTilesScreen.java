@@ -1,10 +1,12 @@
 package screens;
 
 import managers.GameManager;
+import managers.SelectTileManager;
 import gameObjects.Map;
 import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.me.mygdxgame.Mule;
@@ -23,10 +25,15 @@ public class SelectTilesScreen implements Screen{
 	
 	private Map map;
 	
+	private SelectTileManager manager;
+	
 	public SelectTilesScreen(Mule mule){
 		super();
 		map = game.gm.getMap();
 		renderer = new MapRenderer(map);
+		renderer.setSize(Mule.WIDTH, Mule.HEIGHT);
+		map.setDrawPlayer(false);
+		manager = new SelectTileManager();
 	}
 	
 	@Override
@@ -34,8 +41,20 @@ public class SelectTilesScreen implements Screen{
 		Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
+		update(delta);
+		
 		renderer.update(delta);
 		renderer.render();
+	}
+	
+	private void update(float delta){
+		getInput();
+	}
+	
+	private void getInput(){
+		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+			manager.tilePicked(map.getMouseClickedTile(Gdx.input.getX(), Gdx.input.getY()));
+		}
 	}
 
 	@Override

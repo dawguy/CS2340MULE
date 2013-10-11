@@ -33,6 +33,8 @@ public class Map {
 	
 	PlayerToken playerT;
 	
+	private boolean drawPlayer;
+	
 	float ppuX, ppuY;
 	Random r = new Random();
 	boolean randomOn = false; //Change this based on whether or not we want a random map
@@ -45,9 +47,13 @@ public class Map {
 			generateRandomMap();
 		}
 		loadTextures();
+		drawPlayer = true;
 	}
 	
-	
+	public Map(boolean randomOn, boolean drawP){
+		this(randomOn);
+		drawPlayer = drawP;
+	}
 	
 	public void defaultMap(){
 		tiles = new Tile[9][5];
@@ -146,7 +152,20 @@ public class Map {
 			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
 		}
 		sr.end();
-		playerT.draw(sprites, 1);
+		if(playerT != null && drawPlayer){
+			playerT.draw(sprites, 1);
+		}
+	}
+	
+	public void setDrawPlayer(boolean b){
+		drawPlayer = b;
+	}
+	
+	
+	public Tile getMouseClickedTile(int x, int y){
+		int a = (int) (x / ppuX);
+		int b = (int) ((Mule.HEIGHT - y) / ppuY);
+		return tiles[a][b];
 	}
 	
 	public void moveUp(){

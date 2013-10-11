@@ -27,7 +27,6 @@ public class PlayerToken extends Image{
 	public PlayerToken(Player p){
 		super();
 		color = p.getColor();
-		System.out.println(color.toString());
 	}
 	
 	public PlayerToken(Player p, int x, int y){
