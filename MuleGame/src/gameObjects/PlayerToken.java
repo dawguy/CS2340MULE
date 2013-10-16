@@ -38,11 +38,13 @@ public class PlayerToken extends Image{
 	
 	public void draw(SpriteBatch batch, float parentAlpha){
 		super.draw(batch, parentAlpha);
+		batch.end();
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
 		sr.setColor(color);
 		sr.rect(getX(), getY(), WIDTH, HEIGHT);
 		sr.end();
+		batch.begin();
 	}
 	
 	public void moveLeft(){
