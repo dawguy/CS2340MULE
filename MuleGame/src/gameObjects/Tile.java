@@ -77,11 +77,13 @@ public class Tile {
 	
 	public void drawOwner(SpriteBatch batch){
 		if(isOwned){
+			batch.end();
 			shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 			shapeRenderer.setColor(owner.getColor());
 			shapeRenderer.circle(MapRenderer.ppuX * (x) + PLAYER_BOX_WIDTH, MapRenderer.ppuY * (y)
 						+ PLAYER_BOX_WIDTH, PLAYER_BOX_WIDTH);	
 			shapeRenderer.end();
+			batch.begin();
 		}
 	}
 	
