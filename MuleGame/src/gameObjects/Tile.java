@@ -22,6 +22,8 @@ public class Tile {
 	private static Texture[] textures = new Texture[7];
 	private static final float SIZE = 1f;
 	
+	private final int COST = 500;
+	
 	private int tileType;
 	private int x,y;
 	
@@ -49,6 +51,10 @@ public class Tile {
 		shapeRenderer = new ShapeRenderer();
 	}
 	
+	public int getCost(){
+		return COST;
+	}
+	
 	public boolean isOwned(){
 		return isOwned;
 	}
@@ -67,10 +73,14 @@ public class Tile {
 	 */
 	public void draw(SpriteBatch batch){
 		batch.draw(textures[tileType], x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
+	}
+	
+	public void drawOwner(SpriteBatch batch){
 		if(isOwned){
 			shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 			shapeRenderer.setColor(owner.getColor());
-			shapeRenderer.circle(MapRenderer.ppuX * x - 25, MapRenderer.ppuY * y + 25, PLAYER_BOX_WIDTH);	
+			shapeRenderer.circle(MapRenderer.ppuX * (x) + PLAYER_BOX_WIDTH, MapRenderer.ppuY * (y)
+						+ PLAYER_BOX_WIDTH, PLAYER_BOX_WIDTH);	
 			shapeRenderer.end();
 		}
 	}
@@ -109,5 +119,10 @@ public class Tile {
 			s += "M";
 		}
 		return s;
+	}
+	
+	public void setOwner(Player p, boolean b){
+		//p.subtractMoney() TODO
+		owner = p;
 	}
 }

@@ -83,4 +83,9 @@ public class Player {
 	public void gainResources(int resourceType, int amount){
 		//resources.gainResource(resourceType, amount);
 	}
+	
+	public boolean canBuy(Tile t){
+		return false;
+		//TODO COME BACK TO
+	}
 }

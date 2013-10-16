@@ -1,6 +1,8 @@
 package managers;
 
 import gameObjects.Map;
+import gameObjects.Player;
+import gameObjects.Tile;
 
 /**
  * This class will manage the game logic as well as contain the PlayerManager for the entire game.
@@ -31,6 +33,10 @@ public class GameManager {
 		players = pm;
 	}
 	
+	public int getNumberOfPlayers(){
+		return players.getNumberOfPlayers();
+	}
+	
 	public void setDifficulty(String s){
 		if(s.toUpperCase().equals(Difficulty.TOURNAMENT)){
 			difficulty = Difficulty.TOURNAMENT;
@@ -57,5 +63,35 @@ public class GameManager {
 		s += "MAP : \n" + map.toString() + "\n";
 		s += players.toString();
 		return s;
+	}
+	
+	public boolean buyTile(int x, int y, Player p){
+		Tile t = map.getMouseClickedTile(x, y);
+		if(t.isOwned()){
+			return false;
+		}
+		t.setOwner(p);
+		return true;
+	}
+	
+	/**
+	 * This method buys a tile. (NOTE NOT A FREE TILE)
+	 * @param x mouse click x pos
+	 * @param y mouse click y pos
+	 * @param p the player buying
+	 * @param subtractMoney whether the player needs the money for it
+	 * @return
+	 */
+	public boolean buyTile(int x, int y, Player p, boolean subtractMoney){
+		Tile t = map.getMouseClickedTile(x, y);
+		if(t.isOwned() && !p.canBuy(t)){
+			return false;
+		}
+		t.setOwner(p, subtractMoney);
+		return true;
+	}
+	
+	public Player getPlayer(int i){
+		return players.getPlayer(i);
 	}
 }

@@ -8,6 +8,7 @@ import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
@@ -21,7 +22,7 @@ import com.me.mygdxgame.Mule;
  * @author antonio
  *
  */
-public class SelectTilesScreen implements Screen{
+public class SelectTilesScreen implements Screen, InputProcessor{
 
 	private MapRenderer renderer;
 	
@@ -47,50 +48,28 @@ public class SelectTilesScreen implements Screen{
 		renderer.setSize(Mule.WIDTH, Mule.HEIGHT);
 		map.setDrawPlayer(false);
 		manager = new SelectTileManager();
+		Gdx.input.setInputProcessor(this);
 	}
 	
 	@Override
 	public void render(float delta) {
-		if(ppuX < 1f) ppuX = renderer.ppuX;
-		if(ppuY < 1f) ppuY = renderer.ppuY;
-		Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		SpriteBatch sprite = new SpriteBatch();
 		sprite.begin();
-		for(int i = 0; i < tiles.length; i++){
-			for(int c = 0; c <  tiles[i].length; c++){
-				tiles[i][c].draw(sprite);
-			}
-		}
-		ShapeRenderer sr = new ShapeRenderer();
-		System.out.println(ppuX + ", " + ppuY);
-		sr.begin(ShapeRenderer.ShapeType.Line);
-		sr.setColor(Color.BLACK);
-		for(int i = 0; i < tiles.length; i++){
-			sr.line(i * ppuX, 0, i * ppuX, 5 * ppuY);
-		}
-		for(int i = 0; i < tiles[i].length; i++){
-			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
-		}
-		sr.setColor(Color.RED);
-			//Horizontal lines
-			sr.line(selectionBoxX * ppuX, selectionBoxY * ppuY, ppuX * (selectionBoxX + 1), selectionBoxY * ppuY );
-			sr.line(selectionBoxX * ppuX, (selectionBoxY + 1) * ppuY, ppuX * (selectionBoxX + 1), (selectionBoxY + 1) * ppuY );	
-			//Vertical lines
-			sr.line(selectionBoxX * ppuX, selectionBoxY * ppuY, ppuX * (selectionBoxX), (selectionBoxY + 1) * ppuY );
-			sr.line((selectionBoxX + 1) * ppuX, selectionBoxY * ppuY, ppuX * (selectionBoxX + 1), (selectionBoxY + 1) * ppuY );
-			sr.end();
+		
+		map.draw(sprite);
+		
 		sprite.end();
+		
+		update(delta);
 	}
 	
 	public void update(float delta){
-		
-
+		getInput();
 	}
 	
 	private void getInput(){
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
-			manager.tilePicked(map.getMouseClickedTile(Gdx.input.getX(), Gdx.input.getY()));
+			manager.buyTile(Gdx.input.getX(), Gdx.input.getY());
 		}
 	}
 
@@ -128,6 +107,54 @@ public class SelectTilesScreen implements Screen{
 	public void dispose() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean keyDown(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

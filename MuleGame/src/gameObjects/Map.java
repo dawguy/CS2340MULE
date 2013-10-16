@@ -148,6 +148,15 @@ public class Map {
 			}
 		}
 
+		/**
+		 * Draw ALL COLORS for ownership
+		 */
+		for(int i = 0; i < tiles.length; i++){
+			for(int c = 0; c < tiles[i].length; c++){
+				tiles[i][c].drawOwner(sprites);
+			}
+		}
+		
 		for(int i = 0; i < tiles[i].length; i++){
 			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
 		}
