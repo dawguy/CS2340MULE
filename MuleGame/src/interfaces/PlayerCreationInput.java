@@ -129,6 +129,7 @@ public class PlayerCreationInput {
 		}
 		gameManager.setDifficulty(difficultySelect.getCurrentItem());
 		gameManager.setMap(mapSelect.getCurrentItem());
+		gameManager.setPPU();
 		return true;
 	}
 }

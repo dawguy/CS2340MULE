@@ -18,6 +18,7 @@ public class MapScreen implements Screen{
 	MapRenderer renderer;
 	Map map;
 	Mule game;
+	
 	public MapScreen(Mule mule){
 		super();
 		map = new Map(false);

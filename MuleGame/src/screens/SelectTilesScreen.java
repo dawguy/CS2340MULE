@@ -5,6 +5,7 @@ import managers.SelectTileManager;
 import gameObjects.Map;
 import gameObjects.Tile;
 import renderers.MapRenderer;
+import renderers.PlayerSelectionGui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -39,16 +40,22 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	int selectionBoxX = 3;
 	int selectionBoxY = 3;
 
+	private final int GUI_HEIGHT = 100;
+	
+	private PlayerSelectionGui playerGui;
 	
 	public SelectTilesScreen(Mule mule){
 		super();
-		map = game.gm.getMap();
+		map = Mule.gm.getMap();
 		tiles = null;
 		renderer = new MapRenderer(map);
 		renderer.setSize(Mule.WIDTH, Mule.HEIGHT);
 		map.setDrawPlayer(false);
 		manager = new SelectTileManager();
 		Gdx.input.setInputProcessor(this);
+		map.setPPU(Mule.WIDTH / 9, (Mule.HEIGHT - GUI_HEIGHT) / 5);
+		MapRenderer.setPPU(Mule.WIDTH / 9, (Mule.HEIGHT - GUI_HEIGHT) / 5);
+		playerGui = new PlayerSelectionGui(manager);
 	}
 	
 	@Override
@@ -57,8 +64,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 		sprite.begin();
 		
 		map.draw(sprite);
-		
-		sprite.end();
+		playerGui.draw(sprite);
 		
 		update(delta);
 	}

@@ -174,6 +174,9 @@ public class Map {
 	public Tile getMouseClickedTile(int x, int y){
 		int a = (int) (x / ppuX);
 		int b = (int) ((Mule.HEIGHT - y) / ppuY);
+		if(tiles[a].length <= b){
+			return null;
+		}
 		return tiles[a][b];
 	}
 	

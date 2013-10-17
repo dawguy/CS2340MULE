@@ -124,7 +124,8 @@ public class Tile {
 	}
 	
 	public void setOwner(Player p, boolean b){
-		//p.subtractMoney() TODO
+		p.incrementMoney(-1 * COST);
 		owner = p;
+		isOwned = true;
 	}
 }
