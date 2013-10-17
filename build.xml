@@ -63,6 +63,15 @@
 	<target name="javadoc" depends="compile">
 		<javadoc classpath="MuleGame.classpath" sourcepath="${MuleGameDir}/src" destdir="javadoc" />
 	</target>
+	
+	<target name="run" depends="jar">
+		<java dir="build" classpath="build" jar="build/Mule.jar" fork="true" />
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="javadoc" />
+	</target>
 
 	<target name="all" depends="javadoc">
 
