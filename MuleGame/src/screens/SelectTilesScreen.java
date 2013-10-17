@@ -44,6 +44,8 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	
 	private PlayerSelectionGui playerGui;
 	
+	private boolean switchScreen;
+	
 	public SelectTilesScreen(Mule mule){
 		super();
 		map = Mule.gm.getMap();
@@ -51,11 +53,13 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 		renderer = new MapRenderer(map);
 		renderer.setSize(Mule.WIDTH, Mule.HEIGHT);
 		map.setDrawPlayer(false);
-		manager = new SelectTileManager();
+		game = mule;
+		manager = new SelectTileManager(game);
 		Gdx.input.setInputProcessor(this);
 		map.setPPU(Mule.WIDTH / 9, (Mule.HEIGHT - GUI_HEIGHT) / 5);
 		MapRenderer.setPPU(Mule.WIDTH / 9, (Mule.HEIGHT - GUI_HEIGHT) / 5);
 		playerGui = new PlayerSelectionGui(manager);
+		switchScreen = false;
 	}
 	
 	@Override
@@ -71,11 +75,16 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	
 	public void update(float delta){
 		getInput();
+		if(manager.isDone()){
+			Mule.MAPSCREEN.setMap(Mule.gm.getMap());
+			game.setScreen(Mule.MAPSCREEN);
+		}
 	}
 	
 	private void getInput(){
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
 			manager.buyTile(Gdx.input.getX(), Gdx.input.getY());
+			playerGui.mouseClicked(Gdx.input.getX(), Gdx.input.getY());
 		}
 	}
 

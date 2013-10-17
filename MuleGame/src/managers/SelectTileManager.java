@@ -18,8 +18,14 @@ public class SelectTileManager {
 	private int playerNumber;
 	
 	private boolean startOfGame;
+
+	private boolean[] donePlayers;
+	
+	private int numberOfDone;
 	
 	private final int FREE_LAND_NUMBER_OF_ROUNDS = 2;
+	
+	private Mule game;
 	
 	public SelectTileManager(){
 		super();
@@ -27,11 +33,53 @@ public class SelectTileManager {
 		currentRound = 1;
 		playerNumber = 0;
 		startOfGame = true;
+		donePlayers = new boolean[Mule.pm.getNumberOfPlayers()];
+		numberOfDone = 0;
 	}
 	
 	public SelectTileManager(boolean start){
 		this();
 		startOfGame = start;
+	}
+	
+	public SelectTileManager(Mule g){
+		this();
+		game = g;
+	}
+	
+	public boolean isDone(){
+		return (numberOfDone == Mule.pm.getNumberOfPlayers());
+	}
+	
+	public void setPlayerDone(int i){
+		if(donePlayers[i]){
+			numberOfDone --;
+			donePlayers[i] = false;
+		} else{
+			numberOfDone++;
+			if(numberOfDone == Mule.pm.getNumberOfPlayers()){
+				return;
+			}
+			donePlayers[i] = true;
+			if(donePlayers[playerNumber]){
+				while(donePlayers[playerNumber]){
+					playerNumber++;
+					if(playerNumber >= Mule.gm.getNumberOfPlayers()){
+						playerNumber = 0;
+						currentRound++;
+					}
+					currentPlayer = Mule.gm.getPlayer(playerNumber);
+				}
+			}
+		}
+	}
+	
+	public boolean getPlayerDone(int i){
+		return donePlayers[i];
+	}
+	
+	public int getNumberOfPlayersDone(){
+		return numberOfDone;
 	}
 	
 	public boolean tilePicked(Tile t){
@@ -50,6 +98,13 @@ public class SelectTileManager {
 			if(playerNumber >= Mule.gm.getNumberOfPlayers()){
 				playerNumber = 0;
 				currentRound++;
+			}
+			while(donePlayers[playerNumber]){
+				playerNumber++;
+				if(playerNumber >= Mule.gm.getNumberOfPlayers()){
+					playerNumber = 0;
+					currentRound++;
+				}
 			}
 			currentPlayer = Mule.gm.getPlayer(playerNumber);
 		}

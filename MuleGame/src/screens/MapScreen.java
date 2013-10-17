@@ -42,6 +42,10 @@ public class MapScreen implements Screen{
 		}
 	}
 	
+	public void setMap(Map m){
+		map = m;
+	}
+	
 	private void handleInput(){
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)){
 			map.moveRight();
