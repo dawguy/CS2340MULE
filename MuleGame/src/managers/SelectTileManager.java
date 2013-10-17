@@ -2,6 +2,8 @@ package managers;
 
 import com.me.mygdxgame.Mule;
 
+import java.lang.System;
+
 import gameObjects.Player;
 import gameObjects.Tile;
 
@@ -84,6 +86,25 @@ public class SelectTileManager {
 	
 	public boolean tilePicked(Tile t){
 		return t.setOwner(currentPlayer);
+	}
+
+	/**
+	  * Highlights proper tile.
+	  * @param x x value inside tile
+	  * @param y y value inside tile
+	  */
+	public void highlightTile(int x, int y){
+		// Clear highlight of all tiles
+		for(int i = 0 ; i < Mule.gm.getMap().getTiles().length ; i ++){
+			for(int j = 0 ; j < Mule.gm.getMap().getTiles()[i].length ; j++){
+				Mule.gm.getMap().getTiles()[i][j].setIsHighlighted(false);
+			}
+		}
+		Tile t = Mule.gm.getMap().getMouseClickedTile(x, y);
+		if(t == null) {
+			return;
+		}
+		t.setIsHighlighted(currentPlayer.getColor(), true);
 	}
 	
 	public boolean buyTile(int x, int y){

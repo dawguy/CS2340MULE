@@ -7,6 +7,9 @@ import gameObjects.Tile;
 import renderers.MapRenderer;
 import renderers.PlayerSelectionGui;
 
+
+import java.lang.System;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -163,6 +166,11 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		// TODO Auto-generated method stub
+		// System.out.println("x: " + screenX);
+		// System.out.println("y: " + screenY);
+		if (screenX > 0 && screenX < Mule.WIDTH - 1 && screenY > 0 && screenY < Mule.HEIGHT){
+			manager.highlightTile(screenX, screenY);
+		}
 		return false;
 	}
 

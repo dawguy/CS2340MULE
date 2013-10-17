@@ -5,6 +5,7 @@ import renderers.MapRenderer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.me.mygdxgame.Mule;
 
@@ -32,6 +33,10 @@ public class Tile {
 	private Rectangle rect;
 	
 	private boolean isOwned;
+
+	private boolean isHighlighted;
+
+	private Color highlightColor;
 	
 	private Player owner;
 	
@@ -47,6 +52,7 @@ public class Tile {
 		this.y = y;
 		rect = new Rectangle(x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 		isOwned = false;
+		isHighlighted = false;
 		owner = null;
 		shapeRenderer = new ShapeRenderer();
 	}
@@ -67,14 +73,14 @@ public class Tile {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Draws the tile to the SpriteBatch of the map
 	 */
 	public void draw(SpriteBatch batch){
 		batch.draw(textures[tileType], x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 	}
-	
+
 	public void drawOwner(SpriteBatch batch){
 		if(isOwned){
 			batch.end();
@@ -86,7 +92,23 @@ public class Tile {
 			batch.begin();
 		}
 	}
-	
+
+	/**
+	  * Draws highlight around box for currentPlayer's color.
+	  * @param batch
+	  */
+	public void drawHighlight(SpriteBatch batch){
+		if(isHighlighted){
+			batch.end();
+			shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+			shapeRenderer.identity();
+			shapeRenderer.setColor(highlightColor);
+			shapeRenderer.rect(MapRenderer.ppuX * (x), MapRenderer.ppuY * (y), MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
+			shapeRenderer.end();
+			batch.begin();
+		}
+	}
+
 	public void setType(int newType){
 		tileType = newType;
 	}
@@ -127,5 +149,14 @@ public class Tile {
 		p.incrementMoney(-1 * COST);
 		owner = p;
 		isOwned = true;
+	}
+
+	public void setIsHighlighted(boolean b){
+		isHighlighted = false;
+	}
+
+	public void setIsHighlighted(Color c, boolean b){
+		highlightColor = c;
+		isHighlighted = b;
 	}
 }
