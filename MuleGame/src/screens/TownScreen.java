@@ -1,5 +1,6 @@
 package screens;
 
+
 import gameObjects.Player;
 import gameObjects.PlayerToken;
 import gameObjects.Buildings.AssayOffice;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -119,6 +121,16 @@ public class TownScreen implements Screen{
 			token.setX(Mule.WIDTH / 2);
 			token.setY(Mule.HEIGHT / 2);
 			game.setScreen(Mule.MAPSCREEN);
+		}
+		
+		checkBuildingCollision();
+	}
+	
+	private void checkBuildingCollision(){
+		Rectangle tokenRect = token.getRect();
+		Rectangle pubRect = pub.getRect();
+		if(pubRect.contains(tokenRect)){
+			game.gm.endTurnPub();
 		}
 	}
 

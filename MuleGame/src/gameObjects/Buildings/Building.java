@@ -3,6 +3,7 @@ package gameObjects.Buildings;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -57,5 +58,10 @@ public abstract class Building{
 	
 	public void setY(float y){
 		buildingImage.setY(y);
+	}
+	
+	public Rectangle getRect(){
+		Rectangle rect = new Rectangle(getX(), getY(), getWidth(), getHeight());
+		return rect;
 	}
 }

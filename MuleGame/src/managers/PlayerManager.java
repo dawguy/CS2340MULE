@@ -1,6 +1,7 @@
 package managers;
 
 import gameObjects.Player;
+import gameObjects.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,5 +67,47 @@ public class PlayerManager {
 	
 	public Player getPlayer(int i){
 		return players.get(i);
+	}
+	
+	/**
+	 * This gets the current player order for the turn. It returns an array where player[0] is the first
+	 * player, and player[player.length - 1] is the last player to go.
+	 * @return an array containing the players order
+	 */
+	public Player[] getPlayerOrder(){
+		Player[] order = new Player[players.size()];
+		for(int i = 0 ; i < players.size() ; i ++){
+			order[i] = players.get(i);
+		}
+		
+		Player temp = null;
+		
+		//Sort the array
+		for(int i = 0 ; i < players.size() ; i ++){
+			for(int j = i ; j < players.size() ; j++){
+				int s1 = order[i].getScore();
+				int s2 = order[j].getScore();
+				if(s1 > s2){
+					//swap the players
+					temp = order[i];
+					order[i] = order[j];
+					order[j] = temp;
+				}
+			}
+		}
+		return order;
+	}
+	
+	
+	public int getCurrentPlayerTime(int requirements){
+		Player p = players.get(currentPlayer);
+		int time = 50;
+		int food = p.getNumberOfResource(Resource.RESOURCE_FOOD);
+		if(food == 0){
+			time = 5;
+		} else if(food < requirements){
+			time = 30;
+		}
+		return time;
 	}
 }

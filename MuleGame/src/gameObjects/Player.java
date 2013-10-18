@@ -19,7 +19,7 @@ public class Player {
 	private Race race;
 	private String name;
 	private Color color;
-	//private Resource resources;
+	private Resource resources;
 	
 	private int money;
 	
@@ -29,7 +29,7 @@ public class Player {
 		color = null;
 		race = Race.HUMAN;
 		setMoney();
-		//resources = new Resource();
+		resources = new Resource();
 	}
 	
 	public Player(String n, Color c){
@@ -55,6 +55,14 @@ public class Player {
 	}
 	
 	public int getMoney(){
+		return money;
+	}
+	
+	/**
+	 * This method returns the current score, and currently that is just money
+	 * @return the current score.
+	 */
+	public int getScore(){
 		return money;
 	}
 	
@@ -99,15 +107,19 @@ public class Player {
 	}
 	
 	public void loseResources(int resourceType, int amount){
-		//resources.loseResource(resourceType, amount);
+		resources.loseResource(resourceType, amount);
 	}
 	
 	public void spendResources(int resourceType, int amount){
-		//resources.spendResource(resourceType, amount);
+		resources.spendResource(resourceType, amount);
 	}
 	
 	public void gainResources(int resourceType, int amount){
-		//resources.gainResource(resourceType, amount);
+		resources.gainResource(resourceType, amount);
+	}
+	
+	public int getNumberOfResource(int resource){
+		return resources.getResource(resource);
 	}
 	
 	public boolean canBuy(Tile t){

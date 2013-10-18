@@ -6,6 +6,14 @@ package gameObjects;
  */
 public class Resource {
 	int[] resources = new int[6];
+	
+	public static final int RESOURCE_MONEY = 0;
+	public static final int RESOURCE_FOOD = 1;
+	public static final int RESOURCE_ENERGY = 2;
+	public static final int RESOURCE_ORE = 3;
+	public static final int RESOURCE_CRYSTITE = 4;
+	public static final int RESOURCE_MULE = 5;
+	
 	public Resource(){
 		for(int i = 0; i < resources.length; i++){
 			resources[i] = 0;

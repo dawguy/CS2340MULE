@@ -4,6 +4,7 @@ import com.me.mygdxgame.Mule;
 
 import gameObjects.Map;
 import gameObjects.Player;
+import gameObjects.Resource;
 import gameObjects.Tile;
 
 /**
@@ -16,6 +17,9 @@ public class GameManager {
 	public static enum Difficulty {
 		STANDARD, TOURNAMENT 	
 	};
+	
+	public static final int[] FOOD_REQUIREMENTS = {3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5};
+	public static final int[] ROUND_BONUS = {50, 50, 50, 100, 100, 100, 100, 150, 150, 150, 150, 200};
 	
 	private final Difficulty DEFAULT_DIFFICULTY= Difficulty.STANDARD;
 	
@@ -30,14 +34,28 @@ public class GameManager {
 	private final float MAP_PPU_X = Mule.WIDTH / 9;
 	private final float MAP_PPU_Y = (Mule.HEIGHT - GUI_HEIGHT) / 5;
 	
+	private int currentRound;
+	
+	private float currentPlayerTime;
+	
 	public GameManager(){
 		super();
 		players = new PlayerManager();
+		currentRound = 0;
+		currentPlayerTime = 0;
 	}
 	
 	public GameManager(PlayerManager pm){
 		this();
 		players = pm;
+	}
+	
+	public float getCurrentPlayerTime(){
+		return currentPlayerTime;
+	}
+	
+	public void incrementCurrentPlayerTime(float delta){
+		currentPlayerTime += delta;
 	}
 	
 	public int getNumberOfPlayers(){
@@ -123,5 +141,35 @@ public class GameManager {
 	
 	public Player getPlayer(int i){
 		return players.getPlayer(i);
+	}
+	
+	public int getRoundTime(){
+		return players.getCurrentPlayerTime(GameManager.FOOD_REQUIREMENTS[currentRound]);
+	}
+	
+	/**
+	 * This ends the current player's turn and therefore will give the player money and goes to the next player
+	 */
+	public void endTurnPub(){
+		int addScore = GameManager.ROUND_BONUS[currentRound];
+		if(currentPlayerTime >= 37){
+			addScore += 200;
+		} else if(currentPlayerTime >= 25){
+			addScore += 150;
+		} else if(currentPlayerTime >= 12){
+			addScore += 100;
+		} else{
+			addScore += 50;
+		}
+		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);
+		nextPlayer();
+	}
+	
+	/**
+	 * This method will switch the current players turn and then call the method which will
+	 * restart the actual turn and reset various variables.
+	 */
+	public void nextPlayer(){
+		
 	}
 }
