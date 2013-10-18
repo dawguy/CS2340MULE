@@ -1,11 +1,9 @@
 package managers;
 
-import com.me.mygdxgame.Mule;
-
-import java.lang.System;
-
 import gameObjects.Player;
 import gameObjects.Tile;
+
+import com.me.mygdxgame.Mule;
 
 /**
  * This class will handle the game logic for when the players get to buy tiles.

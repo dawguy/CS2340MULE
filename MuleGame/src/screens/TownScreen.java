@@ -3,17 +3,17 @@ package screens;
 import gameObjects.Player;
 import gameObjects.PlayerToken;
 import gameObjects.Buildings.AssayOffice;
+import gameObjects.Buildings.LandOffice;
 import gameObjects.Buildings.Pub;
 import gameObjects.Buildings.Store;
-import gameObjects.Buildings.LandOffice;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -53,7 +53,7 @@ public class TownScreen implements Screen{
 	private void setPlayer(){
 		Player p = new Player("TEST", Color.BLUE);
 		token = new PlayerToken(p, Mule.WIDTH / 2, Mule.HEIGHT / 2);
-		stage.addActor(token);
+		//stage.addActor(token);
 	}
 	
 	private void setBuildings(){
@@ -76,7 +76,7 @@ public class TownScreen implements Screen{
 	
 	private void setBackground(){
 		Group background = new Group();
-		background.setBounds(0, 0, game.WIDTH, game.HEIGHT);
+		background.setBounds(0, 0, Mule.WIDTH, Mule.HEIGHT);
 		
 		Texture backgroundTexture = new Texture(Gdx.files.internal(BACKGROUND_LOCATION));
 		Sprite backgroundSprite = new Sprite(backgroundTexture);
@@ -91,7 +91,11 @@ public class TownScreen implements Screen{
 	@Override
 	public void render(float delta) {
 		stage.draw();	
-		
+		SpriteBatch sb = new SpriteBatch();
+		sb.begin();
+		token.draw(sb, 1);
+		sb.end();
+		sb.dispose();
 		handleInput();
 		
 		checkLocation();
@@ -110,11 +114,11 @@ public class TownScreen implements Screen{
 	}
 	
 	private void checkLocation(){
-		if(token.getX() < 0 || token.getX() + token.getWidth() > game.WIDTH ||
-				token.getY() < 0 || token.getY() + token.getHeight() > game.HEIGHT){
-			token.setX(game.WIDTH / 2);
-			token.setY(game.HEIGHT / 2);
-			game.setScreen(game.MAPSCREEN);
+		if(token.getX() < 0 || token.getX() + token.getWidth() > Mule.WIDTH ||
+				token.getY() < 0 || token.getY() + token.getHeight() > Mule.HEIGHT){
+			token.setX(Mule.WIDTH / 2);
+			token.setY(Mule.HEIGHT / 2);
+			game.setScreen(Mule.MAPSCREEN);
 		}
 	}
 

@@ -2,6 +2,7 @@ package renderers;
 
 
 import gameObjects.Map;
+import gameObjects.PlayerToken;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,6 +19,7 @@ public class MapRenderer {
 	
 	private int width;	//Width of the screen
 	private int height;	//Height of the screen
+	private int realHeight; //Used to save room for the GUI
 	public static float ppuX;	//Pixels per unit X
 	public static float ppuY; //Pixels per unit Y
 	
@@ -31,10 +33,11 @@ public class MapRenderer {
 	 */
 	public void setSize(int w, int h){
 		this.width = w;
-		this.height = h;
+		this.realHeight = h;
+		this.height = h - 20;
 		if(!ppuSet){
 			ppuX = (float)w / CAMERA_WIDTH;
-			ppuY = (float)h / CAMERA_HEIGHT;
+			ppuY = (float)height / CAMERA_HEIGHT;
 			ppuSet = true;
 			map.setPPU(ppuX,ppuY);
 		}

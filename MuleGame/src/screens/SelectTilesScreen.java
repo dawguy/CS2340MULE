@@ -1,23 +1,16 @@
 package screens;
 
-import managers.GameManager;
-import managers.SelectTileManager;
 import gameObjects.Map;
 import gameObjects.Tile;
+import managers.SelectTileManager;
 import renderers.MapRenderer;
 import renderers.PlayerSelectionGui;
-
-
-import java.lang.System;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.me.mygdxgame.Mule;
 
 /**

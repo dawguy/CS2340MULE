@@ -1,6 +1,5 @@
 package gameObjects;
 
-import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
@@ -127,9 +126,7 @@ public class Map {
 	 */
 	private float count = 0;
 	public void update(float delta){
-		if(playerT == null){
-			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
-		}
+
 	}
 	
 	public void loadTextures(){
@@ -162,9 +159,6 @@ public class Map {
 				tiles[i][c].drawHighlight(sprites);
 			}
 		}
-		if(playerT != null && drawPlayer){
-			playerT.draw(sprites, 1);
-		}
 	}
 	
 	public void setDrawPlayer(boolean b){
@@ -187,6 +181,7 @@ public class Map {
 
 	public void moveRight(){
 		playerT.moveRight();
+		System.out.println(playerT.getX() + ", " + playerT.getY());
 	}
 	public void moveDown(){
 		playerT.moveDown();
@@ -199,6 +194,13 @@ public class Map {
 	 * True if the playerToken and Town tile are overlapping
 	 */
 	public boolean changeToTown(){
+		if(playerT == null){
+			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+			System.out.println("MAKING NEW PLAYER TOKEN");
+		} else if (!playerT.compareTo(Mule.pm.getCurrentPlayer())){
+			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+			System.out.println("MAKING NEW PLAYER TOKEN");
+		}
 		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
 		float tY = 2.5f * ppuY;
 		float pX = playerT.getX() + 25;	//Center of player
@@ -231,11 +233,15 @@ public class Map {
 	}
 	
 	public void putBelowTown(){
-		playerT.setX(ppuX * TOWN_X);
-		playerT.setY(ppuY * (TOWN_Y - 1));
+		playerT.setX((int)ppuX * TOWN_X);
+		playerT.setY((int)ppuY * (TOWN_Y - 1));
 	}
 	
 	public Tile[][] getTiles(){
 		return tiles;
+	}
+	
+	public PlayerToken getToken(){
+		return playerT;
 	}
 }
