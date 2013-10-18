@@ -104,6 +104,9 @@ public class SelectTileManager {
 		if(t == null) {
 			return;
 		}
+		if(t.getTileType() == 2){
+			return; // can't highlight town tile
+		}
 		t.setIsHighlighted(currentPlayer.getColor(), true);
 	}
 	

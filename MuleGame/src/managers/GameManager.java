@@ -85,6 +85,9 @@ public class GameManager {
 		if(t == null){
 			return false;
 		}
+		if(t.getTileType() == 2){
+			return false; // can't buy town tile
+		}
 		if(t.isOwned()){
 			return false;
 		}
@@ -104,6 +107,9 @@ public class GameManager {
 		Tile t = map.getMouseClickedTile(x, y);
 		if(t == null){
 			return false;
+		}
+		if(t.getTileType() == 2){
+			return false; // can't buy town tile
 		}
 		if(t.isOwned()){
 			return false;
