@@ -63,7 +63,10 @@ public class SelectTilesScreen implements Screen{
 		for(int i = 0; i < tiles[i].length; i++){
 			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
 		}
-		sr.setColor(Color.RED);
+		sr.setColor(1,0,0,1);
+			sr.rect(selectionBoxX * ppuX, selectionBoxY * ppuY, ppuX, ppuY );
+			sr.line(0, 0,200,200);
+			sr.line(0, 200,200,0);
 			//Horizontal lines
 			sr.line(selectionBoxX * ppuX, selectionBoxY * ppuY, ppuX * (selectionBoxX + 1), selectionBoxY * ppuY );
 			sr.line(selectionBoxX * ppuX, (selectionBoxY + 1) * ppuY, ppuX * (selectionBoxX + 1), (selectionBoxY + 1) * ppuY );	
