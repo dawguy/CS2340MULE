@@ -9,6 +9,11 @@
 
 *.class
 
+build/
+bin/
+javadoc/
+
+
 # Package Files #
 *.jar
 *.war

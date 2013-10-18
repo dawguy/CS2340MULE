@@ -59,4 +59,12 @@ public class PlayerManager {
 		
 		return s;
 	}
+	
+	public int getNumberOfPlayers(){
+		return players.size();
+	}
+	
+	public Player getPlayer(int i){
+		return players.get(i);
+	}
 }

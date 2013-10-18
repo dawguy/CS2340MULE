@@ -18,6 +18,7 @@ public class MapScreen implements Screen{
 	MapRenderer renderer;
 	Map map;
 	Mule game;
+	
 	public MapScreen(Mule mule){
 		super();
 		map = new Map(false);
@@ -39,6 +40,10 @@ public class MapScreen implements Screen{
 			map.putBelowTown();
 			game.setScreen(game.TOWNSCREEN);
 		}
+	}
+	
+	public void setMap(Map m){
+		map = m;
 	}
 	
 	private void handleInput(){

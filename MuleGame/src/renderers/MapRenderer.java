@@ -54,6 +54,11 @@ public class MapRenderer {
 		
 	}
 	
+	public static void setPPU(float x, float y){
+		ppuX = x;
+		ppuY = y;
+	}
+	
 	/**
 	 * Used for testing purposes. Likely will not need an update method in the finished renderer
 	 * @param delta time difference in fractions of seconds

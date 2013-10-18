@@ -1,6 +1,10 @@
 package managers;
 
+import com.me.mygdxgame.Mule;
+
 import gameObjects.Map;
+import gameObjects.Player;
+import gameObjects.Tile;
 
 /**
  * This class will manage the game logic as well as contain the PlayerManager for the entire game.
@@ -21,6 +25,11 @@ public class GameManager {
 	
 	private Map map;
 	
+	private final int GUI_HEIGHT = 100;
+	
+	private final float MAP_PPU_X = Mule.WIDTH / 9;
+	private final float MAP_PPU_Y = (Mule.HEIGHT - GUI_HEIGHT) / 5;
+	
 	public GameManager(){
 		super();
 		players = new PlayerManager();
@@ -29,6 +38,10 @@ public class GameManager {
 	public GameManager(PlayerManager pm){
 		this();
 		players = pm;
+	}
+	
+	public int getNumberOfPlayers(){
+		return players.getNumberOfPlayers();
 	}
 	
 	public void setDifficulty(String s){
@@ -47,6 +60,14 @@ public class GameManager {
 		}
 	}
 	
+	public void setPPU(){
+		map.setPPU(MAP_PPU_X, MAP_PPU_Y);
+	}
+	
+	public void setMap(Map m){
+		map = m;
+	}
+	
 	public Map getMap(){
 		return map;
 	}
@@ -57,5 +78,44 @@ public class GameManager {
 		s += "MAP : \n" + map.toString() + "\n";
 		s += players.toString();
 		return s;
+	}
+	
+	public boolean buyTile(int x, int y, Player p){
+		Tile t = map.getMouseClickedTile(x, y);
+		if(t == null){
+			return false;
+		}
+		if(t.isOwned()){
+			return false;
+		}
+		t.setOwner(p);
+		return true;
+	}
+	
+	/**
+	 * This method buys a tile. (NOTE NOT A FREE TILE)
+	 * @param x mouse click x pos
+	 * @param y mouse click y pos
+	 * @param p the player buying
+	 * @param subtractMoney whether the player needs the money for it
+	 * @return
+	 */
+	public boolean buyTile(int x, int y, Player p, boolean subtractMoney){
+		Tile t = map.getMouseClickedTile(x, y);
+		if(t == null){
+			return false;
+		}
+		if(t.isOwned()){
+			return false;
+		}
+		if( !p.canBuy(t)){
+			return false;
+		}
+		t.setOwner(p, subtractMoney);
+		return true;
+	}
+	
+	public Player getPlayer(int i){
+		return players.getPlayer(i);
 	}
 }

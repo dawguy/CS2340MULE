@@ -64,7 +64,7 @@ public class SettingsScreen implements Screen{
 	}
 
 	private void update(float delta){
-		
+	
 	}
 	
 	public boolean startGame(){
@@ -73,10 +73,10 @@ public class SettingsScreen implements Screen{
 		Mule.gm = gameManager;
 		Mule.pm = manager;
 		ui.startGame(manager, gameManager);	
-		currentGame.SELECTTILESSCREEN = new SelectTilesScreen(currentGame);
-		currentGame.setScreen(currentGame.MAPSCREEN);
-		currentGame.setScreen(currentGame.SELECTTILESSCREEN);
-		//System.out.println(gameManager);
+		Mule.SELECTTILESSCREEN = new SelectTilesScreen(currentGame);
+		
+		currentGame.setScreen(Mule.SELECTTILESSCREEN);
+		System.out.println(gameManager);
 		//Gdx.app.exit();
 		return true;
 	}
