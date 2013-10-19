@@ -46,7 +46,6 @@ public class PlayerToken{
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
 		sr.setColor(color);
-		System.out.println(getX() + ", " + getY());
 		sr.rect(x, y, WIDTH, HEIGHT);
 		sr.end();
 		batch.begin();
@@ -66,12 +65,10 @@ public class PlayerToken{
 	}
 	
 	public int getX(){
-		// System.out.println("x: " + x);
 		return x;
 	}
 	
 	public int getY(){
-		// System.out.println("y: " + y);
 		return y;
 	}
 	
@@ -86,7 +83,6 @@ public class PlayerToken{
 	public void moveRight(){
 		setX(x + VELOCITY_X);
 		rect.setX(x + VELOCITY_X);
-		System.out.println(getX() + ", " + getY());
 	}
 	
 	public void moveDown(){

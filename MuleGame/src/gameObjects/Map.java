@@ -39,7 +39,6 @@ public class Map {
 	private boolean randomOn = false; //Change this based on whether or not we want a random map
 	
 	public Map(boolean randomOn){
-		System.out.println("NEW MAPPP");
 		this.randomOn = randomOn;
 		if(!randomOn){
 			defaultMap();
@@ -128,7 +127,6 @@ public class Map {
 	private float count = 0;
 	public void update(float delta){
 		if(playerT == null){
-			System.out.println("update");
 			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
 		}
 	}
@@ -203,11 +201,11 @@ public class Map {
 	 */
 	public boolean changeToTown(){
 		if(this.playerT == null){
-			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 50, 50);
-			System.out.println("MAKING NEW PLAYER TOKEN 1");
+			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+			System.out.println("MAKING NEW PLAYER TOKEN");
 		} else if (!this.playerT.compareTo(Mule.pm.getCurrentPlayer())){
-			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 80, 80);
-			System.out.println("MAKING NEW PLAYER TOKEN 2");
+			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+			System.out.println("MAKING NEW PLAYER TOKEN");
 		}
 		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
 		float tY = 2.5f * ppuY;

@@ -78,7 +78,6 @@ public class MapRenderer {
 	 */
 	public void render(){
 		spriteBatch.begin();
-			System.out.println("Map draw");
 			map.draw(spriteBatch);
 		spriteBatch.end();
 	}
