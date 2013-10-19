@@ -166,6 +166,7 @@ public class Map {
 				tiles[i][c].drawHighlight(sprites);
 			}
 		}
+		// System.out.println(playerT.getX() + "," + playerT.getY());
 	}
 	
 	public void setDrawPlayer(boolean b){
