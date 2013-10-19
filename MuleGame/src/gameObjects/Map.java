@@ -126,7 +126,10 @@ public class Map {
 	 */
 	private float count = 0;
 	public void update(float delta){
-
+		// if(playerT == null){
+		// 	System.out.println("update");
+		// 	playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
+		// }
 	}
 	
 	public void loadTextures(){
@@ -153,6 +156,9 @@ public class Map {
 		 * Draw ALL COLORS for ownership
 		 */
 		sr.end();
+		if(playerT != null && drawPlayer){
+			playerT.draw(sprites, 1);
+		}
 		for(int i = 0; i < tiles.length; i++){
 			for(int c = 0; c < tiles[i].length; c++){
 				tiles[i][c].drawOwner(sprites);
@@ -196,10 +202,10 @@ public class Map {
 	public boolean changeToTown(){
 		if(playerT == null){
 			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
-			System.out.println("MAKING NEW PLAYER TOKEN");
+			System.out.println("MAKING NEW PLAYER TOKEN 1");
 		} else if (!playerT.compareTo(Mule.pm.getCurrentPlayer())){
 			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
-			System.out.println("MAKING NEW PLAYER TOKEN");
+			System.out.println("MAKING NEW PLAYER TOKEN 2");
 		}
 		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
 		float tY = 2.5f * ppuY;
