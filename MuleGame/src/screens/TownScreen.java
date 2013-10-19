@@ -49,11 +49,10 @@ public class TownScreen implements Screen{
 		
 		setBackground();
 		setBuildings();
-		setPlayer();
 	}
 	
 	private void setPlayer(){
-		Player p = new Player("TEST", Color.BLUE);
+		Player p = Mule.pm.getCurrentPlayer();
 		token = new PlayerToken(p, Mule.WIDTH / 2, Mule.HEIGHT / 2);
 		//stage.addActor(token);
 	}
@@ -92,6 +91,9 @@ public class TownScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		if (token == null) {
+			setPlayer(); // hack-y fix. must be moved
+		}
 		stage.draw();	
 		SpriteBatch sb = new SpriteBatch();
 		sb.begin();

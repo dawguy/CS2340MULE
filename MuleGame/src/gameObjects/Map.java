@@ -30,15 +30,16 @@ public class Map {
 	 *	This formating takes the column number as the x and the row number as the y
 	 */
 	
-	PlayerToken playerT;
+	private PlayerToken playerT;
 	
 	private boolean drawPlayer;
 	
-	float ppuX, ppuY;
-	Random r = new Random();
-	boolean randomOn = false; //Change this based on whether or not we want a random map
+	private float ppuX, ppuY;
+	private Random r = new Random();
+	private boolean randomOn = false; //Change this based on whether or not we want a random map
 	
 	public Map(boolean randomOn){
+		System.out.println("NEW MAPPP");
 		this.randomOn = randomOn;
 		if(!randomOn){
 			defaultMap();
@@ -126,10 +127,10 @@ public class Map {
 	 */
 	private float count = 0;
 	public void update(float delta){
-		// if(playerT == null){
-		// 	System.out.println("update");
-		// 	playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
-		// }
+		if(playerT == null){
+			System.out.println("update");
+			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
+		}
 	}
 	
 	public void loadTextures(){
@@ -156,8 +157,8 @@ public class Map {
 		 * Draw ALL COLORS for ownership
 		 */
 		sr.end();
-		if(playerT != null && drawPlayer){
-			playerT.draw(sprites, 1);
+		if(this.playerT != null && drawPlayer){
+			this.playerT.draw(sprites, 1);
 		}
 		for(int i = 0; i < tiles.length; i++){
 			for(int c = 0; c < tiles[i].length; c++){
@@ -182,29 +183,29 @@ public class Map {
 	}
 	
 	public void moveUp(){
-		playerT.moveUp();
+		this.playerT.moveUp();
 	}
 
 	public void moveRight(){
-		playerT.moveRight();
+		this.playerT.moveRight();
 		System.out.println(playerT.getX() + ", " + playerT.getY());
 	}
 	public void moveDown(){
-		playerT.moveDown();
+		this.playerT.moveDown();
 	}
 	public void moveLeft(){
-		playerT.moveLeft();
+		this.playerT.moveLeft();
 	}
 	
 	/**
 	 * True if the playerToken and Town tile are overlapping
 	 */
 	public boolean changeToTown(){
-		if(playerT == null){
-			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+		if(this.playerT == null){
+			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 50, 50);
 			System.out.println("MAKING NEW PLAYER TOKEN 1");
-		} else if (!playerT.compareTo(Mule.pm.getCurrentPlayer())){
-			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
+		} else if (!this.playerT.compareTo(Mule.pm.getCurrentPlayer())){
+			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 80, 80);
 			System.out.println("MAKING NEW PLAYER TOKEN 2");
 		}
 		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
