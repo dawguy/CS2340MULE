@@ -1,11 +1,12 @@
 package screens;
 
 import gameObjects.Map;
+import managers.GameManager;
 import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.me.mygdxgame.Mule;
 /**
@@ -17,14 +18,18 @@ import com.me.mygdxgame.Mule;
 public class MapScreen implements Screen{
 	MapRenderer renderer;
 	Map map;
+	GameManager gm;
 	Mule game;
 	
-	public MapScreen(Mule mule){
+	public MapScreen(Mule g){
 		super();
-		map = new Map(false);
-		game = mule;
+		gm = Mule.gm;
+		map = gm.getMap();
+		game = g;
 		renderer = new MapRenderer(map);
 	}
+	
+
 	
 	@Override
 	public void render(float delta) {
@@ -38,7 +43,7 @@ public class MapScreen implements Screen{
 			//Because right now all it is doing is straight changing the screen
 			//over to the town screen
 			map.putBelowTown();
-			game.setScreen(game.TOWNSCREEN);
+			game.setScreen(Mule.TOWNSCREEN);
 		}
 	}
 	

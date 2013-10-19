@@ -72,6 +72,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	public void update(float delta){
 		getInput();
 		if(manager.isDone()){
+			Mule.MAPSCREEN = new MapScreen(game);
 			Mule.MAPSCREEN.setMap(Mule.gm.getMap());
 			game.setScreen(Mule.MAPSCREEN);
 		}

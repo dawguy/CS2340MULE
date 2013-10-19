@@ -37,7 +37,7 @@ public class Mule extends Game {
 	public void create() {
 		TITLESCREEN = new TitleScreen(this);
 		SETTINGSCREEN = new SettingsScreen(this);
-		MAPSCREEN = new MapScreen(this);
+		//MAPSCREEN = new MapScreen(this, null);
 		TOWNSCREEN = new TownScreen(this);
 		INPUT = new InputHandler();
 		this.setScreen(TITLESCREEN);

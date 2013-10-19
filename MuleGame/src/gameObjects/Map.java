@@ -37,6 +37,7 @@ public class Map {
 	private float ppuX, ppuY;
 	private Random r = new Random();
 	private boolean randomOn = false; //Change this based on whether or not we want a random map
+	private boolean highlighting = true;
 	
 	public Map(boolean randomOn){
 		this.randomOn = randomOn;
@@ -128,6 +129,7 @@ public class Map {
 	public void update(float delta){
 		if(playerT == null){
 			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
+			drawPlayer = true;
 		}
 	}
 	
@@ -138,6 +140,9 @@ public class Map {
 	public void draw(SpriteBatch sprites){
 		ShapeRenderer sr = new ShapeRenderer();
 		
+		/*
+		 * Drawing black grid along with tiles
+		 */
 		sr.begin(ShapeRenderer.ShapeType.Line);
 		sr.setColor(Color.BLACK);
 		for(int i = 0; i < tiles.length; i++){
@@ -150,21 +155,25 @@ public class Map {
 		for(int i = 0; i < tiles[i].length; i++){
 			sr.line(0, i * ppuY, 9 * ppuX, i * ppuY);
 		}
-
-		/**
+		sr.end();
+		
+		
+		/*
 		 * Draw ALL COLORS for ownership
 		 */
-		sr.end();
-		if(this.playerT != null && drawPlayer){
-			this.playerT.draw(sprites, 1);
-		}
 		for(int i = 0; i < tiles.length; i++){
 			for(int c = 0; c < tiles[i].length; c++){
 				tiles[i][c].drawOwner(sprites);
-				tiles[i][c].drawHighlight(sprites);
+				if(!drawPlayer) tiles[i][c].drawHighlight(sprites);
 			}
 		}
-		// System.out.println(playerT.getX() + "," + playerT.getY());
+
+		/*
+		 * Player has to be drawn over the sprites so he doens't "walk" under them.
+		 */
+		if(this.playerT != null && drawPlayer){
+			this.playerT.draw(sprites, 1);
+		}
 	}
 	
 	public void setDrawPlayer(boolean b){
