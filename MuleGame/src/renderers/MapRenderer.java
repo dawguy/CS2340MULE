@@ -6,6 +6,7 @@ import gameObjects.PlayerToken;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.me.mygdxgame.Mule;
 
 /**
  * In charge of rendering the map screen including all parts of the map screen.
@@ -67,6 +68,8 @@ public class MapRenderer {
 	 * @param delta time difference in fractions of seconds
 	 */
 	public void update(float delta){
+		Mule.gm.setMap(map);
+		Mule.MAPSCREEN.setMap(map);
 		map.update(delta);
 	}
 	

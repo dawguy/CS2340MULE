@@ -118,7 +118,7 @@ public class Tile {
 	
 	
 	public static void loadTextures(){
-		textures[0] = new Texture("MapScreen/plains.jpg");
+		textures[0] = new Texture("MapScreen/plains.png");
 		textures[1] = new Texture("MapScreen/river.png");
 		textures[2] = new Texture("MapScreen/town.png");
 		textures[3] = new Texture("MapScreen/oneRidge.png");

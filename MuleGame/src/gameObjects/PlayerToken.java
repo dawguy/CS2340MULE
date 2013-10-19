@@ -31,7 +31,7 @@ public class PlayerToken{
 		super();
 		owner = p;
 		color = p.getColor();
-		pTexture = new Texture("MapScreen/humanP.png");
+		// pTexture = new Texture("MapScreen/humanP.png");
 	}
 	
 	public PlayerToken(Player p, int x, int y){
@@ -46,7 +46,7 @@ public class PlayerToken{
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
 		sr.setColor(color);
-		sr.rect(this.getX(), this.getY(), WIDTH, HEIGHT);
+		sr.rect(x, y, WIDTH, HEIGHT);
 		sr.end();
 		batch.begin();
 	}
@@ -81,9 +81,8 @@ public class PlayerToken{
 	}
 	
 	public void moveRight(){
-		setX(getX() + VELOCITY_X);
-		rect.setX(getX() + VELOCITY_X);
-		System.out.println(getX() + ", " + getY());
+		setX(x + VELOCITY_X);
+		rect.setX(x + VELOCITY_X);
 	}
 	
 	public void moveDown(){

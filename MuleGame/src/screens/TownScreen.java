@@ -1,5 +1,6 @@
 package screens;
 
+
 import gameObjects.Player;
 import gameObjects.PlayerToken;
 import gameObjects.Buildings.AssayOffice;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -47,11 +49,10 @@ public class TownScreen implements Screen{
 		
 		setBackground();
 		setBuildings();
-		setPlayer();
 	}
 	
 	private void setPlayer(){
-		Player p = new Player("TEST", Color.BLUE);
+		Player p = Mule.pm.getCurrentPlayer();
 		token = new PlayerToken(p, Mule.WIDTH / 2, Mule.HEIGHT / 2);
 		//stage.addActor(token);
 	}
@@ -90,6 +91,9 @@ public class TownScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		if (token == null) {
+			setPlayer(); // hack-y fix. must be moved
+		}
 		stage.draw();	
 		SpriteBatch sb = new SpriteBatch();
 		sb.begin();
@@ -119,6 +123,16 @@ public class TownScreen implements Screen{
 			token.setX(Mule.WIDTH / 2);
 			token.setY(Mule.HEIGHT / 2);
 			game.setScreen(Mule.MAPSCREEN);
+		}
+		
+		checkBuildingCollision();
+	}
+	
+	private void checkBuildingCollision(){
+		Rectangle tokenRect = token.getRect();
+		Rectangle pubRect = pub.getRect();
+		if(pubRect.contains(tokenRect)){
+			game.gm.endTurnPub();
 		}
 	}
 
