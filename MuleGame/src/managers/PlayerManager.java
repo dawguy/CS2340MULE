@@ -40,8 +40,11 @@ public class PlayerManager {
 		return true;
 	}
 	
+	/**
+	 * Gets the next player in line.
+	 */
 	public void nextPlayer(){
-		currentPlayer = (currentPlayer + 1) % players.size();
+		currentPlayer = (currentPlayer + 1) % players.size();	//Shouldn't worry about player score. That will be handled by gameManager
 	}
 	
 	public Player getCurrentPlayer(){
@@ -74,7 +77,7 @@ public class PlayerManager {
 	 * player, and player[player.length - 1] is the last player to go.
 	 * @return an array containing the players order
 	 */
-	public Player[] getPlayerOrder(){
+	public Player[] updatePlayerOrder(){
 		Player[] order = new Player[players.size()];
 		for(int i = 0 ; i < players.size() ; i ++){
 			order[i] = players.get(i);
