@@ -132,6 +132,9 @@ public class TownScreen implements Screen{
 		Rectangle tokenRect = token.getRect();
 		Rectangle pubRect = pub.getRect();
 		if(pubRect.contains(tokenRect)){
+			token.setX(Mule.WIDTH / 2);
+			token.setY(Mule.HEIGHT / 2);
+			game.setScreen(Mule.MAPSCREEN);
 			game.gm.endTurnPub();
 		}
 	}

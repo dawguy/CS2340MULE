@@ -161,7 +161,7 @@ public class GameManager {
 		} else{
 			addScore += 50;
 		}
-		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);
+		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);	
 		nextPlayer();
 	}
 	
@@ -170,6 +170,6 @@ public class GameManager {
 	 * restart the actual turn and reset various variables.
 	 */
 	public void nextPlayer(){
-		
+		players.nextPlayer();
 	}
 }
