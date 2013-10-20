@@ -1,6 +1,7 @@
 package screens;
 
 
+import interfaces.ResourceTracker;
 import gameObjects.Player;
 import gameObjects.PlayerToken;
 import gameObjects.Buildings.AssayOffice;
@@ -39,14 +40,18 @@ public class TownScreen implements Screen{
 	private Pub pub;
 	private LandOffice landOffice;
 	private AssayOffice assayOffice;
-	
+	private ResourceTracker resourceGUI;
 	private PlayerToken token;
+	
+	private int width;
+	private int height;
+	private int realHeight;
+	
 	
 	public TownScreen(Mule g){
 		super();
 		game = g;
 		stage = new Stage();
-		
 		setBackground();
 		setBuildings();
 	}
@@ -57,9 +62,14 @@ public class TownScreen implements Screen{
 		//stage.addActor(token);
 	}
 	
+	/**
+	 * Setting location of buildings. The top buildings have an additional buffer for the UI components
+	 */
 	private void setBuildings(){
 		int buffer_x = 25;
 		int buffer_y = 25;
+		int extraBuffer = 80;
+		
 		store = new Store(stage, buffer_x, buffer_y);
 		pub = new Pub(stage);
 		landOffice = new LandOffice(stage);
@@ -69,10 +79,10 @@ public class TownScreen implements Screen{
 		pub.setY(buffer_y);
 		
 		landOffice.setX(buffer_x);
-		landOffice.setY(Mule.HEIGHT - buffer_y - landOffice.getHeight());
+		landOffice.setY(Mule.HEIGHT - buffer_y - extraBuffer - landOffice.getHeight());
 		
 		assayOffice.setX(Mule.WIDTH - buffer_x - assayOffice.getWidth());
-		assayOffice.setY(Mule.HEIGHT - buffer_y - assayOffice.getHeight());
+		assayOffice.setY(Mule.HEIGHT - buffer_y - extraBuffer - assayOffice.getHeight());
 	}
 	
 	private void setBackground(){
@@ -98,6 +108,7 @@ public class TownScreen implements Screen{
 		SpriteBatch sb = new SpriteBatch();
 		sb.begin();
 		token.draw(sb, 1);
+		resourceGUI.draw(sb);
 		sb.end();
 		sb.dispose();
 		handleInput();
@@ -138,14 +149,14 @@ public class TownScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		this.width = width;
+		this.height = height - 80;
+		realHeight = height;
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		if(resourceGUI == null) resourceGUI = new ResourceTracker();
 	}
 
 	@Override
