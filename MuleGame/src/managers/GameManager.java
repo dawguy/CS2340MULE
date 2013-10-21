@@ -170,6 +170,17 @@ public class GameManager {
 	 * restart the actual turn and reset various variables.
 	 */
 	public void nextPlayer(){
-		players.nextPlayer();
+		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers()){
+			/*
+			 * DO TURN END STUFF HERE. Such as random events + reordering players + auction + other stuffs
+			 */
+			//AuctionManger am = new AuctionManager();
+			//Mule.swapScreen(AUCTIONSCREEN);
+			Mule.pm.updatePlayerOrder();
+			//startRandomEvent();
+			//Mule.swapScreen(SELECTTILESSCREEN);
+			Mule.pm.nextPlayer();
+		}
+		Mule.pm.nextPlayer();
 	}
 }

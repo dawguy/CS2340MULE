@@ -191,7 +191,7 @@ public class Map {
 	}
 	
 	public void moveUp(){
-		if(playerT.getY()<=Mule.HEIGHT-75)
+		if(playerT.getY()<=Mule.HEIGHT-135)
 		this.playerT.moveUp();
 	}
 

@@ -2,7 +2,7 @@ package renderers;
 
 
 import gameObjects.Map;
-import gameObjects.PlayerToken;
+import interfaces.ResourceTracker;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,7 +17,7 @@ public class MapRenderer {
 	private static final float CAMERA_HEIGHT = 5f; //5 because there are 5 rows of tiles on the screen
 	private Map map;
 	private OrthographicCamera cam;
-	
+	private ResourceTracker resourceGUI;
 	private int width;	//Width of the screen
 	private int height;	//Height of the screen
 	private int realHeight; //Used to save room for the GUI
@@ -35,7 +35,7 @@ public class MapRenderer {
 	public void setSize(int w, int h){
 		this.width = w;
 		this.realHeight = h;
-		this.height = h - 20;
+		this.height = h - 80;
 		if(!ppuSet){
 			ppuX = (float)w / CAMERA_WIDTH;
 			ppuY = (float)height / CAMERA_HEIGHT;
@@ -55,7 +55,7 @@ public class MapRenderer {
 		this.cam.update();
 		spriteBatch = new SpriteBatch();
 		this.map.loadTextures();
-		
+		resourceGUI = new ResourceTracker();
 	}
 	
 	public static void setPPU(float x, float y){
@@ -79,6 +79,7 @@ public class MapRenderer {
 	public void render(){
 		spriteBatch.begin();
 			map.draw(spriteBatch);
+			resourceGUI.draw(spriteBatch);
 		spriteBatch.end();
 	}
 }

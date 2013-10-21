@@ -32,6 +32,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	private Tile[][] tiles;
 	
 	float ppuX, ppuY;
+	boolean firstRound = true;
 	
 	int selectionBoxX = 3;
 	int selectionBoxY = 3;
@@ -72,9 +73,15 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	public void update(float delta){
 		getInput();
 		if(manager.isDone()){
-			Mule.MAPSCREEN = new MapScreen(game);
-			Mule.MAPSCREEN.setMap(Mule.gm.getMap());
-			game.setScreen(Mule.MAPSCREEN);
+			//if true make a mapscreen. If false just switch to the map screen
+			if(firstRound){
+				Mule.MAPSCREEN = new MapScreen(game);
+				Mule.MAPSCREEN.setMap(Mule.gm.getMap());
+				game.setScreen(Mule.MAPSCREEN);
+				firstRound = false;
+			} else {
+				game.setScreen(Mule.MAPSCREEN);
+			}
 		}
 	}
 	
