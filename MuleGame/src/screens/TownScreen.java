@@ -130,7 +130,7 @@ public class TownScreen implements Screen{
 	
 	private void checkLocation(){
 		if(token.getX() < 0 || token.getX() + token.getWidth() > Mule.WIDTH ||
-				token.getY() < 0 || token.getY() + token.getHeight() > Mule.HEIGHT){
+				token.getY() < 0 || token.getY() + token.getHeight() > Mule.HEIGHT-55){
 			token.setX(Mule.WIDTH / 2);
 			token.setY(Mule.HEIGHT / 2);
 			game.setScreen(Mule.MAPSCREEN);
@@ -143,6 +143,9 @@ public class TownScreen implements Screen{
 		Rectangle tokenRect = token.getRect();
 		Rectangle pubRect = pub.getRect();
 		if(pubRect.contains(tokenRect)){
+			token.setX(Mule.WIDTH / 2);
+			token.setY(Mule.HEIGHT / 2);
+			game.setScreen(Mule.MAPSCREEN);
 			game.gm.endTurnPub();
 		}
 	}

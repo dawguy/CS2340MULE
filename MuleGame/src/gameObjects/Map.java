@@ -191,17 +191,21 @@ public class Map {
 	}
 	
 	public void moveUp(){
+		if(playerT.getY()<=Mule.HEIGHT-135)
 		this.playerT.moveUp();
 	}
 
 	public void moveRight(){
+		if(playerT.getX()<=Mule.WIDTH-55)
 		this.playerT.moveRight();
 		System.out.println(playerT.getX() + ", " + playerT.getY());
 	}
 	public void moveDown(){
+		if(playerT.getY()>=5)
 		this.playerT.moveDown();
 	}
 	public void moveLeft(){
+		if(playerT.getX()>=5)
 		this.playerT.moveLeft();
 	}
 	

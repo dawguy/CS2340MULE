@@ -161,7 +161,7 @@ public class GameManager {
 		} else{
 			addScore += 50;
 		}
-		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);
+		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);	
 		nextPlayer();
 	}
 	
@@ -181,5 +181,6 @@ public class GameManager {
 			//Mule.swapScreen(SELECTTILESSCREEN);
 			Mule.pm.nextPlayer();
 		}
+		Mule.pm.nextPlayer();
 	}
 }
