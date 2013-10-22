@@ -30,9 +30,9 @@ public class Map {
 	 *	This formating takes the column number as the x and the row number as the y
 	 */
 	
-	private PlayerToken playerT;
+	public PlayerToken playerT;
 	
-	private boolean drawPlayer;
+	public boolean drawPlayer;
 	
 	private float ppuX, ppuY;
 	private Random r = new Random();

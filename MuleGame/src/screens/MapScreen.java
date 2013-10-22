@@ -1,6 +1,8 @@
 package screens;
 
+import interfaces.ResourceTracker;
 import gameObjects.Map;
+import gameObjects.PlayerToken;
 import managers.GameManager;
 import renderers.MapRenderer;
 
@@ -9,6 +11,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.me.mygdxgame.Mule;
+import com.sun.org.apache.bcel.internal.classfile.PMGClass;
 /**
  * The Screen object for the map.
  * Includes the game loop for the screen object
@@ -68,10 +71,14 @@ public class MapScreen implements Screen{
 		renderer.setSize(width,height);
 	}
 
+	/**
+	 * Handles what happens when the game switches to the map
+	 */
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		
+		map.drawPlayer = true;
+		map.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
 	}
 
 	@Override

@@ -160,6 +160,7 @@ public class TownScreen implements Screen{
 	@Override
 	public void show() {
 		if(resourceGUI == null) resourceGUI = new ResourceTracker();
+		token = new PlayerToken(Mule.pm.getCurrentPlayer(), Mule.WIDTH / 2, Mule.HEIGHT / 2);
 	}
 
 	@Override

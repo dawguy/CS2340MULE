@@ -38,15 +38,18 @@ public class GameManager {
 	
 	private float currentPlayerTime;
 	
-	public GameManager(){
+	private Mule game;
+	
+	public GameManager(Mule game){
 		super();
+		this.game = game;
 		players = new PlayerManager();
 		currentRound = 0;
 		currentPlayerTime = 0;
 	}
 	
-	public GameManager(PlayerManager pm){
-		this();
+	public GameManager(Mule game, PlayerManager pm){
+		this(game);
 		players = pm;
 	}
 	
@@ -170,15 +173,18 @@ public class GameManager {
 	 * restart the actual turn and reset various variables.
 	 */
 	public void nextPlayer(){
-		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers()){
+		//int a = Mule.pm.getCurrentPlayerNumber();
+		//int b = Mule.pm.getNumberOfPlayers();
+		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers() - 1){
 			/*
-			 * DO TURN END STUFF HERE. Such as random events + reordering players + auction + other stuffs
+			 * DO TURN END Round STUFF HERE. Such as random events + reordering players + auction + other stuffs
 			 */
+			System.out.println("ENDING TURN");
 			//AuctionManger am = new AuctionManager();
 			//Mule.swapScreen(AUCTIONSCREEN);
 			Mule.pm.updatePlayerOrder();
 			//startRandomEvent();
-			//Mule.swapScreen(SELECTTILESSCREEN);
+			game.setScreen(Mule.SELECTTILESSCREEN);
 			Mule.pm.nextPlayer();
 		}
 		Mule.pm.nextPlayer();
