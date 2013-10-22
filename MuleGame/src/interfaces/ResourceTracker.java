@@ -68,6 +68,7 @@ public class ResourceTracker extends Actor{
 			offset += crystOff;
 			bf.draw(sb, crystite, offset, Mule.HEIGHT - yOff);
 			sb.end();
+			bf.dispose();
 		}
 		sb.setColor(Color.WHITE);
 		sb.begin();
