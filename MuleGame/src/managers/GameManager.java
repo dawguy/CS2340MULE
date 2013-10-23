@@ -187,6 +187,7 @@ public class GameManager {
 			game.setScreen(Mule.SELECTTILESSCREEN);
 			Mule.pm.nextPlayer();
 		}
+		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 	}
 }
