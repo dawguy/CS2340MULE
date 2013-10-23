@@ -36,9 +36,13 @@ public class MapScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		if (gm.getRoundTime()<gm.getCurrentPlayerTime())
+			gm.nextPlayer();
 		Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		handleInput();
+		game.gm.incrementCurrentPlayerTime(delta);
+		System.out.println(gm.getCurrentPlayerTime());
 		renderer.update(delta);
 		renderer.render();
 		if(map.changeToTown()){

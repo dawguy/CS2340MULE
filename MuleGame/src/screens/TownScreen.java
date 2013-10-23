@@ -113,6 +113,8 @@ public class TownScreen implements Screen{
 		sb.dispose();
 		handleInput();
 		
+		game.gm.incrementCurrentPlayerTime(delta);
+
 		checkLocation();
 	}
 	
