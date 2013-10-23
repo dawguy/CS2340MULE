@@ -155,11 +155,11 @@ public class GameManager {
 	 */
 	public void endTurnPub(){
 		int addScore = GameManager.ROUND_BONUS[currentRound];
-		if(getroundTime()-currentPlayerTime >= 37){
+		if(getRoundTime()-currentPlayerTime >= 37){
 			addScore += 200;
-		} else if(getroundTime()-currentPlayerTime >= 25){
+		} else if(getRoundTime()-currentPlayerTime >= 25){
 			addScore += 150;
-		} else if(getroundTime()-currentPlayerTime >= 12){
+		} else if(getRoundTime()-currentPlayerTime >= 12){
 			addScore += 100;
 		} else{
 			addScore += 50;
