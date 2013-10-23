@@ -37,7 +37,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	int selectionBoxX = 3;
 	int selectionBoxY = 3;
 
-	private final int GUI_HEIGHT = 100;
+	private final int GUI_HEIGHT = 80;
 	
 	private PlayerSelectionGui playerGui;
 	

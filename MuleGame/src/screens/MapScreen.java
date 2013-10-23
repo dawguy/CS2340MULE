@@ -42,7 +42,6 @@ public class MapScreen implements Screen{
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		handleInput();
 		game.gm.incrementCurrentPlayerTime(delta);
-		System.out.println(gm.getCurrentPlayerTime());
 		renderer.update(delta);
 		renderer.render();
 		if(map.changeToTown()){
