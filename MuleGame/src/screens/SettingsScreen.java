@@ -57,7 +57,7 @@ public class SettingsScreen implements Screen{
 	
 	public boolean startGame(){
 		PlayerManager manager = new PlayerManager();
-		GameManager gameManager = new GameManager(manager);
+		GameManager gameManager = new GameManager(currentGame, manager);
 		Mule.gm = gameManager;
 		Mule.pm = manager;
 		ui.startGame(manager, gameManager);	

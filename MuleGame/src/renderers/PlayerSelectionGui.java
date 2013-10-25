@@ -18,7 +18,7 @@ import com.me.mygdxgame.Mule;
  */
 public class PlayerSelectionGui {
 
-	private final int HEIGHT = 100;
+	private final int HEIGHT = 80;
 	private final int WIDTH = Mule.WIDTH;
 	
 	private int BOX_WIDTHS;

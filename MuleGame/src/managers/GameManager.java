@@ -1,5 +1,7 @@
 package managers;
 
+import java.util.Random;
+
 import com.me.mygdxgame.Mule;
 
 import gameObjects.Map;
@@ -28,6 +30,8 @@ public class GameManager {
 	private Difficulty difficulty;
 	
 	private Map map;
+
+	private Random generator = new Random();
 	
 	private final int GUI_HEIGHT = 100;
 	
@@ -38,15 +42,18 @@ public class GameManager {
 	
 	private float currentPlayerTime;
 	
-	public GameManager(){
+	private Mule game;
+	
+	public GameManager(Mule game){
 		super();
+		this.game = game;
 		players = new PlayerManager();
 		currentRound = 0;
 		currentPlayerTime = 0;
 	}
 	
-	public GameManager(PlayerManager pm){
-		this();
+	public GameManager(Mule game, PlayerManager pm){
+		this(game);
 		players = pm;
 	}
 	
@@ -151,16 +158,8 @@ public class GameManager {
 	 * This ends the current player's turn and therefore will give the player money and goes to the next player
 	 */
 	public void endTurnPub(){
-		int addScore = GameManager.ROUND_BONUS[currentRound];
-		if(currentPlayerTime >= 37){
-			addScore += 200;
-		} else if(currentPlayerTime >= 25){
-			addScore += 150;
-		} else if(currentPlayerTime >= 12){
-			addScore += 100;
-		} else{
-			addScore += 50;
-		}
+		int timeLeft = (int)(getRoundTime()-currentPlayerTime);
+		int addScore = GameManager.ROUND_BONUS[currentRound] + generator.nextInt(timeLeft*4);
 		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);	
 		nextPlayer();
 	}
@@ -170,16 +169,21 @@ public class GameManager {
 	 * restart the actual turn and reset various variables.
 	 */
 	public void nextPlayer(){
-		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers()){
+		//int a = Mule.pm.getCurrentPlayerNumber();
+		//int b = Mule.pm.getNumberOfPlayers();
+		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers() - 1){
 			/*
-			 * DO TURN END STUFF HERE. Such as random events + reordering players + auction + other stuffs
+			 * DO TURN END Round STUFF HERE. Such as random events + reordering players + auction + other stuffs
 			 */
+			System.out.println("ENDING TURN");
 			//AuctionManger am = new AuctionManager();
 			//Mule.swapScreen(AUCTIONSCREEN);
 			Mule.pm.updatePlayerOrder();
 			//startRandomEvent();
 			//Mule.swapScreen(SELECTTILESSCREEN);
+			game.setScreen(Mule.SELECTTILESSCREEN);
 		}
+		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 	}
 }

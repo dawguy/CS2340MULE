@@ -104,6 +104,11 @@ public class TownScreen implements Screen{
 		if (token == null) {
 			setPlayer(); // hack-y fix. must be moved
 		}
+
+		if (game.gm.getRoundTime()<game.gm.getCurrentPlayerTime()){
+			game.gm.nextPlayer();
+			game.setScreen(Mule.MAPSCREEN);
+		}
 		stage.draw();	
 		SpriteBatch sb = new SpriteBatch();
 		sb.begin();
@@ -113,6 +118,8 @@ public class TownScreen implements Screen{
 		sb.dispose();
 		handleInput();
 		
+		game.gm.incrementCurrentPlayerTime(delta);
+
 		checkLocation();
 	}
 	
@@ -160,6 +167,7 @@ public class TownScreen implements Screen{
 	@Override
 	public void show() {
 		if(resourceGUI == null) resourceGUI = new ResourceTracker();
+		token = new PlayerToken(Mule.pm.getCurrentPlayer(), Mule.WIDTH / 2, Mule.HEIGHT / 2);
 	}
 
 	@Override

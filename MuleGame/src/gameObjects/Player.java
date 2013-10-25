@@ -21,15 +21,13 @@ public class Player {
 	private Color color;
 	private Resource resources;
 	
-	private int money;
-	
 	public Player(){
 		super();
 		name = "";
 		color = null;
 		race = Race.HUMAN;
-		setMoney();
 		resources = new Resource();
+		setMoney();
 	}
 	
 	public Player(String n, Color c){
@@ -46,32 +44,32 @@ public class Player {
 	
 	private void setMoney(){
 		if(race.equals(Race.FLAPPER)){
-			money = 1600;
+			resources.gainResource(0,1600);
 		} else if(race.equals(Race.HUMAN)){
-			money = 600;
+			resources.gainResource(0, 600);
 		} else{
-			money = 1000;
+			resources.gainResource(0, 1000);
 		}
 	}
 	
 	public int getMoney(){
-		return money;
+		return resources.getResource(0);
 	}
 	
 	/**
-	 * This method returns the current score, and currently that is just money
+	 * This method returns the current score, and currently that is just resources.gainResource(0,
 	 * @return the current score.
 	 */
 	public int getScore(){
-		return money;
+		return resources.getResource(0);
 	}
 	
 	public void incrementMoney(int i){
-		money += i;
+		resources.gainResource(0, i);
 	}
 	
 	public void setMoney(int i){
-		money = i;
+		resources.gainResource(0, i);
 	}
 	
 	public boolean setRace(String s){
@@ -123,7 +121,7 @@ public class Player {
 	}
 	
 	public boolean canBuy(Tile t){
-		if(t.getCost() <= money){
+		if(t.getCost() <= resources.getResource(0)){
 			return true;
 		}
 		return false;

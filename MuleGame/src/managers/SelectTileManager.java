@@ -47,8 +47,21 @@ public class SelectTileManager {
 		game = g;
 	}
 	
+	/**
+	 * If this method returns true it must be immediately handled. Otherwise everything resets
+	 * @return
+	 */
 	public boolean isDone(){
-		return (numberOfDone == Mule.pm.getNumberOfPlayers());
+		boolean done = (numberOfDone == Mule.pm.getNumberOfPlayers());
+		if(done){
+			numberOfDone = 0;
+			for(int i = 0; i < Mule.pm.getNumberOfPlayers(); i++){
+				donePlayers[i] = false;
+			}
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void setPlayerDone(int i){
