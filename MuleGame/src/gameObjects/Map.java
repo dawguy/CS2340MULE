@@ -215,11 +215,9 @@ public class Map {
 		if(this.playerT == null){
 			this.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
 			System.out.println("MAKING NEW PLAYER TOKEN");
-			System.out.println(Mule.pm.getPlayer(0));
 		} else if (!this.playerT.compareTo(Mule.pm.getCurrentPlayer())){
 			playerT = new PlayerToken(Mule.pm.getCurrentPlayer(), 0, 0);
 			System.out.println("MAKING NEW PLAYER TOKEN");
-			System.out.println(Mule.pm.getPlayer(0));
 		}
 		float tX = 4.5f * ppuX;	//In order to get center of tile use .5 more than tile number
 		float tY = 2.5f * ppuY;
