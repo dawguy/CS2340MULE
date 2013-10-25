@@ -185,7 +185,6 @@ public class GameManager {
 			Mule.pm.updatePlayerOrder();
 			//startRandomEvent();
 			game.setScreen(Mule.SELECTTILESSCREEN);
-			Mule.pm.nextPlayer();
 		}
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
