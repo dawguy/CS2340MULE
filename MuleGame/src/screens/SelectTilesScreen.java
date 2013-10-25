@@ -43,6 +43,8 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	
 	private boolean switchScreen;
 	
+	private boolean mouseDown;
+	
 	public SelectTilesScreen(Mule mule){
 		super();
 		map = Mule.gm.getMap();
@@ -57,6 +59,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 		MapRenderer.setPPU(Mule.WIDTH / 9, (Mule.HEIGHT - GUI_HEIGHT) / 5);
 		playerGui = new PlayerSelectionGui(manager);
 		switchScreen = false;
+		mouseDown = false;
 	}
 	
 	@Override
@@ -86,9 +89,12 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 	}
 	
 	private void getInput(){
-		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !mouseDown){
 			manager.buyTile(Gdx.input.getX(), Gdx.input.getY());
 			playerGui.mouseClicked(Gdx.input.getX(), Gdx.input.getY());
+			mouseDown = true;
+		} else if(!Gdx.input.isButtonPressed(Input.Buttons.LEFT) && mouseDown){
+			mouseDown = false;
 		}
 	}
 

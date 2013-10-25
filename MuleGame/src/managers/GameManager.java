@@ -179,7 +179,6 @@ public class GameManager {
 			Mule.pm.updatePlayerOrder();
 			//startRandomEvent();
 			//Mule.swapScreen(SELECTTILESSCREEN);
-			Mule.pm.nextPlayer();
 		}
 		Mule.pm.nextPlayer();
 	}

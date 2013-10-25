@@ -64,7 +64,7 @@ public class SettingsScreen implements Screen{
 		Mule.SELECTTILESSCREEN = new SelectTilesScreen(currentGame);
 		
 		currentGame.setScreen(Mule.SELECTTILESSCREEN);
-		System.out.println(gameManager);
+		
 		//Gdx.app.exit();
 		return true;
 	}

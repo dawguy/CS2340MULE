@@ -198,7 +198,6 @@ public class Map {
 	public void moveRight(){
 		if(playerT.getX()<=Mule.WIDTH-55)
 		this.playerT.moveRight();
-		System.out.println(playerT.getX() + ", " + playerT.getY());
 	}
 	public void moveDown(){
 		if(playerT.getY()>=5)
