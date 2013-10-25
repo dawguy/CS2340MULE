@@ -1,5 +1,7 @@
 package managers;
 
+import java.util.Random;
+
 import com.me.mygdxgame.Mule;
 
 import gameObjects.Map;
@@ -28,6 +30,8 @@ public class GameManager {
 	private Difficulty difficulty;
 	
 	private Map map;
+
+	private Random generator = new Random();
 	
 	private final int GUI_HEIGHT = 100;
 	
@@ -154,16 +158,8 @@ public class GameManager {
 	 * This ends the current player's turn and therefore will give the player money and goes to the next player
 	 */
 	public void endTurnPub(){
-		int addScore = GameManager.ROUND_BONUS[currentRound];
-		if(getRoundTime()-currentPlayerTime >= 37){
-			addScore += 200;
-		} else if(getRoundTime()-currentPlayerTime >= 25){
-			addScore += 150;
-		} else if(getRoundTime()-currentPlayerTime >= 12){
-			addScore += 100;
-		} else{
-			addScore += 50;
-		}
+		int timeLeft = (int)(getRoundTime()-currentPlayerTime);
+		int addScore = GameManager.ROUND_BONUS[currentRound] + generator.nextInt(timeLeft*4);
 		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);	
 		nextPlayer();
 	}
