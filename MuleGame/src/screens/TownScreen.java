@@ -124,13 +124,13 @@ public class TownScreen implements Screen{
 	}
 	
 	private void handleInput(){
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)){
+		if(Gdx.input.isKeyPressed(Keys.RIGHT)||Gdx.input.isKeyPressed(Keys.D)){
 			token.moveRight();
-		} else if(Gdx.input.isKeyPressed(Keys.LEFT)){
+		} else if(Gdx.input.isKeyPressed(Keys.LEFT)||Gdx.input.isKeyPressed(Keys.A)){
 			token.moveLeft();
-		} else if(Gdx.input.isKeyPressed(Keys.UP)){
+		} else if(Gdx.input.isKeyPressed(Keys.UP)||Gdx.input.isKeyPressed(Keys.W)){
 			token.moveUp();
-		} else if(Gdx.input.isKeyPressed(Keys.DOWN)){
+		} else if(Gdx.input.isKeyPressed(Keys.DOWN)||Gdx.input.isKeyPressed(Keys.S)){
 			token.moveDown();
 		}
 	}
