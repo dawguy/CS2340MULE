@@ -1,5 +1,7 @@
 package gameObjects;
 
+import java.util.Arrays;
+
 import com.badlogic.gdx.graphics.Color;
 
 /**
@@ -10,7 +12,7 @@ import com.badlogic.gdx.graphics.Color;
  * @version 1.0
  *
  */
-public class Player {
+public class Player implements Comparable{
 	
 	private static enum Race {
 		HUMAN, FLAPPER
@@ -125,5 +127,39 @@ public class Player {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int compareTo(Object player2) {
+		if(player2 instanceof Player){
+			int player1Money = resources.getResource(Resource.RESOURCE_MONEY);
+			int player2Money = ((Player) player2).getMoney();
+			if(player1Money == player2Money){
+				return 0;
+			} else if(player1Money > player2Money){
+				return 1;
+			} else{
+				return -1;
+			}
+		}
+		return 0;
+	}
+	
+	public static void main(String[] args){
+		Player p1 = new Player();
+		p1.setMoney(1000);
+		Player p2 = new Player();
+		p2.setMoney(1500);
+		Player p3 = new Player();
+		p3.setMoney(500);
+		Player[] players = new Player[3];
+		players[0]=p1;
+		players[1]=p2;
+		players[2]=p3;
+		Arrays.sort(players);
+		
+		for(int i = 0 ; i < 3 ; i ++){
+			System.out.println(players[i].getMoney());
+		}
 	}
 }

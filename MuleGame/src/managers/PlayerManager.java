@@ -4,6 +4,7 @@ import gameObjects.Player;
 import gameObjects.Resource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
@@ -83,21 +84,12 @@ public class PlayerManager {
 			order[i] = players.get(i);
 		}
 		
-		Player temp = null;
+		Arrays.sort(order);
 		
-		//Sort the array
-		for(int i = 0 ; i < players.size() ; i ++){
-			for(int j = i ; j < players.size() ; j++){
-				int s1 = order[i].getScore();
-				int s2 = order[j].getScore();
-				if(s1 > s2){
-					//swap the players
-					temp = order[i];
-					order[i] = order[j];
-					order[j] = temp;
-				}
-			}
+		for(int i = 0 ; i < order.length ; i ++){
+			players.set(i, order[i]);
 		}
+		
 		return order;
 	}
 	

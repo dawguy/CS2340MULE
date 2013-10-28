@@ -79,7 +79,7 @@ public class MapRenderer {
 	public void render(){
 		spriteBatch.begin();
 			map.draw(spriteBatch);
-			//resourceGUI.draw(spriteBatch);
+			resourceGUI.draw(spriteBatch);
 		spriteBatch.end();
 	}
 }

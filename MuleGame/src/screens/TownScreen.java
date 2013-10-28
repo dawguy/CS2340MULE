@@ -2,6 +2,7 @@ package screens;
 
 
 import interfaces.ResourceTracker;
+import interfaces.StoreGui;
 import gameObjects.Player;
 import gameObjects.PlayerToken;
 import gameObjects.Buildings.AssayOffice;
@@ -32,6 +33,9 @@ public class TownScreen implements Screen{
 
 	public final String BACKGROUND_LOCATION = "TownScreen/Background.jpg";
 	
+	private final int STORE_GUI_X = 50;
+	private final int STORE_GUI_Y = 50;
+	
 	private Stage stage;
 	
 	private Mule game;
@@ -42,11 +46,13 @@ public class TownScreen implements Screen{
 	private AssayOffice assayOffice;
 	private ResourceTracker resourceGUI;
 	private PlayerToken token;
+	private StoreGui storeGui;
 	
 	private int width;
 	private int height;
 	private int realHeight;
-	
+
+	boolean guiOverlay;
 	
 	public TownScreen(Mule g){
 		super();
@@ -54,6 +60,7 @@ public class TownScreen implements Screen{
 		stage = new Stage();
 		setBackground();
 		setBuildings();
+		storeGui = new StoreGui(STORE_GUI_X, STORE_GUI_Y);
 	}
 	
 	private void setPlayer(){
@@ -118,9 +125,17 @@ public class TownScreen implements Screen{
 		sb.dispose();
 		handleInput();
 		
+		if(guiOverlay){
+			drawStoreGui(sb);
+		}
+		
 		game.gm.incrementCurrentPlayerTime(delta);
 
 		checkLocation();
+	}
+	
+	private void drawStoreGui(SpriteBatch batch){
+		storeGui.draw(batch);
 	}
 	
 	private void handleInput(){
@@ -149,11 +164,15 @@ public class TownScreen implements Screen{
 	private void checkBuildingCollision(){
 		Rectangle tokenRect = token.getRect();
 		Rectangle pubRect = pub.getRect();
+		Rectangle storeRect = store.getRect();
 		if(pubRect.contains(tokenRect)){
 			token.setX(Mule.WIDTH / 2);
 			token.setY(Mule.HEIGHT / 2);
 			game.setScreen(Mule.MAPSCREEN);
 			game.gm.endTurnPub();
+		}
+		if(storeRect.contains(tokenRect)){
+			guiOverlay = true;
 		}
 	}
 
