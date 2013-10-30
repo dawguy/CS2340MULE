@@ -1,5 +1,8 @@
 package interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,11 +24,13 @@ public class StoreGui {
 	private final int NUMBER_OF_ITEMS = 7;
 	
 	private Button closeButton;
+	private List<StoreItemGui> storeItemGuis;
 	private int x;
 	private int y;
 	
 	private StoreGui(){
 		super();
+		storeItemGuis = new ArrayList<StoreItemGui>();
 	}
 	
 	/**
@@ -38,6 +43,9 @@ public class StoreGui {
 		x = posX;
 		y = posY;
 		closeButton = new Button(new Texture(Gdx.files.internal("TownScreen/CloseWindowButton.jpg")), x, y+HEIGHT-24);
+		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i ++){
+			storeItemGuis.add(new StoreItemGui(x+i*(WIDTH/NUMBER_OF_ITEMS),y));
+		}
 	}
 	
 	/**
