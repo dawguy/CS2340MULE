@@ -87,6 +87,7 @@ public class StoreGui {
 		int widthOfLines = 3;
 
 		batch.begin();
+		font.draw(batch, "Price:", x+20, y+130);
 		font.draw(batch, "Owned:", x+20, y+110);
 		font.draw(batch, "Trading:", x+20, y+60);
 		batch.end();
