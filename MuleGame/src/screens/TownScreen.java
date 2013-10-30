@@ -53,6 +53,7 @@ public class TownScreen implements Screen{
 	private int realHeight;
 
 	boolean guiOverlay;
+	boolean storeEntered = false;
 	
 	public TownScreen(Mule g){
 		super();
@@ -139,14 +140,17 @@ public class TownScreen implements Screen{
 	}
 	
 	private void handleInput(){
+		//check for guiOverlay so player can't move while store is open
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)||Gdx.input.isKeyPressed(Keys.D)){
-			token.moveRight();
+			if(!guiOverlay) token.moveRight();
 		} else if(Gdx.input.isKeyPressed(Keys.LEFT)||Gdx.input.isKeyPressed(Keys.A)){
-			token.moveLeft();
+			if(!guiOverlay) token.moveLeft();
 		} else if(Gdx.input.isKeyPressed(Keys.UP)||Gdx.input.isKeyPressed(Keys.W)){
-			token.moveUp();
+			if(!guiOverlay) token.moveUp();
 		} else if(Gdx.input.isKeyPressed(Keys.DOWN)||Gdx.input.isKeyPressed(Keys.S)){
-			token.moveDown();
+			if(!guiOverlay) token.moveDown();
+		} else if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
+			guiOverlay = false; //remove GUI store overlay
 		}
 	}
 	
@@ -172,7 +176,15 @@ public class TownScreen implements Screen{
 			game.gm.endTurnPub();
 		}
 		if(storeRect.contains(tokenRect)){
-			guiOverlay = true;
+			/* use store entered variable so that gui doesn't appear
+			 * again if it's closed and player token is still in store location
+			 */
+			if(!storeEntered){
+				guiOverlay = true;
+				storeEntered = true;
+			}
+		} else{
+			storeEntered = false;
 		}
 	}
 
