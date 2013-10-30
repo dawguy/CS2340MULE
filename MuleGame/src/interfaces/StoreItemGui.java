@@ -53,6 +53,10 @@ public class StoreItemGui {
 		s.addActor(amountField);
 	}
 
+	public void resetAmount(){
+		amountField.setText("0");
+	}
+
 	private void createAmountField(){
 		textStyle = new TextFieldStyle();
 		textStyle.font = new BitmapFont();

@@ -188,6 +188,7 @@ public class TownScreen implements Screen{
 			if(!storeEntered){
 				guiOverlay = true;
 				storeEntered = true;
+				storeGui.resetItemFields();
 			}
 		} else{
 			storeEntered = false;

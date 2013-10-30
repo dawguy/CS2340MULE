@@ -91,6 +91,12 @@ public class StoreGui {
 		batch.end();
 	}
 
+
+	public void resetItemFields(){
+		for(StoreItemGui item : storeItemGuis){
+			item.resetAmount();
+		}
+	}
 	/*
 	 * @return returns true if close button has been clicked
 	 */
