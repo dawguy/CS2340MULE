@@ -90,6 +90,7 @@ public class StoreGui {
 		int widthOfLines = 3;
 
 		batch.begin();
+		font.draw(batch, "In Stock:", x+20, y+150);
 		font.draw(batch, "Price:", x+20, y+130);
 		font.draw(batch, "Owned:", x+20, y+110);
 		font.draw(batch, "Trading:", x+20, y+60);
@@ -110,6 +111,7 @@ public class StoreGui {
 	private void setItemValues(){
 		storeItemGuis.get(0).setName("Mule");
 		storeItemGuis.get(0).setPrice(150);
+		storeItemGuis.get(0).setStock(25);
 
 		storeItemGuis.get(3).setName("Food");
 		storeItemGuis.get(3).setPrice(80);

@@ -33,6 +33,7 @@ public class StoreItemGui {
 	private String name;
 	private int price;
 	private int owned;
+	private int stock;
 	private int x;
 	private int y;
 	
@@ -44,6 +45,8 @@ public class StoreItemGui {
 		name = "-";
 		price = 0;
 		owned = 0;
+		stock = 0;
+
 	}
 	
 	/**
@@ -61,7 +64,7 @@ public class StoreItemGui {
 		//addActorsToStage(s);
 		stage = s;
 		
-		plusButton = new Button(new Texture(PLUS_BUTTON_STRING), posX, posY + 150);
+		plusButton = new Button(new Texture(PLUS_BUTTON_STRING), posX, posY + 180);
 		minusButton = new Button(new Texture(MINUS_BUTTON_STRING), posX, posY + 50);
 	}
 	
@@ -97,6 +100,7 @@ public class StoreItemGui {
 		BitmapFont font = new BitmapFont();
 		batch.begin();
 		font.draw(batch,name,x-10,y+270);
+		font.draw(batch,Integer.toString(stock),x,y+150);
 		font.draw(batch,Integer.toString(price),x,y+130);
 		font.draw(batch,Integer.toString(owned),x,y+110);
 		plusButton.draw(batch);
@@ -112,6 +116,9 @@ public class StoreItemGui {
 	}
 	public void setOwned(int owned){
 		this.owned = owned;
+	}
+	public void setStock(int stock){
+		this.stock = stock;
 	}
 
 	public void mouseClicked(int x, int y){
