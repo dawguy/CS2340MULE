@@ -27,11 +27,17 @@ public class StoreItemGui {
 	private TextField amountField;
 	private Stage stage;
 
+	private String name;
+	private int price;
+	private int owned;
 	private int x;
 	private int y;
 	
 	private StoreItemGui(){
 		super();
+		name = "-";
+		price = 0;
+		owned = 0;
 	}
 	
 	/**
@@ -79,8 +85,20 @@ public class StoreItemGui {
 	public void draw(SpriteBatch batch){
 		BitmapFont font = new BitmapFont();
 		batch.begin();
-		font.draw(batch,"0",x,y+110);
+		font.draw(batch,name,x-10,y+270);
+		font.draw(batch,Integer.toString(price),x,y+130);
+		font.draw(batch,Integer.toString(owned),x,y+110);
 		batch.end();
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setPrice(int price){
+		this.price = price;
+	}
+	public void setOwned(int owned){
+		this.owned = owned;
 	}
 
 

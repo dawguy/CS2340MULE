@@ -3,6 +3,8 @@ package interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import gameObjects.Player;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,7 +23,7 @@ import com.me.mygdxgame.Mule;
  */
 public class StoreGui {
 
-	private final int WIDTH = 500;
+	private final int WIDTH = 550;
 	private final int HEIGHT = 300;
 	private final int BUFFER_X = 80;
 	private final int NUMBER_OF_ITEMS = 7;
@@ -53,6 +55,7 @@ public class StoreGui {
 		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i++){
 			storeItemGuis.add(new StoreItemGui(x+20+BUFFER_X+(i*((WIDTH-BUFFER_X)/NUMBER_OF_ITEMS)), y, stage));
 		}
+		setItemValues();
 	}
 	
 	/**
@@ -104,11 +107,28 @@ public class StoreGui {
 		batch.end();
 	}
 
+	private void setItemValues(){
+		storeItemGuis.get(0).setName("Mule");
+		storeItemGuis.get(0).setPrice(150);
 
+		storeItemGuis.get(3).setName("Food");
+		storeItemGuis.get(3).setPrice(80);
+
+		storeItemGuis.get(4).setName("Energy");
+		storeItemGuis.get(4).setPrice(80);
+
+		storeItemGuis.get(5).setName("Ore");
+		storeItemGuis.get(5).setPrice(140);
+	}
 	public void resetItemFields(){
+		Player p = Mule.pm.getCurrentPlayer();
+		
 		for(StoreItemGui item : storeItemGuis){
 			item.resetAmount();
 		}
+		storeItemGuis.get(3).setOwned(p.getNumberOfResource(1)); //food
+		storeItemGuis.get(4).setOwned(p.getNumberOfResource(2)); //energy
+		storeItemGuis.get(5).setOwned(p.getNumberOfResource(3)); //ore
 	}
 	/*
 	 * @return returns true if close button has been clicked
