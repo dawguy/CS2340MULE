@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.me.mygdxgame.Mule;
@@ -25,11 +26,13 @@ public class StoreGui {
 	
 	private Button closeButton;
 	private List<StoreItemGui> storeItemGuis;
+	private Stage stage;
 	private int x;
 	private int y;
 	
 	private StoreGui(){
 		super();
+		stage = new Stage(Mule.WIDTH, HEIGHT, false);
 		storeItemGuis = new ArrayList<StoreItemGui>();
 	}
 	
@@ -43,8 +46,8 @@ public class StoreGui {
 		x = posX;
 		y = posY;
 		closeButton = new Button(new Texture(Gdx.files.internal("TownScreen/CloseWindowButton.jpg")), x, y+HEIGHT-24);
-		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i ++){
-			storeItemGuis.add(new StoreItemGui(x+i*(WIDTH/NUMBER_OF_ITEMS),y));
+		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i++){
+			storeItemGuis.add(new StoreItemGui(x+20+(i*(WIDTH/NUMBER_OF_ITEMS)), y, stage));
 		}
 	}
 	
@@ -54,6 +57,8 @@ public class StoreGui {
 	 */
 	public void draw(SpriteBatch batch){
 		drawBackground(batch);
+		Gdx.input.setInputProcessor(stage);
+		stage.draw();
 
 	}
 	
