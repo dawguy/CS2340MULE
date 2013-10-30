@@ -36,6 +36,10 @@ public class Button extends Actor{
 		super.setY(y);
 	}
 	
+	public Rectangle getRect(){
+		return rect;
+	}
+	
 	public Texture getTexture(){
 		return image;
 	}

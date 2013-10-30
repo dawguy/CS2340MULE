@@ -20,6 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 public class StoreItemGui {
 
 	private final String TEXTBOX_BACKGROUND = "SettingsScreen/TextboxBackground.jpeg";
+	private final String PLUS_BUTTON_STRING = "TownScreen/PlusButton.png";
+	private final String MINUS_BUTTON_STRING = "TownScreen/MinusButton.png";
+	
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
 
@@ -32,6 +35,9 @@ public class StoreItemGui {
 	private int owned;
 	private int x;
 	private int y;
+	
+	private Button plusButton;
+	private Button minusButton;
 	
 	private StoreItemGui(){
 		super();
@@ -50,21 +56,25 @@ public class StoreItemGui {
 		x = posX;
 		y = posY;
 
-		createAmountField();
+		//createAmountField();
 
-		addActorsToStage(s);
+		//addActorsToStage(s);
 		stage = s;
+		
+		plusButton = new Button(new Texture(PLUS_BUTTON_STRING), posX, posY + 150);
+		minusButton = new Button(new Texture(MINUS_BUTTON_STRING), posX, posY + 50);
 	}
+	
 
-	private void addActorsToStage(Stage s){
-		s.addActor(amountField);
-	}
+//	private void addActorsToStage(Stage s){
+//		s.addActor(amountField);
+//	}
 
 	public void resetAmount(){
-		amountField.setText("0");
+		//amountField.setText("0");
 	}
 
-	private void createAmountField(){
+	/*private void createAmountField(){
 		textStyle = new TextFieldStyle();
 		textStyle.font = new BitmapFont();
 		textStyle.fontColor = Color.BLACK;
@@ -81,13 +91,16 @@ public class StoreItemGui {
 		amountField.setWidth(30);
 		
 		amountField.setTextFieldListener(new MyTextFieldListener());
-	}
+	}*/
+	
 	public void draw(SpriteBatch batch){
 		BitmapFont font = new BitmapFont();
 		batch.begin();
 		font.draw(batch,name,x-10,y+270);
 		font.draw(batch,Integer.toString(price),x,y+130);
 		font.draw(batch,Integer.toString(owned),x,y+110);
+		plusButton.draw(batch);
+		minusButton.draw(batch);
 		batch.end();
 	}
 
@@ -101,6 +114,21 @@ public class StoreItemGui {
 		this.owned = owned;
 	}
 
+	public void mouseClicked(int x, int y){
+		if(plusButton.isClicked(x, y)){
+			System.out.println("PLUS BUTTON");
+		} else if(minusButton.isClicked(x, y)){
+			System.out.println("MINUS BUTTON");
+		}
+	}
+	
+	public boolean plusPressed(int x, int y){
+		return plusButton.isClicked(x, y);
+	}
+	
+	public boolean minusPressed(int x, int y){
+		return minusButton.isClicked(x, y);
+	}
 
 	private class MyTextFieldListener implements TextFieldListener{
 

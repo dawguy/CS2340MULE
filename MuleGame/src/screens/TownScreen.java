@@ -11,6 +11,7 @@ import gameObjects.Buildings.Pub;
 import gameObjects.Buildings.Store;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -150,12 +151,14 @@ public class TownScreen implements Screen{
 			if(!guiOverlay) token.moveDown();
 		} else if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
 			guiOverlay = false; //remove GUI store overlay
-		}
+		} 
 
 		if(guiOverlay){
 			//see if close button in gui overlay is clicked
 			if(storeGui.isClosed()){
 				guiOverlay = false;
+			} else if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+				storeGui.mouseClicked(Gdx.input.getX(), Gdx.input.getY());
 			}
 		}
 	}

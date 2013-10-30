@@ -141,4 +141,23 @@ public class StoreGui {
 		}
 		return false;
 	}
+	
+	/**
+	 * This method will take mouseclicks on the town screen and pass the buck off to the correct store
+	 * item gui
+	 * @param x
+	 * @param y
+	 */
+	public void mouseClicked(int x, int y){
+		int index = (x - this.x - BUFFER_X) / ((WIDTH - BUFFER_X) / (NUMBER_OF_ITEMS));
+		if(index >= 0 && index < storeItemGuis.size()){
+			if(storeItemGuis.get(index).plusPressed(x, Mule.HEIGHT - y)){
+				System.out.println("PLUS PRESSED ON GUI : " + index);
+			}
+			//TODO Need to implement the buying and selling of resources
+			if(storeItemGuis.get(index).minusPressed(x, Mule.HEIGHT - y)){
+				System.out.println("MINUS PRESSED ON GUI : " + index);
+			}
+		}
+	}
 }
