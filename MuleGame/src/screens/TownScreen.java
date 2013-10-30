@@ -123,12 +123,11 @@ public class TownScreen implements Screen{
 		token.draw(sb, 1);
 		resourceGUI.draw(sb);
 		sb.end();
-		sb.dispose();
-		handleInput();
-		
 		if(guiOverlay){
 			drawStoreGui(sb);
 		}
+		sb.dispose();
+		handleInput();
 		
 		game.gm.incrementCurrentPlayerTime(delta);
 
@@ -151,6 +150,13 @@ public class TownScreen implements Screen{
 			if(!guiOverlay) token.moveDown();
 		} else if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
 			guiOverlay = false; //remove GUI store overlay
+		}
+
+		if(guiOverlay){
+			//see if close button in gui overlay is clicked
+			if(storeGui.isClosed()){
+				guiOverlay = false;
+			}
 		}
 	}
 	

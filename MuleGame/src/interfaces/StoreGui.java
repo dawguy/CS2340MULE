@@ -1,9 +1,12 @@
 package interfaces;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.me.mygdxgame.Mule;
 
 /**
  * This is going to be a simple gui overlay that represents the store, the player will be able to buy and 
@@ -17,6 +20,7 @@ public class StoreGui {
 	private final int HEIGHT = 300;
 	private final int NUMBER_OF_ITEMS = 7;
 	
+	private Button closeButton;
 	private int x;
 	private int y;
 	
@@ -33,6 +37,7 @@ public class StoreGui {
 		this();
 		x = posX;
 		y = posY;
+		closeButton = new Button(new Texture(Gdx.files.internal("TownScreen/CloseWindowButton.jpg")), x, y+HEIGHT-24);
 	}
 	
 	/**
@@ -67,5 +72,21 @@ public class StoreGui {
 			sr.rect(x + (sizeItemX * i), y, widthOfLines, sizeItemY);
 			sr.end();
 		}
+
+		batch.begin();
+		closeButton.draw(batch);
+		batch.end();
+	}
+
+	/*
+	 * @return returns true if close button has been clicked
+	 */
+	public boolean isClosed(){
+		if(Mule.INPUT.mouseClicked()){
+			if(closeButton.isClicked(Mule.INPUT)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
