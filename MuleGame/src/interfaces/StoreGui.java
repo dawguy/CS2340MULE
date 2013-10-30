@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -22,8 +23,10 @@ public class StoreGui {
 
 	private final int WIDTH = 500;
 	private final int HEIGHT = 300;
+	private final int BUFFER_X = 80;
 	private final int NUMBER_OF_ITEMS = 7;
 	
+	private BitmapFont font;
 	private Button closeButton;
 	private List<StoreItemGui> storeItemGuis;
 	private Stage stage;
@@ -34,6 +37,7 @@ public class StoreGui {
 		super();
 		stage = new Stage(Mule.WIDTH, HEIGHT, false);
 		storeItemGuis = new ArrayList<StoreItemGui>();
+		font = new BitmapFont();
 	}
 	
 	/**
@@ -47,7 +51,7 @@ public class StoreGui {
 		y = posY;
 		closeButton = new Button(new Texture(Gdx.files.internal("TownScreen/CloseWindowButton.jpg")), x, y+HEIGHT-24);
 		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i++){
-			storeItemGuis.add(new StoreItemGui(x+20+(i*(WIDTH/NUMBER_OF_ITEMS)), y, stage));
+			storeItemGuis.add(new StoreItemGui(x+20+BUFFER_X+(i*((WIDTH-BUFFER_X)/NUMBER_OF_ITEMS)), y, stage));
 		}
 	}
 	
@@ -59,6 +63,9 @@ public class StoreGui {
 		drawBackground(batch);
 		Gdx.input.setInputProcessor(stage);
 		stage.draw();
+		for(StoreItemGui item : storeItemGuis){
+			item.draw(batch);
+		}
 
 	}
 	
@@ -75,14 +82,19 @@ public class StoreGui {
 		sr.rect(x + 10, y + 10, WIDTH - 20, HEIGHT - 20);
 		sr.end();
 		
-		int sizeItemX = WIDTH / NUMBER_OF_ITEMS;
+		int sizeItemX = (WIDTH - BUFFER_X) / NUMBER_OF_ITEMS;
 		int sizeItemY = HEIGHT;
 		int widthOfLines = 3;
+
+		batch.begin();
+		font.draw(batch, "Owned:", x+20, y+110);
+		font.draw(batch, "Trading:", x+20, y+60);
+		batch.end();
 		
 		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i ++){
 			sr.begin(ShapeType.Filled);
 			sr.setColor(Color.BLACK);
-			sr.rect(x + (sizeItemX * i), y, widthOfLines, sizeItemY);
+			sr.rect(x + BUFFER_X + (sizeItemX * i), y, widthOfLines, sizeItemY);
 			sr.end();
 		}
 

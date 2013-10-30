@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 /**
@@ -75,6 +76,13 @@ public class StoreItemGui {
 		
 		amountField.setTextFieldListener(new MyTextFieldListener());
 	}
+	public void draw(SpriteBatch batch){
+		BitmapFont font = new BitmapFont();
+		batch.begin();
+		font.draw(batch,"0",x,y+110);
+		batch.end();
+	}
+
 
 	private class MyTextFieldListener implements TextFieldListener{
 
