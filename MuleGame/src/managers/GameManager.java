@@ -159,6 +159,7 @@ public class GameManager {
 	 */
 	public void endTurnPub(){
 		int timeLeft = (int)(getRoundTime()-currentPlayerTime);
+		if (timeLeft <= 0) timeLeft = 1; //avoid error for generating random int with nonpositive value
 		int addScore = GameManager.ROUND_BONUS[currentRound] + generator.nextInt(timeLeft*4);
 		players.getCurrentPlayer().gainResources(Resource.RESOURCE_MONEY, addScore);	
 		nextPlayer();
