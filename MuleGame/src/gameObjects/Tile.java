@@ -73,6 +73,10 @@ public class Tile {
 		return false;
 	}
 
+	public Player getOwner(){
+		return owner;
+	}
+
 	/**
 	 * Draws the tile to the SpriteBatch of the map
 	 */
