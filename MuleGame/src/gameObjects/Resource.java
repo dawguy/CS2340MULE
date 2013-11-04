@@ -16,11 +16,6 @@ public class Resource {
 	public static final int RESOURCE_MULE_FOOD = 6;
 	public static final int RESOURCE_MULE_ENERGY = 7;
 	
-	public static final int MULE_PRICE = 100;
-	public static final int FOOD_PRICE = 30;
-	public static final int ENERGY_PRICE = 25;
-	public static final int ORE_PRICE = 50;
-	
 	public Resource(){
 		for(int i = 0; i < resources.length; i++){
 			resources[i] = 0;

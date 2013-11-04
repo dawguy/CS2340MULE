@@ -5,112 +5,83 @@ import gameObjects.Resource;
 
 /**
  * This class keeps track of the stock of the store
- * @author antonio
+ * @author antonio, Eric Rabinowitz
  *
  */
 public class StoreInventory {
 	
-	private int mules;
+	public static final int MULES_INDEX = 0;
+	public static final int FOOD_INDEX = 1;
+	public static final int ENERGY_INDEX = 2;
+	public static final int ORE_INDEX = 3;
+
+	private int[] resources = new int[4];
+	private int[] prices = new int[4];
 	
-	private int food;
-	private int energy;
-	private int ore;
-	
-	private final int BEGINNER_FOOD = 16;
-	private final int BEGINNER_ENERGY = 16;
-	private final int BEGINNER_MULE = 25;
-	private final int BEGINNER_ORE = 0;
+	private static final int BEGINNER_FOOD = 16;
+	private static final int BEGINNER_ENERGY = 16;
+	private static final int BEGINNER_MULE = 25;
+	private static final int BEGINNER_ORE = 0;
+	private static final int MULE_PRICE = 100;
+	private static final int FOOD_PRICE = 30;
+	private static final int ENERGY_PRICE = 25;
+	private static final int ORE_PRICE = 50;
 	
 	public StoreInventory(){
-		food = BEGINNER_FOOD;
-		energy = BEGINNER_ENERGY;
-		ore = BEGINNER_ORE;
-		mules = BEGINNER_MULE;
+		resources[MULES_INDEX] = BEGINNER_MULE;
+		prices[MULES_INDEX] = MULE_PRICE;
+		resources[FOOD_INDEX] = BEGINNER_FOOD;
+		prices[FOOD_INDEX] = FOOD_PRICE;
+		resources[ENERGY_INDEX] = BEGINNER_ENERGY;
+		prices[ENERGY_INDEX] = ENERGY_PRICE;
+		resources[ORE_INDEX] = BEGINNER_ORE;
+		prices[ORE_INDEX] = ORE_PRICE;
 	}
 	
-	public int getFood(){
-		return food;
+	public int getResourceAmount(int i){
+		return resources[i];
+	}
+
+	public int getResourcePrice(int i){
+		return prices[i];
 	}
 	
-	public int getEnergy(){
-		return energy;
-	}
-	
-	public int getOre(){
-		return ore;
-	}
-	
-	public int getMules(){
-		return mules;
-	}
-	
-	public boolean buyMule(Player p){
-		if(mules <= 0 || p.getMoney() < Resource.MULE_PRICE){
+	public boolean buyResource(Player p, int i) {
+		if(resources[i] <= 0 || p.getMoney() < prices[i]){
 			return false;
 		}
-		mules--;
-		p.incrementMoney(-1 * Resource.MULE_PRICE);
+		resources[i]--;
+		p.incrementMoney(-1 * prices[i]);
+		p.gainResources(getMatchingPlayerResourceIndex(i), 1);
 		return true;
 	}
-	
-	public boolean buyFood(Player p){
-		if(food <= 0 || p.getMoney() < Resource.FOOD_PRICE){
-			return false;
-		}
-		food--;
-		p.incrementMoney(-1 * Resource.FOOD_PRICE);
-		p.gainResources(Resource.RESOURCE_FOOD, 1);
-		return true;
-	}
-	
-	public boolean buyEnergy(Player p){
-		if(energy <= 0 || p.getMoney() < Resource.ENERGY_PRICE){
-			return false;
-		}
-		energy--;
-		p.incrementMoney(-1 * Resource.ENERGY_PRICE);
-		p.gainResources(Resource.RESOURCE_ENERGY, 1);
-		return true;
-	}
-	
-	public boolean buyOre(Player p){
-		if(ore <= 0 || p.getMoney() < Resource.ORE_PRICE){
-			return false;
-		}
-		ore--;
-		p.incrementMoney(-1 * Resource.ORE_PRICE);
-		p.gainResources(Resource.RESOURCE_ORE, 1);
-		return true;
-	}
-	
-	public void sellOre(Player p){
-		if(p.getNumberOfResource(Resource.RESOURCE_ORE) <= 0){
+
+	public void sellResource(Player p, int i) {
+		if(p.getNumberOfResource(getMatchingPlayerResourceIndex(i)) <= 0){
 			return;
 		}
-		p.incrementMoney(Resource.ORE_PRICE);
-		p.loseResources(Resource.RESOURCE_ORE, 1);
-		ore++;
+		p.incrementMoney(prices[i]);
+		p.loseResources(getMatchingPlayerResourceIndex(i), 1);
+		resources[i]++;
 	}
-	
-	public void sellEnergy(Player p){
-		if(p.getNumberOfResource(Resource.RESOURCE_ENERGY) <= 0){
-			return;
+
+	/**
+	 * Get Resource index for matching inventory index.
+	 * @param storeIndex the resource index in StoreInventory
+	 * @return the corresponding Resoure index
+	 */
+	private int getMatchingPlayerResourceIndex(int storeIndex) {
+		int resource_index = 0;
+		switch(storeIndex){
+			case 0: resource_index =  0; //still need to figure out player MULES
+					break;
+			case 1: resource_index =  Resource.RESOURCE_FOOD;
+					break;
+			case 2: resource_index =  Resource.RESOURCE_ENERGY;
+					break;
+			case 3: resource_index =  Resource.RESOURCE_ORE;
+					break;
 		}
-		p.incrementMoney(Resource.ENERGY_PRICE);
-		p.loseResources(Resource.RESOURCE_ENERGY, 1);
-		energy++;
-	}
-	
-	public void sellFood(Player p){
-		if(p.getNumberOfResource(Resource.RESOURCE_FOOD) <= 0){
-			return;
-		}
-		p.incrementMoney(Resource.FOOD_PRICE);
-		p.loseResources(Resource.RESOURCE_FOOD, 1);
-		food++;
-	}
-	
-	public void sellMule(Player p){
-		mules++;
+		return resource_index;
 	}
 }

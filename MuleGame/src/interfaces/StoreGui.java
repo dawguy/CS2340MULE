@@ -121,20 +121,21 @@ public class StoreGui {
 
 	private void setItemValues(){
 		storeItemGuis.get(MULE_SPOT).setName("Mule");
-		storeItemGuis.get(MULE_SPOT).setPrice(Resource.MULE_PRICE);
-		storeItemGuis.get(MULE_SPOT).setStock(inventory.getMules());
+		storeItemGuis.get(MULE_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.MULES_INDEX));
+		storeItemGuis.get(MULE_SPOT).setStock(inventory.getResourceAmount(StoreInventory.MULES_INDEX));
 
 		storeItemGuis.get(FOOD_SPOT).setName("Food");
-		storeItemGuis.get(FOOD_SPOT).setPrice(Resource.FOOD_PRICE);
-		storeItemGuis.get(FOOD_SPOT).setStock(inventory.getFood());
+		storeItemGuis.get(FOOD_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.FOOD_INDEX));
+		storeItemGuis.get(FOOD_SPOT).setStock(inventory.getResourceAmount(StoreInventory.FOOD_INDEX));
 
 		storeItemGuis.get(ENERGY_SPOT).setName("Energy");
-		storeItemGuis.get(ENERGY_SPOT).setPrice(Resource.ENERGY_PRICE);
-		storeItemGuis.get(ENERGY_SPOT).setStock(inventory.getEnergy());
+		storeItemGuis.get(ENERGY_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.ENERGY_INDEX));
+		storeItemGuis.get(ENERGY_SPOT).setStock(inventory.getResourceAmount(StoreInventory.ENERGY_INDEX));
 			
 		storeItemGuis.get(ORE_SPOT).setName("Ore");
-		storeItemGuis.get(ORE_SPOT).setPrice(Resource.ORE_PRICE);
-		storeItemGuis.get(ORE_SPOT).setStock(inventory.getOre());
+		storeItemGuis.get(ORE_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.ORE_INDEX));
+		storeItemGuis.get(ORE_SPOT).setStock(inventory.getResourceAmount(StoreInventory.ORE_INDEX));
+
 	}
 	
 	public void resetItemFields(){
@@ -172,28 +173,15 @@ public class StoreGui {
 		int index = (x - this.x - BUFFER_X) / ((WIDTH - BUFFER_X) / (NUMBER_OF_ITEMS));
 		if(index >= 0 && index < storeItemGuis.size()){
 			if(storeItemGuis.get(index).plusPressed(x, Mule.HEIGHT - y)){
-				if(index == MULE_SPOT){
-					inventory.buyMule(p);
-				} else if(index == ENERGY_SPOT){
-					inventory.buyEnergy(p);
-				} else if(index == FOOD_SPOT){
-					inventory.buyFood(p);
-				} else if(index == ORE_SPOT){
-					inventory.buyOre(p);
-				}
+				inventory.buyResource(p, index);
 			}
-			if(storeItemGuis.get(index).minusPressed(x, Mule.HEIGHT - y)){
-				if(index == MULE_SPOT){
-					inventory.sellMule(p);
-				} else if(index == ENERGY_SPOT){
-					inventory.sellEnergy(p);
-				} else if(index == FOOD_SPOT){
-					inventory.sellFood(p);
-				} else if(index == ORE_SPOT){
-					inventory.sellOre(p);
-				}
+			else if(storeItemGuis.get(index).minusPressed(x, Mule.HEIGHT - y)){
+				inventory.sellResource(p, index);
 			}
 		}
 		setItemValues();
+		storeItemGuis.get(FOOD_SPOT).setOwned(p.getNumberOfResource(1)); //food
+		storeItemGuis.get(ENERGY_SPOT).setOwned(p.getNumberOfResource(2)); //energy
+		storeItemGuis.get(ORE_SPOT).setOwned(p.getNumberOfResource(3)); //ore
 	}
 }
