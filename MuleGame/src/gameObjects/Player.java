@@ -118,6 +118,10 @@ public class Player implements Comparable{
 		resources.gainResource(resourceType, amount);
 	}
 	
+	public void buyResources(int resourceType){
+		
+	}
+	
 	public int getNumberOfResource(int resource){
 		return resources.getResource(resource);
 	}

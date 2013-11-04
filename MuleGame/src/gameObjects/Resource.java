@@ -5,14 +5,21 @@ package gameObjects;
  *
  */
 public class Resource {
-	int[] resources = new int[6];
+	int[] resources = new int[8];
 	
 	public static final int RESOURCE_MONEY = 0;
 	public static final int RESOURCE_FOOD = 1;
 	public static final int RESOURCE_ENERGY = 2;
 	public static final int RESOURCE_ORE = 3;
 	public static final int RESOURCE_CRYSTITE = 4;
-	public static final int RESOURCE_MULE = 5;
+	public static final int RESOURCE_MULE_ORE = 5;
+	public static final int RESOURCE_MULE_FOOD = 6;
+	public static final int RESOURCE_MULE_ENERGY = 7;
+	
+	public static final int MULE_PRICE = 100;
+	public static final int FOOD_PRICE = 30;
+	public static final int ENERGY_PRICE = 25;
+	public static final int ORE_PRICE = 50;
 	
 	public Resource(){
 		for(int i = 0; i < resources.length; i++){
