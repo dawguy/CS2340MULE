@@ -107,6 +107,20 @@ public class StoreGui {
 		font.draw(batch, "Price:", x+20, y+130);
 		font.draw(batch, "Owned:", x+20, y+110);
 		font.draw(batch, "Trading:", x+20, y+60);
+
+
+		//Labeling Mule under because not enough space for Energy Mule
+		//also labels color so less confusion -Rich
+		font.draw(batch, "Mule", x+90, y+250);
+		font.draw(batch, "(Red)", x+90, y+230);
+
+		font.draw(batch, "Mule", x+170, y+250);
+		font.draw(batch, "(Green)", x+170, y+230);
+
+		font.draw(batch, "Mule", x+250, y+250);
+		font.draw(batch, "(Blue)", x+250, y+230);
+
+
 		batch.end();
 		
 		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i ++){
@@ -122,15 +136,15 @@ public class StoreGui {
 	}
 
 	private void setItemValues(){
-		storeItemGuis.get(ORE_MULE_SPOT).setName("Ore Mule");
+		storeItemGuis.get(ORE_MULE_SPOT).setName("Ore"); //Mule
 		storeItemGuis.get(ORE_MULE_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.ORE_MULE));
 		storeItemGuis.get(ORE_MULE_SPOT).setStock(inventory.getResourceAmount(StoreInventory.ORE_MULE));
 
-		storeItemGuis.get(FOOD_MULE_SPOT).setName("Food Mule");
+		storeItemGuis.get(FOOD_MULE_SPOT).setName("Food"); //Mule
 		storeItemGuis.get(FOOD_MULE_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.FOOD_MULE));
 		storeItemGuis.get(FOOD_MULE_SPOT).setStock(inventory.getResourceAmount(StoreInventory.ORE_MULE));
 		
-		storeItemGuis.get(ENERGY_MULE_SPOT).setName("Energy Mule");
+		storeItemGuis.get(ENERGY_MULE_SPOT).setName("Energy"); //Mule
 		storeItemGuis.get(ENERGY_MULE_SPOT).setPrice(inventory.getResourcePrice(StoreInventory.ENERGY_MULE));
 		storeItemGuis.get(ENERGY_MULE_SPOT).setStock(inventory.getResourceAmount(StoreInventory.ORE_MULE));
 		
@@ -155,8 +169,8 @@ public class StoreGui {
 			item.resetAmount();
 		}
 		storeItemGuis.get(ORE_MULE_SPOT).setOwned(p.getNumberOfResource(5)); //ORE MULE
-		storeItemGuis.get(FOOD_MULE_SPOT).setOwned(p.getNumberOfResource(6)); //ORE MULE
-		storeItemGuis.get(ENERGY_MULE_SPOT).setOwned(p.getNumberOfResource(7)); //ORE MULE
+		storeItemGuis.get(FOOD_MULE_SPOT).setOwned(p.getNumberOfResource(6)); //FOOD MULE
+		storeItemGuis.get(ENERGY_MULE_SPOT).setOwned(p.getNumberOfResource(7)); //ENERGY MULE
 		storeItemGuis.get(FOOD_SPOT).setOwned(p.getNumberOfResource(1)); //food
 		storeItemGuis.get(ENERGY_SPOT).setOwned(p.getNumberOfResource(2)); //energy
 		storeItemGuis.get(ORE_SPOT).setOwned(p.getNumberOfResource(3)); //ore
@@ -197,7 +211,7 @@ public class StoreGui {
 		storeItemGuis.get(ENERGY_SPOT).setOwned(p.getNumberOfResource(2)); //energy
 		storeItemGuis.get(ORE_SPOT).setOwned(p.getNumberOfResource(3)); //ore
 		storeItemGuis.get(ORE_MULE_SPOT).setOwned(p.getNumberOfResource(5)); //ORE MULE
-		storeItemGuis.get(FOOD_MULE_SPOT).setOwned(p.getNumberOfResource(6)); //ORE MULE
-		storeItemGuis.get(ENERGY_MULE_SPOT).setOwned(p.getNumberOfResource(7)); //ORE MULE
+		storeItemGuis.get(FOOD_MULE_SPOT).setOwned(p.getNumberOfResource(6)); //FOOD MULE
+		storeItemGuis.get(ENERGY_MULE_SPOT).setOwned(p.getNumberOfResource(7)); //ENERGY MULE
 	}
 }
