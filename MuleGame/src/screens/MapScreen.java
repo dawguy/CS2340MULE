@@ -57,6 +57,7 @@ public class MapScreen implements Screen{
 		map = m;
 	}
 	
+	private boolean spacePressed = false;
 	private void handleInput(){
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)||Gdx.input.isKeyPressed(Keys.D)){
 			map.moveRight();
@@ -66,7 +67,14 @@ public class MapScreen implements Screen{
 			map.moveUp();
 		} else if(Gdx.input.isKeyPressed(Keys.DOWN)||Gdx.input.isKeyPressed(Keys.S)){
 			map.moveDown();
+		} 
+		if(Gdx.input.isKeyPressed(Keys.SPACE)){
+			if(!spacePressed)map.spacePressed();
+			spacePressed = true;
+		} else {
+			spacePressed = false;
 		}
+		
 	}
 
 	@Override

@@ -124,7 +124,7 @@ public class SelectTileManager {
 	public boolean buyTile(int x, int y){
 		boolean tileBought;
 		if(currentRound <= FREE_LAND_NUMBER_OF_ROUNDS){
-			tileBought = Mule.gm.buyTile(x, y, currentPlayer);
+			tileBought = Mule.gm.buyTile(x, y, currentPlayer, false);
 		} else{
 			tileBought = Mule.gm.buyTile(x, y, currentPlayer, true);
 		}

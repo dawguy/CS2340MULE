@@ -182,6 +182,7 @@ public class Map {
 			this.playerT.draw(sprites, 1);
 		}
 		if(drawPlayer && Mule.pm.getCurrentPlayer().getMule() != -1){
+			sprites.end();
 			sr = new ShapeRenderer();
 			sr.begin(ShapeRenderer.ShapeType.Filled);
 			sr.setColor(Mule.pm.getCurrentPlayer().getColor());
@@ -206,6 +207,7 @@ public class Map {
 				sr.rect(x, y, 20, 20);
 			}
 			sr.end();
+			sprites.begin();
 		}
 	}
 	
@@ -222,6 +224,63 @@ public class Map {
 		}
 		return tiles[a][b];
 	}
+	
+	/**
+	 * Handles mule swapping and placing
+	 */
+	public void spacePressed(){
+		Player player = Mule.pm.getCurrentPlayer();
+		if(player.getMule() == -1){
+			
+		} else {
+			swapMules(player);
+		}
+	}
+	
+	private void swapMules(Player owner){
+		int x = playerT.getX() + 25;
+		int y = playerT.getY() + 25;
+		int a = (int) (x / ppuX);
+		int b = (int) ((Mule.HEIGHT - y - 80) / ppuY);
+		if(tiles[a].length <= b){
+			return;
+		}
+		//Centering a and b on the tile
+		a = (int) ((a + .5) * ppuX);
+		b = (int) (((4 - b) + .5) * ppuY);
+		//System.out.println(a + " , " + b);
+		//System.out.println(x + " , " + y);
+		int dX = x - a;
+		int dY = y - b;
+		int distance = (int)Math.sqrt(dX * dX + dY * dY);
+		System.out.println(distance);
+		//20 distance seems like a good cut off for missing the center of the tile
+		if(distance > 20){
+			loseMule(owner);
+		} else {
+			a = (int) (x / ppuX);
+			b = (int) (y / ppuY);
+			Tile tileOn = tiles[a][b];
+			System.out.println(a + "," + b + ": " + tileOn.getCords());
+			if(owner.equals(tileOn.getOwner())){
+				int tempMuleVal = tileOn.getMule();
+				tileOn.setMule(owner.getMule());
+				owner.setMule(tempMuleVal);
+				if(owner.getMule() == -1) loseMule(owner);
+			} else {
+				loseMule(owner);
+			}
+		}
+	}
+	
+	private void loseMule(Player owner){
+		owner.setMule(-1);	//The player just lost his mule
+		owner.loseResources(5,1);
+		owner.loseResources(6,1);
+		owner.loseResources(7,1);	
+	}
+	
+	
 	
 	public void moveUp(){
 		direction = Direction.UP;

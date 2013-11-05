@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.me.mygdxgame.Mule;
 
 /**
  * This class represents a tile in the map. Possible states are
@@ -26,6 +27,14 @@ public class Tile {
 	
 	private int tileType;
 	private int x,y;
+	
+	/*
+	 * -1 = no mule
+	 * 0 = ore
+	 * 1 = food
+	 * 2 = energy
+	 */
+	private int muleOn = -1;
 	
 	private final int PLAYER_BOX_WIDTH = 10;
 	
@@ -82,6 +91,17 @@ public class Tile {
 	 */
 	public void draw(SpriteBatch batch){
 		batch.draw(textures[tileType], x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
+		if(muleOn != -1)drawMule(batch);
+	}
+	
+	public void drawMule(SpriteBatch batch){
+		batch.end();
+		ShapeRenderer sr = new ShapeRenderer();
+		sr.begin(ShapeRenderer.ShapeType.Filled);
+		sr.setColor(owner.getColor());
+		sr.rect(x * MapRenderer.ppuX + 30, y * MapRenderer.ppuY + 30, 10, 10);
+		sr.end();
+		batch.begin();
 	}
 
 	public void drawOwner(SpriteBatch batch){
@@ -149,7 +169,7 @@ public class Tile {
 	}
 	
 	public void setOwner(Player p, boolean b){
-		p.incrementMoney(-1 * COST);
+		if(b)p.incrementMoney(-1 * COST);
 		owner = p;
 		isOwned = true;
 	}
@@ -161,5 +181,17 @@ public class Tile {
 	public void setIsHighlighted(Color c, boolean b){
 		highlightColor = c;
 		isHighlighted = b;
+	}
+	
+	public void setMule(int muleType){
+		this.muleOn = muleType;
+	}
+	
+	public int getMule(){
+		return muleOn;
+	}
+	
+	public String getCords(){
+		return x + " , " + y;
 	}
 }
