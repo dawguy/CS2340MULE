@@ -41,6 +41,7 @@ public class GameManager {
 	private int currentRound;
 	
 	private float currentPlayerTime;
+	private int roundTime = 50;
 	
 	private Mule game;
 	
@@ -63,6 +64,22 @@ public class GameManager {
 	
 	public void incrementCurrentPlayerTime(float delta){
 		currentPlayerTime += delta;
+	}
+	
+	public int getRoundTime(){
+		return roundTime;
+	}
+	
+	public void setRoundTime(){
+		int requirements = GameManager.FOOD_REQUIREMENTS[currentRound];
+		int time = 50;
+		int food = players.getCurrentPlayer().getNumberOfResource(Resource.RESOURCE_FOOD);
+		if(food == 0){
+			time = 5;
+		} else if(food < requirements){
+			time = 30;
+		}
+		roundTime = time;
 	}
 	
 	public int getNumberOfPlayers(){
@@ -150,10 +167,6 @@ public class GameManager {
 		return players.getPlayer(i);
 	}
 	
-	public int getRoundTime(){
-		return players.getCurrentPlayerTime(GameManager.FOOD_REQUIREMENTS[currentRound]);
-	}
-	
 	/**
 	 * This ends the current player's turn and therefore will give the player money and goes to the next player
 	 */
@@ -186,5 +199,6 @@ public class GameManager {
 		}
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
+		setRoundTime();
 	}
 }

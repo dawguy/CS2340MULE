@@ -92,17 +92,4 @@ public class PlayerManager {
 		
 		return order;
 	}
-	
-	
-	public int getCurrentPlayerTime(int requirements){
-		Player p = players.get(currentPlayer);
-		int time = 50;
-		int food = p.getNumberOfResource(Resource.RESOURCE_FOOD);
-		if(food == 0){
-			time = 5;
-		} else if(food < requirements){
-			time = 30;
-		}
-		return time;
-	}
 }
