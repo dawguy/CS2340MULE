@@ -79,7 +79,6 @@ public class MapScreen implements Screen{
 	 */
 	@Override
 	public void show() {
-		
 		map.drawPlayer = true;
 		map.playerT = new PlayerToken(Mule.pm.getCurrentPlayer(),0,0);
 	}

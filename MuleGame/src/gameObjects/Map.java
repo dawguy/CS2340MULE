@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.me.mygdxgame.Mule;
+import com.sun.org.apache.bcel.internal.classfile.PMGClass;
 
 /**
  * The Map which holds the tile elements.
@@ -38,6 +39,12 @@ public class Map {
 	private Random r = new Random();
 	private boolean randomOn = false; //Change this based on whether or not we want a random map
 	private boolean highlighting = true;
+	
+	Direction direction = Direction.UP;
+	enum Direction{
+		UP,RIGHT,LEFT,DOWN;
+	}
+	
 	
 	public Map(boolean randomOn){
 		this.randomOn = randomOn;
@@ -174,6 +181,32 @@ public class Map {
 		if(this.playerT != null && drawPlayer){
 			this.playerT.draw(sprites, 1);
 		}
+		if(drawPlayer && Mule.pm.getCurrentPlayer().getMule() != -1){
+			sr = new ShapeRenderer();
+			sr.begin(ShapeRenderer.ShapeType.Filled);
+			sr.setColor(Mule.pm.getCurrentPlayer().getColor());
+			int x = playerT.getX() + playerT.getWidth() / 2;
+			int y = playerT.getY() + playerT.getHeight() / 2;
+			int offSet = 10;
+			if(direction.equals(Direction.DOWN)){
+				x -= offSet;
+				y += 30;
+				sr.rect(x, y, 20, 20);
+			} else if (direction.equals(Direction.RIGHT)){
+				x -= 50;
+				y -= offSet;
+				sr.rect(x, y, 20, 20);
+			} else if (direction.equals(Direction.UP)){
+				x -= offSet;
+				y -= 50;
+				sr.rect(x, y, 20, 20);
+			} else if (direction.equals(Direction.LEFT)){
+				x += 30;
+				y -= offSet;
+				sr.rect(x, y, 20, 20);
+			}
+			sr.end();
+		}
 	}
 	
 	public void setDrawPlayer(boolean b){
@@ -191,19 +224,23 @@ public class Map {
 	}
 	
 	public void moveUp(){
+		direction = Direction.UP;
 		if(playerT.getY()<=Mule.HEIGHT-135)
 		this.playerT.moveUp();
 	}
 
 	public void moveRight(){
+		direction = Direction.RIGHT;
 		if(playerT.getX()<=Mule.WIDTH-55)
 		this.playerT.moveRight();
 	}
 	public void moveDown(){
+		direction = Direction.DOWN;
 		if(playerT.getY()>=5)
 		this.playerT.moveDown();
 	}
 	public void moveLeft(){
+		direction = Direction.LEFT;
 		if(playerT.getX()>=5)
 		this.playerT.moveLeft();
 	}
