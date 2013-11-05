@@ -5,6 +5,7 @@
 .pydevproject
 .settings
 .metadata
+.gwt-log
 *.launch
 
 *.class
