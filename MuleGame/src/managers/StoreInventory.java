@@ -10,13 +10,15 @@ import gameObjects.Resource;
  */
 public class StoreInventory {
 	
-	public static final int MULES_INDEX = 0;
-	public static final int FOOD_INDEX = 1;
-	public static final int ENERGY_INDEX = 2;
-	public static final int ORE_INDEX = 3;
+	public static final int ORE_MULE = 0;
+	public static final int FOOD_MULE = 1;
+	public static final int ENERGY_MULE = 2;	
+	public static final int FOOD_INDEX = 3;
+	public static final int ENERGY_INDEX = 4;
+	public static final int ORE_INDEX = 5;
 
-	private int[] resources = new int[4];
-	private int[] prices = new int[4];
+	private int[] resources = new int[6];
+	private int[] prices = new int[6];
 	
 	private static final int BEGINNER_FOOD = 16;
 	private static final int BEGINNER_ENERGY = 16;
@@ -28,8 +30,13 @@ public class StoreInventory {
 	private static final int ORE_PRICE = 50;
 	
 	public StoreInventory(){
-		resources[MULES_INDEX] = BEGINNER_MULE;
-		prices[MULES_INDEX] = MULE_PRICE;
+		resources[ORE_MULE] = BEGINNER_MULE;
+		prices[ORE_MULE] = MULE_PRICE;
+		resources[FOOD_MULE] = BEGINNER_MULE;
+		prices[FOOD_MULE] = MULE_PRICE;
+		resources[ENERGY_MULE] = BEGINNER_MULE;
+		prices[ENERGY_MULE] = MULE_PRICE;
+		
 		resources[FOOD_INDEX] = BEGINNER_FOOD;
 		prices[FOOD_INDEX] = FOOD_PRICE;
 		resources[ENERGY_INDEX] = BEGINNER_ENERGY;
@@ -50,6 +57,18 @@ public class StoreInventory {
 		if(resources[i] <= 0 || p.getMoney() < prices[i]){
 			return false;
 		}
+		//Handling mules differently
+		//0 = Ore Mule
+		//1 = Food Mule
+		//2 = Energy Mule
+		if(i < 3) {
+			if(p.getMule() != -1) return false;
+			p.setMule(i);
+			//5 is the # for the MULE_ORE in resource tab
+			p.incrementMoney(-1 * prices[i]);
+			p.gainResources(getMatchingPlayerResourceIndex(i), 1);
+			return true;
+		}
 		resources[i]--;
 		p.incrementMoney(-1 * prices[i]);
 		p.gainResources(getMatchingPlayerResourceIndex(i), 1);
@@ -58,6 +77,15 @@ public class StoreInventory {
 
 	public void sellResource(Player p, int i) {
 		if(p.getNumberOfResource(getMatchingPlayerResourceIndex(i)) <= 0){
+			return;
+		}
+		//Handling seperately for mules
+		if(i < 3) {
+			if(p.getMule() == -1) return;
+			p.setMule(-1);
+			//5 is the # for the MULE_ORE in resource tab
+			p.incrementMoney(prices[i]);
+			p.loseResources(getMatchingPlayerResourceIndex(i), 1);
 			return;
 		}
 		p.incrementMoney(prices[i]);
@@ -73,13 +101,17 @@ public class StoreInventory {
 	private int getMatchingPlayerResourceIndex(int storeIndex) {
 		int resource_index = 0;
 		switch(storeIndex){
-			case 0: resource_index =  0; //still need to figure out player MULES
+			case 0: resource_index =  Resource.RESOURCE_MULE_ORE;
 					break;
-			case 1: resource_index =  Resource.RESOURCE_FOOD;
+			case 1: resource_index =  Resource.RESOURCE_MULE_FOOD;
+				break;
+			case 2: resource_index =  Resource.RESOURCE_MULE_ENERGY;
+				break;			
+			case 3: resource_index =  Resource.RESOURCE_FOOD;
 					break;
-			case 2: resource_index =  Resource.RESOURCE_ENERGY;
+			case 4: resource_index =  Resource.RESOURCE_ENERGY;
 					break;
-			case 3: resource_index =  Resource.RESOURCE_ORE;
+			case 5: resource_index =  Resource.RESOURCE_ORE;
 					break;
 		}
 		return resource_index;

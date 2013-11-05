@@ -22,7 +22,7 @@ public class Player implements Comparable{
 	private String name;
 	private Color color;
 	private Resource resources;
-	
+	private int muleType = -1;
 	public Player(){
 		super();
 		name = "";
@@ -131,6 +131,14 @@ public class Player implements Comparable{
 			return true;
 		}
 		return false;
+	}
+	
+	public int getMule(){
+		return muleType;
+	}
+	
+	public void setMule(int i){
+		muleType = i;
 	}
 
 	@Override
