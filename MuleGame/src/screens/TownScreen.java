@@ -157,7 +157,7 @@ public class TownScreen implements Screen{
 			//see if close button in gui overlay is clicked
 			if(storeGui.isClosed()){
 				guiOverlay = false;
-			} else if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+			} else if(Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Gdx.input.justTouched()){
 				storeGui.mouseClicked(Gdx.input.getX(), Gdx.input.getY());
 			}
 		}
