@@ -20,8 +20,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 public class StoreItemGui {
 
 	private final String TEXTBOX_BACKGROUND = "SettingsScreen/TextboxBackground.jpeg";
-	private final String PLUS_BUTTON_STRING = "TownScreen/buy1.jpg";
-	private final String MINUS_BUTTON_STRING = "TownScreen/sell1.jpg";
+	private final String PLUS_BUTTON_STRING = "TownScreen/PlusButton.png";
+	private final String MINUS_BUTTON_STRING = "TownScreen/MinusButton.png";
 	
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
@@ -64,8 +64,8 @@ public class StoreItemGui {
 		//addActorsToStage(s);
 		stage = s;
 		
-		plusButton = new Button(new Texture(PLUS_BUTTON_STRING), posX-15, posY + 180);
-		minusButton = new Button(new Texture(MINUS_BUTTON_STRING), posX-15, posY + 50);
+		plusButton = new Button(new Texture(PLUS_BUTTON_STRING), posX, posY + 180);
+		minusButton = new Button(new Texture(MINUS_BUTTON_STRING), posX, posY + 50);
 	}
 	
 

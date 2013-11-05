@@ -46,10 +46,14 @@ public class StoreInventory {
 	}
 	
 	public int getResourceAmount(int i){
+		if(i <= 2)
+		return resources[0];
 		return resources[i];
 	}
 
 	public int getResourcePrice(int i){
+		if(i <= 2)
+		return prices[0];
 		return prices[i];
 	}
 	
@@ -67,6 +71,7 @@ public class StoreInventory {
 			//5 is the # for the MULE_ORE in resource tab
 			p.incrementMoney(-1 * prices[i]);
 			p.gainResources(getMatchingPlayerResourceIndex(i), 1);
+			resources[0] --;
 			return true;
 		}
 		resources[i]--;
@@ -86,6 +91,7 @@ public class StoreInventory {
 			//5 is the # for the MULE_ORE in resource tab
 			p.incrementMoney(prices[i]);
 			p.loseResources(getMatchingPlayerResourceIndex(i), 1);
+			resources[0] ++;
 			return;
 		}
 		p.incrementMoney(prices[i]);

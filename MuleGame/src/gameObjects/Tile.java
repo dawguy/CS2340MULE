@@ -94,11 +94,19 @@ public class Tile {
 		if(muleOn != -1)drawMule(batch);
 	}
 	
+	/**
+	 * RED IF ORE MULE
+	 * GREEN IF FOOD MULE
+	 * BLUE IF ENERGY MULE
+	 * @param batch
+	 */
 	public void drawMule(SpriteBatch batch){
 		batch.end();
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeRenderer.ShapeType.Filled);
-		sr.setColor(owner.getColor());
+		if(muleOn == 0) sr.setColor(new Color(255,0,0,1));
+		if(muleOn == 1) sr.setColor(new Color(0,255,0,1));
+		if(muleOn == 2) sr.setColor(new Color(0,0,255,1));
 		sr.rect(x * MapRenderer.ppuX + 30, y * MapRenderer.ppuY + 30, 10, 10);
 		sr.end();
 		batch.begin();
