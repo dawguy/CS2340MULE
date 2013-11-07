@@ -98,7 +98,7 @@ public class Map {
 	private void generateRandomMap(){
 		Stack<Integer> tileTypes = new Stack<Integer>();
 		tiles = new Tile[9][5];
-		//Using set number of tiles here. For bigger maps this will hae to be changed
+		//Using set number of tiles here. For bigger maps this will have to be changed
 		for(int i = 0; i < 45; i++){
 			double roll = r.nextDouble() * 100;
 			if(roll > 30.){

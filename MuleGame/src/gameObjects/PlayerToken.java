@@ -1,5 +1,6 @@
 package gameObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,13 +32,14 @@ public class PlayerToken{
 		super();
 		owner = p;
 		color = p.getColor();
-		// pTexture = new Texture("MapScreen/humanP.png");
+		pTexture = new Texture(Gdx.files.internal("MapScreen/Player.gif"));
 	}
 	
 	public PlayerToken(Player p, int x, int y){
 		this(p);
 		setX(x);
 		setY(y);
+		
 		rect = new Rectangle(getX(), getY(), WIDTH, HEIGHT);
 	}
 	
@@ -49,6 +51,7 @@ public class PlayerToken{
 		sr.rect(x, y, WIDTH, HEIGHT);
 		sr.end();
 		batch.begin();
+		//batch.draw(pTexture,x,y);
 	}
 	
 	public void moveLeft(){
