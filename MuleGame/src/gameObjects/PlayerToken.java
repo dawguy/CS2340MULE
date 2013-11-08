@@ -21,10 +21,12 @@ public class PlayerToken{
 	private final int VELOCITY_X = 5;
 	private final int VELOCITY_Y = 5;
 	private Texture pTexture;
+	private boolean isLeft=false;
 	private int x = 0;
 	private int y = 0;
 	private final int WIDTH = 50;
 	private final int HEIGHT = 50;
+	private int moveCount=0;
 	
 	private Rectangle rect;
 	
@@ -32,7 +34,7 @@ public class PlayerToken{
 		super();
 		owner = p;
 		color = p.getColor();
-		pTexture = new Texture(Gdx.files.internal("MapScreen/Player.gif"));
+		pTexture = new Texture(Gdx.files.internal("MapScreen/playerScreen.gif"));
 	}
 	
 	public PlayerToken(Player p, int x, int y){
@@ -48,15 +50,31 @@ public class PlayerToken{
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
 		sr.setColor(color);
-		sr.rect(x, y, WIDTH, HEIGHT);
+		//sr.rect(x, y, WIDTH, HEIGHT);
 		sr.end();
 		batch.begin();
-		//batch.draw(pTexture,x,y);
+		drawPlayer(batch);
 	}
+
+	/**
+	 * Draws the running animation of the player object
+	 * @param batch
+	 */
 	
-	public void moveLeft(){
-		setX(getX() - VELOCITY_X);
-		rect.setX(getX() - VELOCITY_X);
+	private void drawPlayer(SpriteBatch batch){
+		batch.end();
+		batch.begin();
+		batch.setColor(color);
+		moveCount=moveCount%20;
+		if(moveCount<5)
+			batch.draw(pTexture,x,y,WIDTH,HEIGHT,0,0,WIDTH,HEIGHT,isLeft,false);
+		if(moveCount>5 && moveCount <10)
+			batch.draw(pTexture,x,y,WIDTH,HEIGHT,WIDTH,0,WIDTH,HEIGHT,isLeft,false);
+		if(moveCount>10 && moveCount <15)
+			batch.draw(pTexture,x,y,WIDTH,HEIGHT,0,HEIGHT,WIDTH,HEIGHT,isLeft,false);
+		if(moveCount>15)
+			batch.draw(pTexture,x,y,WIDTH,HEIGHT,WIDTH,HEIGHT,WIDTH,HEIGHT,isLeft,false);
+		batch.setColor(1,1,1,1);
 	}
 	
 	public void setX(int x){
@@ -83,17 +101,29 @@ public class PlayerToken{
 		return HEIGHT;
 	}
 	
+	public void moveLeft(){
+		moveCount++;
+		isLeft=true;
+		setX(getX() - VELOCITY_X);
+		rect.setX(getX() - VELOCITY_X);
+	}
+	
+	
 	public void moveRight(){
+		moveCount++;
+		isLeft=false;
 		setX(x + VELOCITY_X);
 		rect.setX(x + VELOCITY_X);
 	}
 	
 	public void moveDown(){
+		moveCount++;
 		setY(getY() - VELOCITY_Y);
 		rect.setY(getY() - VELOCITY_Y);
 	}
 	
 	public void moveUp(){
+		moveCount++;
 		setY(getY() + VELOCITY_Y);
 		rect.setY(getY() + VELOCITY_Y);
 	}
