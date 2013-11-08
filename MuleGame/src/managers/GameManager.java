@@ -201,4 +201,19 @@ public class GameManager {
 		Mule.pm.nextPlayer();
 		setRoundTime();
 	}
+	
+	public String getDifficulty(){
+		if(difficulty.equals(Difficulty.STANDARD)){
+			return "STANDARD";
+		} else if(difficulty.equals(Difficulty.TOURNAMENT)){
+			return "TOURNAMENT";
+		}
+		return "STANDARD";
+	}
+	
+	public int getCurrentRound(){
+		System.out.println("OK");
+		System.out.println(Integer.toString(currentRound));
+		return currentRound;
+	}
 }

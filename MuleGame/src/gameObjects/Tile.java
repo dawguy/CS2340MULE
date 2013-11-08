@@ -202,4 +202,12 @@ public class Tile {
 	public String getCords(){
 		return x + " , " + y;
 	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
 }

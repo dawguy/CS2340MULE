@@ -4,6 +4,7 @@ import interfaces.ResourceTracker;
 import gameObjects.Map;
 import gameObjects.PlayerToken;
 import managers.GameManager;
+import managers.XMLManager;
 import renderers.MapRenderer;
 
 import com.badlogic.gdx.Gdx;
@@ -74,7 +75,10 @@ public class MapScreen implements Screen{
 		} else {
 			spacePressed = false;
 		}
-		
+		if(Gdx.input.isKeyPressed(Keys.Q)){
+			XMLManager.SaveGame();
+			Gdx.app.exit();
+		}
 	}
 
 	@Override
