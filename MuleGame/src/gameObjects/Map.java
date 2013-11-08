@@ -211,7 +211,7 @@ public class Map {
 			} else if (direction.equals(Direction.LEFT)){
 				x += 30;
 				y -= offSet;
-				//sr.rect(x, y, 20, 20);
+				//sr.rect(x, y, 20, 20); test commit comment
 				sprites.draw(muleTexture,x,y,20,20,0,0,20,20,true,false);
 			}
 			sr.end();
