@@ -3,7 +3,9 @@ package gameObjects;
 import java.util.Random;
 import java.util.Stack;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.me.mygdxgame.Mule;
@@ -188,25 +190,33 @@ public class Map {
 			sr.setColor(Mule.pm.getCurrentPlayer().getColor());
 			int x = playerT.getX() + playerT.getWidth() / 2;
 			int y = playerT.getY() + playerT.getHeight() / 2;
+			Texture muleTexture= new Texture(Gdx.files.internal("MapScreen/muleSheet.gif"));
 			int offSet = 10;
+			sprites.begin();
+			sprites.setColor(Mule.pm.getCurrentPlayer().getColor());
 			if(direction.equals(Direction.DOWN)){
 				x -= offSet;
 				y += 30;
-				sr.rect(x, y, 20, 20);
-			} else if (direction.equals(Direction.RIGHT)){
+				//sr.rect(x, y, 20, 20);
+				sprites.draw(muleTexture,x,y,10,20,20,20,1,1,90,0,0,20,20,true,false);			} else if (direction.equals(Direction.RIGHT)){
 				x -= 50;
 				y -= offSet;
-				sr.rect(x, y, 20, 20);
+				//sr.rect(x, y, 20, 20);
+				sprites.draw(muleTexture,x,y);
 			} else if (direction.equals(Direction.UP)){
 				x -= offSet;
 				y -= 50;
-				sr.rect(x, y, 20, 20);
+				//sr.rect(x, y, 20, 20);
+				sprites.draw(muleTexture,x,y,10,0,20,20,1,1,270,0,0,20,20,true,false);
 			} else if (direction.equals(Direction.LEFT)){
 				x += 30;
 				y -= offSet;
-				sr.rect(x, y, 20, 20);
+				//sr.rect(x, y, 20, 20);
+				sprites.draw(muleTexture,x,y,20,20,0,0,20,20,true,false);
 			}
 			sr.end();
+			sprites.setColor(1,1,1,1);
+			sprites.end();
 			sprites.begin();
 		}
 	}
@@ -290,7 +300,7 @@ public class Map {
 
 	public void moveRight(){
 		direction = Direction.RIGHT;
-		if(playerT.getX()<=Mule.WIDTH-55)
+		if(playerT.getX()<=Mule.WIDTH-40)
 		this.playerT.moveRight();
 	}
 	public void moveDown(){
@@ -300,7 +310,7 @@ public class Map {
 	}
 	public void moveLeft(){
 		direction = Direction.LEFT;
-		if(playerT.getX()>=5)
+		if(playerT.getX()>=-10)
 		this.playerT.moveLeft();
 	}
 	

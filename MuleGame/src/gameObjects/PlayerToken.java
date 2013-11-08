@@ -66,11 +66,11 @@ public class PlayerToken{
 		batch.begin();
 		batch.setColor(color);
 		moveCount=moveCount%20;
-		if(moveCount<5)
+		if(moveCount<6)
 			batch.draw(pTexture,x,y,WIDTH,HEIGHT,0,0,WIDTH,HEIGHT,isLeft,false);
-		if(moveCount>5 && moveCount <10)
+		if(moveCount>5 && moveCount <11)
 			batch.draw(pTexture,x,y,WIDTH,HEIGHT,WIDTH,0,WIDTH,HEIGHT,isLeft,false);
-		if(moveCount>10 && moveCount <15)
+		if(moveCount>10 && moveCount <16)
 			batch.draw(pTexture,x,y,WIDTH,HEIGHT,0,HEIGHT,WIDTH,HEIGHT,isLeft,false);
 		if(moveCount>15)
 			batch.draw(pTexture,x,y,WIDTH,HEIGHT,WIDTH,HEIGHT,WIDTH,HEIGHT,isLeft,false);
