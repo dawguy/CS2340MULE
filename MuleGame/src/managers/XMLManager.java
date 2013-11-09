@@ -1,6 +1,7 @@
 package managers;
 
 import gameObjects.Player;
+import gameObjects.Resource;
 import gameObjects.Tile;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.badlogic.gdx.graphics.Color;
 import com.me.mygdxgame.Mule;
 
 /**
@@ -116,7 +118,71 @@ public class XMLManager {
 		
 		saveMap(document, gameManagerElement);
 		
+		savePlayers(document, playerManagerElement);
+		
 		document.appendChild(gameInstanceElement);
+	}
+	
+	private static void savePlayers(Document document, Element playerManager){
+		for(int i = 0 ; i < Mule.pm.getNumberOfPlayers() ; i ++){
+			savePlayer(Mule.pm.getPlayer(i), document, playerManager);
+		}
+	}
+	
+	private static void savePlayer(Player p, Document document, Element playerManager){
+		Element playerElement = document.createElement("Player");
+		
+		Element nameElement = document.createElement("Name");
+		nameElement.appendChild(document.createTextNode(p.getName()));
+		playerElement.appendChild(nameElement);
+		
+		Element raceElement = document.createElement("Race");
+		raceElement.appendChild(document.createTextNode(p.getRace()));
+		playerElement.appendChild(raceElement);
+		
+		Element moneyElement = document.createElement("Money");
+		moneyElement.appendChild(document.createTextNode(Integer.toString(p.getMoney())));
+		playerElement.appendChild(moneyElement);
+		
+		Color c = p.getColor();
+		
+		Element red = document.createElement("Red");
+		red.appendChild(document.createTextNode(Float.toString(c.r)));
+		
+		Element green = document.createElement("Green");
+		green.appendChild(document.createTextNode(Float.toString(c.g)));
+		
+		Element blue = document.createElement("Blue");
+		blue.appendChild(document.createTextNode(Float.toString(c.b)));
+		
+		Element color = document.createElement("Color");
+		color.appendChild(red);
+		color.appendChild(green);
+		color.appendChild(blue);
+		playerElement.appendChild(color);
+		
+		
+		Element food = document.createElement("Food");
+		food.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_FOOD))));
+		
+		Element energy = document.createElement("Energy");
+		energy.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ENERGY))));
+		
+		Element ore = document.createElement("Ore");
+		ore.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ORE))));
+		
+		Element crystite = document.createElement("Crystite");
+		crystite.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_CRYSTITE))));
+		
+		
+		Element resources = document.createElement("Resources");
+		resources.appendChild(food);
+		resources.appendChild(energy);
+		resources.appendChild(ore);
+		resources.appendChild(crystite);
+		playerElement.appendChild(resources);
+		
+		playerManager.appendChild(playerElement);
 	}
 	
 	private static void saveMap(Document document, Element gameManager){

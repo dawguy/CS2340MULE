@@ -157,6 +157,15 @@ public class Player implements Comparable{
 		return 0;
 	}
 	
+	public String getRace(){
+		if(race.equals(Race.HUMAN)){
+			return "Human";
+		} else if(race.equals(Race.FLAPPER)){
+			return "Flapper";
+		}
+		return "Human";
+	}
+	
 	public static void main(String[] args){
 		Player p1 = new Player();
 		p1.setMoney(1000);
