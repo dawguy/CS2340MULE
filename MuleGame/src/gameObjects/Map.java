@@ -364,8 +364,20 @@ public class Map {
 	public Tile[][] getTiles(){
 		return tiles;
 	}
+
+	public int getXSize(){
+		return tiles.length;
+	}
+
+	public int getYSize(){
+		return tiles[0].length;
+	}
 	
 	public PlayerToken getToken(){
 		return playerT;
+	}
+
+	public void produce(int i, int j){
+		tiles[i][j].produce();
 	}
 }

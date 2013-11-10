@@ -196,6 +196,14 @@ public class GameManager {
 			//startRandomEvent();
 			//Mule.swapScreen(SELECTTILESSCREEN);
 			game.setScreen(Mule.SELECTTILESSCREEN);
+
+			//production
+
+			for(int i=0;i<map.getXSize();i++){
+				for(int j=0;j<map.getYSize();j++){
+					map.produce(i,j);
+				}
+			}
 		}
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();

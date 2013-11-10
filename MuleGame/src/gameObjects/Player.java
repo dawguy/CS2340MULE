@@ -110,8 +110,8 @@ public class Player implements Comparable{
 		resources.loseResource(resourceType, amount);
 	}
 	
-	public void spendResources(int resourceType, int amount){
-		resources.spendResource(resourceType, amount);
+	public int spendResources(int resourceType, int amount){
+		return resources.spendResource(resourceType, amount);
 	}
 	
 	public void gainResources(int resourceType, int amount){

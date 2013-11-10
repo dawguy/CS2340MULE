@@ -175,6 +175,47 @@ public class Tile {
 		}
 		return s;
 	}
+
+	public void produce(){
+		if(isOwned){
+			if(muleOn!=-1){
+				int value;
+				int[][] howmuch = {{1,0,2,3,4},{2,4,1,1,1},{3,2,1,1,1}};
+				switch(tileType){
+						case 0: value=howmuch[muleOn][0];//plain
+						break;
+						case 1: value=howmuch[muleOn][1];//river
+						break;
+						case 3: value=howmuch[muleOn][2];//1mount
+						break;
+						case 4: value=howmuch[muleOn][3];//2mount
+						break;
+						case 5: value=howmuch[muleOn][4];//3mount
+						break;
+						default: value=-1;//town or invalid
+						break;
+				}
+				if (value!=-1){
+					boolean ok=true;
+					if(muleOn!=2){
+						ok = owner.spendResources(2,1)==1;
+					}
+					if(ok){
+						switch(muleOn){
+							case 0: owner.gainResources(3,value);
+							break;
+							case 1: owner.gainResources(1,value);
+							break;
+							case 2: owner.gainResources(2,value);
+							break;
+							default: ;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
 	
 	public void setOwner(Player p, boolean b){
 		if(b)p.incrementMoney(-1 * COST);
