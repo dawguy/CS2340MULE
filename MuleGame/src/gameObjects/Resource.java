@@ -20,7 +20,8 @@ public class Resource {
 		for(int i = 0; i < resources.length; i++){
 			resources[i] = 0;
 		}
-		resources[1] = 3;
+		resources[1] = 4;
+		resources[2] = 2;
 	}
 	
 	/**

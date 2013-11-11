@@ -65,6 +65,8 @@ public class Tile {
 		shapeRenderer = new ShapeRenderer();
 	}
 	
+	
+	
 	public int getCost(){
 		return COST;
 	}
