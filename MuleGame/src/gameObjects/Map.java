@@ -64,6 +64,10 @@ public class Map {
 		drawPlayer = drawP;
 	}
 	
+	public Map(Tile[][] tiles){
+		this.tiles = tiles;
+	}
+	
 	public void defaultMap(){
 		tiles = new Tile[9][5];
 		
@@ -364,8 +368,20 @@ public class Map {
 	public Tile[][] getTiles(){
 		return tiles;
 	}
+
+	public int getXSize(){
+		return tiles.length;
+	}
+
+	public int getYSize(){
+		return tiles[0].length;
+	}
 	
 	public PlayerToken getToken(){
 		return playerT;
+	}
+
+	public void produce(int i, int j){
+		tiles[i][j].produce();
 	}
 }

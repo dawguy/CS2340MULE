@@ -46,7 +46,7 @@ public class Tile {
 
 	private Color highlightColor;
 	
-	private Player owner;
+	private int owner;
 	
 	private ShapeRenderer shapeRenderer;
 	
@@ -61,9 +61,21 @@ public class Tile {
 		rect = new Rectangle(x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 		isOwned = false;
 		isHighlighted = false;
-		owner = null;
+		owner = -1;
 		shapeRenderer = new ShapeRenderer();
 	}
+	
+	public Tile(int x, int y, int type, int owner, int mule){
+		this(x,y);
+		tileType = type;
+		this.owner = owner;
+		if(owner != -1) {
+			isOwned = true;
+		}
+		muleOn = mule;
+	}
+	
+	
 	
 	public int getCost(){
 		return COST;
@@ -75,7 +87,7 @@ public class Tile {
 	
 	public boolean setOwner(Player p){
 		if(!isOwned){
-			owner = p;
+			owner = p.getPlayerNumber();
 			isOwned = true;
 			return true;
 		}
@@ -83,7 +95,7 @@ public class Tile {
 	}
 
 	public Player getOwner(){
-		return owner;
+		return Mule.pm.getPlayerNumber(owner);
 	}
 
 	/**
@@ -116,7 +128,9 @@ public class Tile {
 		if(isOwned){
 			batch.end();
 			shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-			shapeRenderer.setColor(owner.getColor());
+			if(owner != -1){
+				shapeRenderer.setColor(getOwner().getColor());
+			}
 			shapeRenderer.circle(MapRenderer.ppuX * (x) + PLAYER_BOX_WIDTH, MapRenderer.ppuY * (y)
 						+ PLAYER_BOX_WIDTH, PLAYER_BOX_WIDTH);	
 			shapeRenderer.end();
@@ -175,10 +189,52 @@ public class Tile {
 		}
 		return s;
 	}
+
+	public void produce(){
+		if(isOwned){
+			Player owner = getOwner();
+			if(muleOn!=-1){
+				int value;
+				int[][] howmuch = {{1,0,2,3,4},{2,4,1,1,1},{3,2,1,1,1}};
+				switch(tileType){
+						case 0: value=howmuch[muleOn][0];//plain
+						break;
+						case 1: value=howmuch[muleOn][1];//river
+						break;
+						case 3: value=howmuch[muleOn][2];//1mount
+						break;
+						case 4: value=howmuch[muleOn][3];//2mount
+						break;
+						case 5: value=howmuch[muleOn][4];//3mount
+						break;
+						default: value=-1;//town or invalid
+						break;
+				}
+				if (value!=-1){
+					boolean ok=true;
+					if(muleOn!=2){
+						ok = owner.spendResources(2,1)==1;
+					}
+					if(ok){
+						switch(muleOn){
+							case 0: owner.gainResources(3,value);
+							break;
+							case 1: owner.gainResources(1,value);
+							break;
+							case 2: owner.gainResources(2,value);
+							break;
+							default: ;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
 	
 	public void setOwner(Player p, boolean b){
 		if(b)p.incrementMoney(-1 * COST);
-		owner = p;
+		owner = p.getPlayerNumber();
 		isOwned = true;
 	}
 
@@ -201,5 +257,13 @@ public class Tile {
 	
 	public String getCords(){
 		return x + " , " + y;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
 	}
 }

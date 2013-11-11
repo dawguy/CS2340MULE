@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.me.mygdxgame.Mule;
+import java.text.DecimalFormat;
 
 public class ResourceTracker extends Actor{
 	private static Texture image;
@@ -54,13 +55,16 @@ public class ResourceTracker extends Actor{
 			String food = "" + p.getNumberOfResource(1);
 			String energy = "" + p.getNumberOfResource(2);
 			String ore = "" + p.getNumberOfResource(3);
-			String time = ""+ (Mule.gm.getRoundTime() - Mule.gm.getCurrentPlayerTime());
+
+			DecimalFormat dec = new DecimalFormat("#0.0");
+			String time = ""+  dec.format((Mule.gm.getRoundTime() - Mule.gm.getCurrentPlayerTime()));
+			
 			String crystite = "" + p.getNumberOfResource(4);
 			sb.setColor(p.getColor());	//Doesn't seem to set color correctly
 			BitmapFont bf = new BitmapFont(Gdx.files.internal("Skins/default.fnt"), Gdx.files.internal("Skins/default.png"), false);
 			offset += energyOff;
 			bf.draw(sb, energy, offset, Mule.HEIGHT - yOff);
-			bf.draw(sb, time, 10, Mule.HEIGHT - 58);
+			bf.draw(sb, time, 55, Mule.HEIGHT - 58);
 			bf.draw(sb, name, offset, Mule.HEIGHT - 6);
 			bf.draw(sb,  money, offset, Mule.HEIGHT - 26);
 			offset += foodOff;

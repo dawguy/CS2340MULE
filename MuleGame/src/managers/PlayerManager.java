@@ -18,7 +18,7 @@ public class PlayerManager {
 
 	private List<Player> players;
 	private int currentPlayer = 0;
-	
+	private int playerNums = 1;
 	public PlayerManager(){
 		super();
 		players = new ArrayList<Player>();
@@ -27,8 +27,12 @@ public class PlayerManager {
 	public PlayerManager(int size){
 		this();
 		for(int i = 0 ; i < size ; i++){
-			players.add(new Player());
+			players.add(new Player(playerNums++));
 		}
+	}
+	
+	public PlayerManager(ArrayList<Player> players){
+		this.players = players;
 	}
 	
 	public boolean addPlayer(Player p){
@@ -37,8 +41,16 @@ public class PlayerManager {
 	}
 	
 	public boolean addPlayer(String name, String race, Color c){
-		players.add(new Player(name, race, c));
+		players.add(new Player(name, race, c, playerNums++));
 		return true;
+	}
+	
+	public Player getPlayerNumber(int num){
+		if(num == -1) return null;
+		for(Player p : players){
+			if(p.getPlayerNumber() == num) return p;
+		}
+		return null;
 	}
 	
 	/**

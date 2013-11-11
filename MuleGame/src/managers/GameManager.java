@@ -58,6 +58,13 @@ public class GameManager {
 		players = pm;
 	}
 	
+	public GameManager(Mule game, PlayerManager pm, int roundNumber, Map map,String difficult){
+		this(game,pm);
+		this.map = map;
+		currentRound = roundNumber;
+		difficulty = DEFAULT_DIFFICULTY;
+	}
+	
 	public float getCurrentPlayerTime(){
 		return currentPlayerTime;
 	}
@@ -68,6 +75,10 @@ public class GameManager {
 	
 	public int getRoundTime(){
 		return roundTime;
+	}
+	
+	public void setRound(int round){
+		currentRound = round;
 	}
 	
 	public void setRoundTime(){
@@ -196,9 +207,32 @@ public class GameManager {
 			//startRandomEvent();
 			//Mule.swapScreen(SELECTTILESSCREEN);
 			game.setScreen(Mule.SELECTTILESSCREEN);
+
+			//production
+
+			for(int i=0;i<map.getXSize();i++){
+				for(int j=0;j<map.getYSize();j++){
+					map.produce(i,j);
+				}
+			}
 		}
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 		setRoundTime();
+	}
+	
+	public String getDifficulty(){
+		if(difficulty.equals(Difficulty.STANDARD)){
+			return "STANDARD";
+		} else if(difficulty.equals(Difficulty.TOURNAMENT)){
+			return "TOURNAMENT";
+		}
+		return "STANDARD";
+	}
+	
+	public int getCurrentRound(){
+		System.out.println("OK");
+		System.out.println(Integer.toString(currentRound));
+		return currentRound;
 	}
 }

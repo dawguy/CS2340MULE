@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GameInstance>
+    <GameManager>
+        <Difficulty>STANDARD</Difficulty>
+        <CurrentRound> 0 </CurrentRound>
+        <Map>
+            <Tile>
+                <PositionX> 0 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 0 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 0 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 0 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 0 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 4 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 1 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 1 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 1 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 1 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 1 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 2 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 3 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 2 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 5 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 2 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 2 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 3 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 2 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 3 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 3 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 3 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 4 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 3 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 3 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 4 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 1 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 4 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 1 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 4 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 2 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 4 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 1 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 4 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 1 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 5 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 5 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 5 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 5 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 5 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 5 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 5 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 6 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 6 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 6 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 4 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 6 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 6 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 7 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 2 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 7 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 3 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 7 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 7 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 7 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> 1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 8 </PositionX>
+                <PositionY> 0 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 8 </PositionX>
+                <PositionY> 1 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 8 </PositionX>
+                <PositionY> 2 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 8 </PositionX>
+                <PositionY> 3 </PositionY>
+                <TileType> 0 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+            <Tile>
+                <PositionX> 8 </PositionX>
+                <PositionY> 4 </PositionY>
+                <TileType> 4 </TileType>
+                <Owner> -1 </Owner>
+                <Mule> -1 </Mule>
+            </Tile>
+        </Map>
+    </GameManager>
+    <PlayerManager>
+        <Player>
+            <Name>PLAYER NAMEa</Name>
+            <Race>Flapper</Race>
+            <PlayerNumber> 1 </PlayerNumber>
+            <Money> 2559 </Money>
+            <Color>
+                <Red> 0.0 </Red>
+                <Green> 0.0 </Green>
+                <Blue> 1.0 </Blue>
+            </Color>
+            <Resources>
+                <Food> 8 </Food>
+                <Energy> 4 </Energy>
+                <Ore> 0 </Ore>
+                <Crystite> 0 </Crystite>
+            </Resources>
+        </Player>
+        <Player>
+            <Name>PLAYER NAMEb</Name>
+            <Race>Flapper</Race>
+            <PlayerNumber> 2 </PlayerNumber>
+            <Money> 2634 </Money>
+            <Color>
+                <Red> 0.0 </Red>
+                <Green> 0.0 </Green>
+                <Blue> 0.0 </Blue>
+            </Color>
+            <Resources>
+                <Food> 8 </Food>
+                <Energy> 4 </Energy>
+                <Ore> 0 </Ore>
+                <Crystite> 0 </Crystite>
+            </Resources>
+        </Player>
+    </PlayerManager>
+</GameInstance>
