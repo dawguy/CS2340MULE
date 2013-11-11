@@ -33,6 +33,14 @@ public class MapScreen implements Screen{
 		renderer = new MapRenderer(map);
 	}
 	
+	public MapScreen(Mule g, Map m){
+		super();
+		gm = Mule.gm;
+		map = m;
+		game = g;
+		renderer = new MapRenderer(map);
+	}
+	
 
 	
 	@Override

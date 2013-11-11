@@ -58,6 +58,13 @@ public class GameManager {
 		players = pm;
 	}
 	
+	public GameManager(Mule game, PlayerManager pm, int roundNumber, Map map,String difficult){
+		this(game,pm);
+		this.map = map;
+		currentRound = roundNumber;
+		difficulty = DEFAULT_DIFFICULTY;
+	}
+	
 	public float getCurrentPlayerTime(){
 		return currentPlayerTime;
 	}
@@ -68,6 +75,10 @@ public class GameManager {
 	
 	public int getRoundTime(){
 		return roundTime;
+	}
+	
+	public void setRound(int round){
+		currentRound = round;
 	}
 	
 	public void setRoundTime(){

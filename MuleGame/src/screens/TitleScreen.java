@@ -1,6 +1,7 @@
 package screens;
 
 import interfaces.Button;
+import managers.XMLReader;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -22,6 +23,7 @@ public class TitleScreen implements Screen{
 	
 	private Button exitGameButton;
 	private Button startGameButton;
+	private Button loadGameButton;
 	
 	public TitleScreen(Mule g){
 		Texture.setEnforcePotImages(false);
@@ -30,6 +32,7 @@ public class TitleScreen implements Screen{
 		batch = new SpriteBatch();
 		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 350, 100);
 		startGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")), 350, 200);
+		loadGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")),350,300);
 	}
 	
 	@Override
@@ -43,6 +46,7 @@ public class TitleScreen implements Screen{
 		batch.draw(titleBackground, 0, 0);
 		exitGameButton.draw(batch);
 		startGameButton.draw(batch);
+		loadGameButton.draw(batch);
 		batch.end();
 	}
 
@@ -52,6 +56,9 @@ public class TitleScreen implements Screen{
 				Gdx.app.exit();
 			} else if(startGameButton.isClicked(currentGame.INPUT)){
 				currentGame.setScreen(Mule.SETTINGSCREEN);
+			} else if(loadGameButton.isClicked(currentGame.INPUT)){
+				XMLReader xRead = new XMLReader(currentGame);
+				xRead.loadGame();
 			}
 		}
 	}

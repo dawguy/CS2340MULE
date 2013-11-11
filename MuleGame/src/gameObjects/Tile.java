@@ -46,7 +46,7 @@ public class Tile {
 
 	private Color highlightColor;
 	
-	private Player owner;
+	private int owner;
 	
 	private ShapeRenderer shapeRenderer;
 	
@@ -61,8 +61,17 @@ public class Tile {
 		rect = new Rectangle(x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
 		isOwned = false;
 		isHighlighted = false;
-		owner = null;
+		owner = -1;
 		shapeRenderer = new ShapeRenderer();
+	}
+	
+	public Tile(int x, int y, int type, int owner, int mule){
+		this(x,y);
+		tileType = type;
+		if(owner != -1) {
+			isOwned = true;
+		}
+		muleOn = mule;
 	}
 	
 	
@@ -77,7 +86,7 @@ public class Tile {
 	
 	public boolean setOwner(Player p){
 		if(!isOwned){
-			owner = p;
+			owner = p.getPlayerNumber();
 			isOwned = true;
 			return true;
 		}
@@ -85,7 +94,7 @@ public class Tile {
 	}
 
 	public Player getOwner(){
-		return owner;
+		return Mule.pm.getPlayerNumber(owner);
 	}
 
 	/**
@@ -118,7 +127,8 @@ public class Tile {
 		if(isOwned){
 			batch.end();
 			shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-			shapeRenderer.setColor(owner.getColor());
+			if(owner != -1)
+			shapeRenderer.setColor(getOwner().getColor());
 			shapeRenderer.circle(MapRenderer.ppuX * (x) + PLAYER_BOX_WIDTH, MapRenderer.ppuY * (y)
 						+ PLAYER_BOX_WIDTH, PLAYER_BOX_WIDTH);	
 			shapeRenderer.end();
@@ -180,6 +190,7 @@ public class Tile {
 
 	public void produce(){
 		if(isOwned){
+			Player owner = getOwner();
 			if(muleOn!=-1){
 				int value;
 				int[][] howmuch = {{1,0,2,3,4},{2,4,1,1,1},{3,2,1,1,1}};
@@ -221,7 +232,7 @@ public class Tile {
 	
 	public void setOwner(Player p, boolean b){
 		if(b)p.incrementMoney(-1 * COST);
-		owner = p;
+		owner = p.getPlayerNumber();
 		isOwned = true;
 	}
 

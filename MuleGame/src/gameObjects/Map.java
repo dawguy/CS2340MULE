@@ -64,6 +64,10 @@ public class Map {
 		drawPlayer = drawP;
 	}
 	
+	public Map(Tile[][] tiles){
+		this.tiles = tiles;
+	}
+	
 	public void defaultMap(){
 		tiles = new Tile[9][5];
 		

@@ -113,7 +113,7 @@ public class XMLManager {
 
 		
 		Element roundElement = document.createElement("CurrentRound");
-		roundElement.appendChild(document.createTextNode(Integer.toString(Mule.gm.getCurrentRound())));
+		roundElement.appendChild(document.createTextNode(" " + Integer.toString(Mule.gm.getCurrentRound()) + " "));
 		gameManagerElement.appendChild(roundElement);
 		
 		saveMap(document, gameManagerElement);
@@ -141,19 +141,19 @@ public class XMLManager {
 		playerElement.appendChild(raceElement);
 		
 		Element moneyElement = document.createElement("Money");
-		moneyElement.appendChild(document.createTextNode(Integer.toString(p.getMoney())));
+		moneyElement.appendChild(document.createTextNode(" " + Integer.toString(p.getMoney()) + " "));
 		playerElement.appendChild(moneyElement);
 		
 		Color c = p.getColor();
 		
 		Element red = document.createElement("Red");
-		red.appendChild(document.createTextNode(Float.toString(c.r)));
+		red.appendChild(document.createTextNode(" " + Float.toString(c.r) + " "));
 		
 		Element green = document.createElement("Green");
-		green.appendChild(document.createTextNode(Float.toString(c.g)));
+		green.appendChild(document.createTextNode(" " + Float.toString(c.g) + " "));
 		
 		Element blue = document.createElement("Blue");
-		blue.appendChild(document.createTextNode(Float.toString(c.b)));
+		blue.appendChild(document.createTextNode(" " + Float.toString(c.b) + " "));
 		
 		Element color = document.createElement("Color");
 		color.appendChild(red);
@@ -163,16 +163,16 @@ public class XMLManager {
 		
 		
 		Element food = document.createElement("Food");
-		food.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_FOOD))));
+		food.appendChild(document.createTextNode(" " + Integer.toString(p.getNumberOfResource(Resource.RESOURCE_FOOD)) + " "));
 		
 		Element energy = document.createElement("Energy");
-		energy.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ENERGY))));
+		energy.appendChild(document.createTextNode(" " + Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ENERGY)) + " "));
 		
 		Element ore = document.createElement("Ore");
-		ore.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ORE))));
+		ore.appendChild(document.createTextNode(" " + Integer.toString(p.getNumberOfResource(Resource.RESOURCE_ORE)) + " "));
 		
 		Element crystite = document.createElement("Crystite");
-		crystite.appendChild(document.createTextNode(Integer.toString(p.getNumberOfResource(Resource.RESOURCE_CRYSTITE))));
+		crystite.appendChild(document.createTextNode(" " + Integer.toString(p.getNumberOfResource(Resource.RESOURCE_CRYSTITE)) + " "));
 		
 		
 		Element resources = document.createElement("Resources");
@@ -205,29 +205,26 @@ public class XMLManager {
 		Element tileElement = document.createElement("Tile");
 		
 		Element posX = document.createElement("PositionX");
-		posX.appendChild(document.createTextNode(Integer.toString(t.getX())));
+		posX.appendChild(document.createTextNode(" " + Integer.toString(t.getX()) + " "));
 		tileElement.appendChild(posX);
 		
 		Element posY = document.createElement("PositionY");
-		posY.appendChild(document.createTextNode(Integer.toString(t.getY())));
+		posY.appendChild(document.createTextNode(" " + Integer.toString(t.getY()) + " "));
 		tileElement.appendChild(posY);
 		
 		Element tileType = document.createElement("TileType");
-		tileType.appendChild(document.createTextNode(Integer.toString(t.getTileType())));
+		tileType.appendChild(document.createTextNode(" " + Integer.toString(t.getTileType()) + " "));
 		tileElement.appendChild(tileType);
 		
-		Player p = t.getOwner();
-		
-		String owner = "";
-		
-		if(p != null){
-			owner = p.getName();
-		}
-		
+		int ownerNumber = -1;
+		if(t.getOwner() != null) ownerNumber = t.getOwner().getPlayerNumber();
 		Element ownerElement = document.createElement("Owner");
-		ownerElement.appendChild(document.createTextNode(owner));
+		ownerElement.appendChild(document.createTextNode(" " + Integer.toString(ownerNumber) + " "));
 		tileElement.appendChild(ownerElement);
 		
+		Element muleElement = document.createElement("Mule");
+		muleElement.appendChild(document.createTextNode(" " + Integer.toString(t.getMule()) + " "));
+		tileElement.appendChild(muleElement);
 		
 		return tileElement;
 	}

@@ -23,25 +23,37 @@ public class Player implements Comparable{
 	private Color color;
 	private Resource resources;
 	private int muleType = -1;
-	public Player(){
+	private int playerNumber = -1;
+	
+	public Player(int playerNumber){
 		super();
 		name = "";
 		color = null;
 		race = Race.HUMAN;
 		resources = new Resource();
 		setMoney();
+		this.playerNumber = playerNumber;
 	}
 	
-	public Player(String n, Color c){
-		this();
+	public Player(String n, Color c, int playerNumber){
+		this(playerNumber);
 		name = n;
 		color = c;
 	}
 	
-	public Player(String name, String race, Color c){
-		this(name, c);
+	public Player(String name, String race, Color c, int playerNumber){
+		this(name, c,playerNumber);
 		this.setRace(race);
 		setMoney();
+	}
+	
+	public Player(String name, String race, float R, float G, float B, int foo, int enr,int ore,int crys,int pNum, int mons){
+		this(name,race,new Color(R,G,B, (float) 1.0),pNum);
+		resources.gainResource(0,mons);
+		resources.gainResource(1, foo);
+		resources.gainResource(2,enr);
+		resources.gainResource(3, ore);
+		resources.gainResource(4,crys);
 	}
 	
 	private void setMoney(){
@@ -166,21 +178,7 @@ public class Player implements Comparable{
 		return "Human";
 	}
 	
-	public static void main(String[] args){
-		Player p1 = new Player();
-		p1.setMoney(1000);
-		Player p2 = new Player();
-		p2.setMoney(1500);
-		Player p3 = new Player();
-		p3.setMoney(500);
-		Player[] players = new Player[3];
-		players[0]=p1;
-		players[1]=p2;
-		players[2]=p3;
-		Arrays.sort(players);
-		
-		for(int i = 0 ; i < 3 ; i ++){
-			System.out.println(players[i].getMoney());
-		}
+	public int getPlayerNumber(){
+		return playerNumber;
 	}
 }
