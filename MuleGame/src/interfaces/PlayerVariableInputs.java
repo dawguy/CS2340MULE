@@ -73,17 +73,17 @@ public class PlayerVariableInputs {
 		blueStyle.background = tempDrawable;
 		greenStyle.background = tempDrawable;
 		
-		Texture blueText = new Texture(Gdx.files.internal("SettingsScreen/BlueKnob.jpg"));
+		Texture blueText = new Texture(Gdx.files.internal("SettingsScreen/BlueKnob.png"));
 		TextureRegion blueRegion = new TextureRegion(blueText);
 		TextureRegionDrawable blueDrawable = new TextureRegionDrawable(blueRegion);
 		blueStyle.knob = blueDrawable;
 		
-		Texture redText = new Texture(Gdx.files.internal("SettingsScreen/RedKnob.jpg"));
+		Texture redText = new Texture(Gdx.files.internal("SettingsScreen/RedKnob.png"));
 		TextureRegion redRegion = new TextureRegion(redText);
 		TextureRegionDrawable redDrawable = new TextureRegionDrawable(redRegion);
 		redStyle.knob = redDrawable;
 		
-		Texture greenText = new Texture(Gdx.files.internal("SettingsScreen/GreenKnob.jpg"));
+		Texture greenText = new Texture(Gdx.files.internal("SettingsScreen/GreenKnob.png"));
 		TextureRegion greenRegion = new TextureRegion(greenText);
 		TextureRegionDrawable greenDrawable = new TextureRegionDrawable(greenRegion);
 		greenStyle.knob = greenDrawable;

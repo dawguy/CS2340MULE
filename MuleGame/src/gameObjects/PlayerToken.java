@@ -34,7 +34,7 @@ public class PlayerToken{
 		super();
 		owner = p;
 		color = p.getColor();
-		pTexture = new Texture(Gdx.files.internal("MapScreen/playerScreen.gif"));
+		pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
 	}
 	
 	public PlayerToken(Player p, int x, int y){
