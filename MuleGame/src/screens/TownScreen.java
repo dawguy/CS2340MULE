@@ -1,6 +1,7 @@
 package screens;
 
 
+import managers.StoreInventory;
 import interfaces.ResourceTracker;
 import interfaces.StoreGui;
 import gameObjects.Player;
@@ -63,6 +64,25 @@ public class TownScreen implements Screen{
 		setBackground();
 		setBuildings();
 		storeGui = new StoreGui(STORE_GUI_X, STORE_GUI_Y);
+	}
+	
+	/**
+	 * Called when we want to upate the game manager with the store inventory
+	 */
+	public void setGameManagerStoreInventory(){
+		Mule.gm.setStoreInventory(storeGui.getStoreInventory());
+	}
+	
+	public void setTownScreenStoreInventory(){
+		storeGui.setStoreInventory(Mule.gm.getStoreInventory());
+	}
+	
+	public void setTownScreenStoreInventory(StoreInventory si){
+		storeGui.setStoreInventory(si);
+	}
+	
+	public StoreInventory getStoreInventory(){
+		return storeGui.getStoreInventory();
 	}
 	
 	private void setPlayer(){

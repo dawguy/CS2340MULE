@@ -60,7 +60,8 @@ public class SettingsScreen implements Screen{
 		GameManager gameManager = new GameManager(currentGame, manager);
 		Mule.gm = gameManager;
 		Mule.pm = manager;
-		ui.startGame(manager, gameManager);	
+		ui.startGame(manager, gameManager);
+		Mule.TOWNSCREEN.setGameManagerStoreInventory();
 		Mule.SELECTTILESSCREEN = new SelectTilesScreen(currentGame);
 		
 		currentGame.setScreen(Mule.SELECTTILESSCREEN);

@@ -8,6 +8,7 @@ import gameObjects.Map;
 import gameObjects.Player;
 import gameObjects.Resource;
 import gameObjects.Tile;
+import gameObjects.Buildings.Store;
 
 /**
  * This class will manage the game logic as well as contain the PlayerManager for the entire game.
@@ -45,12 +46,15 @@ public class GameManager {
 	
 	private Mule game;
 	
+	private StoreInventory currentStoreInventory;
+	
 	public GameManager(Mule game){
 		super();
 		this.game = game;
 		players = new PlayerManager();
 		currentRound = 0;
 		currentPlayerTime = 0;
+		currentStoreInventory = new StoreInventory();
 	}
 	
 	public GameManager(Mule game, PlayerManager pm){
@@ -234,5 +238,13 @@ public class GameManager {
 		System.out.println("OK");
 		System.out.println(Integer.toString(currentRound));
 		return currentRound;
+	}
+	
+	public void setStoreInventory(StoreInventory s){
+		currentStoreInventory = s;
+	}
+	
+	public StoreInventory getStoreInventory(){
+		return currentStoreInventory;
 	}
 }

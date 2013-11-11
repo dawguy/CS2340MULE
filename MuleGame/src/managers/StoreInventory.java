@@ -57,6 +57,10 @@ public class StoreInventory {
 		return prices[i];
 	}
 	
+	public void setResourceAmount(int index, int amount){
+		resources[index] = amount;
+	}
+	
 	public boolean buyResource(Player p, int i) {
 		if(resources[i] <= 0 || p.getMoney() < prices[i]){
 			return false;

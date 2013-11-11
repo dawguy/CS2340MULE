@@ -68,6 +68,10 @@ public class StoreGui {
 		for(int i = 0 ; i < NUMBER_OF_ITEMS ; i++){
 			storeItemGuis.add(new StoreItemGui(x+20+BUFFER_X+(i*((WIDTH-BUFFER_X)/NUMBER_OF_ITEMS)), y, stage));
 		}
+		if(Mule.gm != null){
+			inventory = Mule.gm.getStoreInventory();
+			System.out.println("OK");
+		}
 		setItemValues();
 	}
 	
@@ -213,5 +217,13 @@ public class StoreGui {
 		storeItemGuis.get(ORE_MULE_SPOT).setOwned(p.getNumberOfResource(5)); //ORE MULE
 		storeItemGuis.get(FOOD_MULE_SPOT).setOwned(p.getNumberOfResource(6)); //FOOD MULE
 		storeItemGuis.get(ENERGY_MULE_SPOT).setOwned(p.getNumberOfResource(7)); //ENERGY MULE
+	}
+	
+	public StoreInventory getStoreInventory(){
+		return inventory;
+	}
+	
+	public void setStoreInventory(StoreInventory s){
+		inventory = s;
 	}
 }
