@@ -103,6 +103,8 @@ public class XMLManager {
 		Element playerManagerElement = document.createElement("PlayerManager");
 		
 		gameInstanceElement.appendChild(gameManagerElement);
+		
+		saveStore(document, gameManagerElement);
 				
 		gameInstanceElement.appendChild(playerManagerElement);
 		
@@ -121,6 +123,38 @@ public class XMLManager {
 		savePlayers(document, playerManagerElement);
 		
 		document.appendChild(gameInstanceElement);
+	}
+	
+	private static void saveStore(Document document, Element gameManagerElement){
+		Element inventoryElement = document.createElement("StoreInventory");
+		
+		StoreInventory si = Mule.gm.getStoreInventory();
+		Element oreMule = document.createElement("OreMule");
+		oreMule.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.ORE_MULE)) + " "));
+		
+		Element foodMule = document.createElement("FoodMule");
+		foodMule.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.FOOD_MULE)) + " "));
+		
+		Element energyMule = document.createElement("EnergyMule");
+		energyMule.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.ENERGY_MULE)) + " "));
+		
+		Element food = document.createElement("Food");
+		food.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.FOOD_INDEX)) + " "));
+		
+		Element energy = document.createElement("Energy");
+		energy.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.ENERGY_INDEX)) + " "));
+		
+		Element ore = document.createElement("Ore");
+		ore.appendChild(document.createTextNode(" " + Integer.toString(si.getResourceAmount(si.ORE_INDEX)) + " "));
+	
+		inventoryElement.appendChild(oreMule);
+		inventoryElement.appendChild(foodMule);
+		inventoryElement.appendChild(energyMule);
+		inventoryElement.appendChild(food);
+		inventoryElement.appendChild(energy);
+		inventoryElement.appendChild(ore);
+		
+		gameManagerElement.appendChild(inventoryElement);
 	}
 	
 	private static void savePlayers(Document document, Element playerManager){

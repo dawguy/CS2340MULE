@@ -41,6 +41,13 @@ public class XMLReader{
 		try {
 			Scanner s = new Scanner(file);
 			Path p = Paths.get("Game.xml").toAbsolutePath();
+			int oreMule = nextInt(s);
+			int foodMule = nextInt(s);
+			int energyMule = nextInt(s);
+			int foodR = nextInt(s);
+			int energyR = nextInt(s);
+			int oreR = nextInt(s);
+			
 			//Setting up round
 			int roundNumber = nextInt(s);
 			
@@ -95,6 +102,17 @@ public class XMLReader{
 			Mule.MAPSCREEN = new MapScreen(game,map);
 			Mule.SELECTTILESSCREEN = new SelectTilesScreen(game);
 			Mule.TOWNSCREEN = new TownScreen(game);
+			StoreInventory si = new StoreInventory();
+			si.setResourceAmount(si.ENERGY_MULE, energyMule);
+			si.setResourceAmount(si.FOOD_MULE, foodMule);
+			si.setResourceAmount(si.ORE_MULE, oreMule);
+			si.setResourceAmount(si.ORE_INDEX, oreR);
+			si.setResourceAmount(si.ENERGY_INDEX, energyR);
+			si.setResourceAmount(si.FOOD_INDEX, foodR);
+			gm.setStoreInventory(si);
+			Mule.gm = gm;
+			Mule.TOWNSCREEN.setTownScreenStoreInventory(si);
+			System.out.println(Mule.TOWNSCREEN.getStoreInventory().getResourceAmount(StoreInventory.FOOD_INDEX));
 			game.setScreen(Mule.MAPSCREEN);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
