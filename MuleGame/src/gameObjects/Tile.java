@@ -68,6 +68,7 @@ public class Tile {
 	public Tile(int x, int y, int type, int owner, int mule){
 		this(x,y);
 		tileType = type;
+		this.owner = owner;
 		if(owner != -1) {
 			isOwned = true;
 		}
@@ -127,8 +128,9 @@ public class Tile {
 		if(isOwned){
 			batch.end();
 			shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-			if(owner != -1)
-			shapeRenderer.setColor(getOwner().getColor());
+			if(owner != -1){
+				shapeRenderer.setColor(getOwner().getColor());
+			}
 			shapeRenderer.circle(MapRenderer.ppuX * (x) + PLAYER_BOX_WIDTH, MapRenderer.ppuY * (y)
 						+ PLAYER_BOX_WIDTH, PLAYER_BOX_WIDTH);	
 			shapeRenderer.end();

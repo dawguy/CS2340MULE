@@ -140,6 +140,10 @@ public class XMLManager {
 		raceElement.appendChild(document.createTextNode(p.getRace()));
 		playerElement.appendChild(raceElement);
 		
+		Element playNumElement = document.createElement("PlayerNumber");
+		playNumElement.appendChild(document.createTextNode(" " + Integer.toString(p.getPlayerNumber()) + " "));
+		playerElement.appendChild(playNumElement);
+		
 		Element moneyElement = document.createElement("Money");
 		moneyElement.appendChild(document.createTextNode(" " + Integer.toString(p.getMoney()) + " "));
 		playerElement.appendChild(moneyElement);

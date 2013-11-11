@@ -56,8 +56,8 @@ public class XMLReader{
 			while(s.hasNextLine()){
 				boolean nameSearch = true;
 				boolean raceSearch = true;
-				String name = "David";
-				String race = "Human";
+				String name = "Backwards";
+				String race = "ERROR";
 				while(s.hasNextLine() && nameSearch){
 					String line = s.nextLine();
 					if(line.contains("Name")){
@@ -70,12 +70,13 @@ public class XMLReader{
 				while(s.hasNextLine() && raceSearch){
 					String line = s.nextLine();
 					if(line.contains("Race")){
-						line = line.substring(6);
+						line = line.substring(18);
 						line = line.substring(0, line.length() -7);	//Should now have only the name
-						name = race;
+						race = line;
 						raceSearch = false;
 					}
 				}
+				int playerNum = nextInt(s);
 				int money = nextInt(s);
 				float red = nextFloat(s);
 				float green = nextFloat(s);
@@ -84,9 +85,8 @@ public class XMLReader{
 				int energy = nextInt(s);
 				int ore = nextInt(s);
 				int crystite = nextInt(s);
-				int playerNum = nextInt(s);
 				Player play = new Player(name,race,red,green,blue,food,energy,ore,crystite,playerNum,money);
-				players.add(play);
+				if(!race.equals("ERROR"))players.add(play);
 			}
 			PlayerManager pm = new PlayerManager(players);
 			GameManager gm = new GameManager(game,pm,roundNumber,map,"Standard");
