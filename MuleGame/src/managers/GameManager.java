@@ -223,8 +223,45 @@ public class GameManager {
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 		setRoundTime();
+		randomEvent();
 	}
 	
+	public void randomEvent() {
+		Player currentPlayer = Mule.pm.getCurrentPlayer();
+		if(generator.nextFloat()<=0.27f){
+			int m = GameManager.ROUND_BONUS[currentRound]/2;
+			int event;
+			if(!Mule.pm.isLosingPlayer(currentPlayer)){
+				event = generator.nextInt(4); //only select good events if losing player
+			}else{
+				event = generator.nextInt(7);
+			}
+			switch(event) {
+				case 0: System.out.println("YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.");
+						currentPlayer.gainResources(Resource.RESOURCE_FOOD, 3);
+						currentPlayer.gainResources(Resource.RESOURCE_ENERGY, 2);
+						break;
+				case 1: System.out.println("A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.");
+						currentPlayer.gainResources(Resource.RESOURCE_ORE, 2);
+						break;
+				case 2: System.out.println("THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $" + 8*m + ".");
+						currentPlayer.incrementMoney(8*m);
+						break;
+				case 3: System.out.println("YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $" + 2*m + ".");
+						currentPlayer.incrementMoney(2*m);
+						break;
+				case 4: System.out.println("FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $" + 4*m + ".");
+						currentPlayer.incrementMoney(-4*m);
+						break;
+				case 5: System.out.println("MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.");
+						currentPlayer.gainResources(Resource.RESOURCE_FOOD, (int)(-.5*currentPlayer.getNumberOfResource(Resource.RESOURCE_FOOD)));
+						break;
+				case 6: System.out.println("YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $" + 6*m + " TO CLEAN IT UP.");
+						currentPlayer.incrementMoney(-6*m);
+						break;
+			}
+		}
+	}
 	public String getDifficulty(){
 		if(difficulty.equals(Difficulty.STANDARD)){
 			return "STANDARD";

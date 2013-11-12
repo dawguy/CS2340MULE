@@ -67,6 +67,26 @@ public class PlayerManager {
 	public int getCurrentPlayerNumber(){
 		return currentPlayer;
 	}
+
+	/**
+	 * @return the Player in last place with the lowest score
+	 */
+	public Player getLosingPlayer(){
+		Player losingPlayer = players.get(0);
+		for(Player p : players){
+			if(p.getScore() < losingPlayer.getScore()) losingPlayer = p;
+		}
+		return losingPlayer;
+	}
+
+	/**
+	 * @param p Player to be compared to losing player
+	 * @return returns true if player passed in is the losing player
+	 */
+	public boolean isLosingPlayer(Player p){
+		if (p.equals(getLosingPlayer())) return true;
+		return false;
+	}
 	
 	public String toString(){
 		String s = "";
