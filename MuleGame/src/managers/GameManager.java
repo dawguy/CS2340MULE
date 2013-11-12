@@ -200,10 +200,12 @@ public class GameManager {
 	public void nextPlayer(){
 		//int a = Mule.pm.getCurrentPlayerNumber();
 		//int b = Mule.pm.getNumberOfPlayers();
+		boolean roundOver = false;
 		if(Mule.pm.getCurrentPlayerNumber() == Mule.pm.getNumberOfPlayers() - 1){
 			/*
 			 * DO TURN END Round STUFF HERE. Such as random events + reordering players + auction + other stuffs
 			 */
+			roundOver = true;
 			System.out.println("ENDING TURN");
 			//AuctionManger am = new AuctionManager();
 			//Mule.swapScreen(AUCTIONSCREEN);
@@ -223,7 +225,7 @@ public class GameManager {
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 		setRoundTime();
-		randomEvent();
+		if(!roundOver) randomEvent();
 	}
 	
 	public void randomEvent() {
@@ -236,32 +238,35 @@ public class GameManager {
 			}else{
 				event = generator.nextInt(7);
 			}
+			String message = "You're feeling lucky.";
 			switch(event) {
-				case 0: System.out.println("YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.");
+				case 0: message = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
 						currentPlayer.gainResources(Resource.RESOURCE_FOOD, 3);
 						currentPlayer.gainResources(Resource.RESOURCE_ENERGY, 2);
 						break;
-				case 1: System.out.println("A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.");
+				case 1: message = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
 						currentPlayer.gainResources(Resource.RESOURCE_ORE, 2);
 						break;
-				case 2: System.out.println("THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $" + 8*m + ".");
+				case 2: message = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $" + 8*m + ".";
 						currentPlayer.incrementMoney(8*m);
 						break;
-				case 3: System.out.println("YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $" + 2*m + ".");
+				case 3: message = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $" + 2*m + ".";
 						currentPlayer.incrementMoney(2*m);
 						break;
-				case 4: System.out.println("FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $" + 4*m + ".");
+				case 4: message = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $" + 4*m + ".";
 						currentPlayer.incrementMoney(-4*m);
 						break;
-				case 5: System.out.println("MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.");
+				case 5: message = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
 						currentPlayer.gainResources(Resource.RESOURCE_FOOD, (int)(-.5*currentPlayer.getNumberOfResource(Resource.RESOURCE_FOOD)));
 						break;
-				case 6: System.out.println("YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $" + 6*m + " TO CLEAN IT UP.");
+				case 6: message = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU $" + 6*m + " TO CLEAN IT UP.";
 						currentPlayer.incrementMoney(-6*m);
 						break;
 			}
+			map.createDialog(message);
 		}
 	}
+
 	public String getDifficulty(){
 		if(difficulty.equals(Difficulty.STANDARD)){
 			return "STANDARD";

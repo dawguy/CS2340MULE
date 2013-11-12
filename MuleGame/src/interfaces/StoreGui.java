@@ -21,7 +21,7 @@ import com.me.mygdxgame.Mule;
 /**
  * This is going to be a simple gui overlay that represents the store, the player will be able to buy and 
  * sell various resources through this.
- * @author antonio
+ * @author antonio, Eric Rabinowitz
  *
  */
 public class StoreGui {

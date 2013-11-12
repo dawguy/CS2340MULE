@@ -87,6 +87,7 @@ public class MapScreen implements Screen{
 			XMLManager.SaveGame();
 			Gdx.app.exit();
 		}
+		map.checkDialogClosed();
 	}
 
 	@Override

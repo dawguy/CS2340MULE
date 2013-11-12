@@ -3,9 +3,14 @@ package gameObjects;
 import java.util.Random;
 import java.util.Stack;
 
+import interfaces.DialogWindow;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.me.mygdxgame.Mule;
@@ -36,7 +41,9 @@ public class Map {
 	public PlayerToken playerT;
 	
 	public boolean drawPlayer;
-	
+
+	private boolean drawDialog = false;
+	private DialogWindow dialog;
 	private float ppuX, ppuY;
 	private Random r = new Random();
 	private boolean randomOn = false; //Change this based on whether or not we want a random map
@@ -149,6 +156,19 @@ public class Map {
 	public void loadTextures(){
 		Tile.loadTextures();
 	}
+
+	public void createDialog(String message){
+		dialog = new DialogWindow(message, 20, 200);
+		drawDialog = true;
+	}
+
+	public void checkDialogClosed(){
+		if(drawDialog){
+			if(dialog.isClosed()){
+				drawDialog = false;
+			}
+		}
+	}
 	
 	public void draw(SpriteBatch sprites){
 		ShapeRenderer sr = new ShapeRenderer();
@@ -223,6 +243,11 @@ public class Map {
 			sprites.end();
 			sprites.begin();
 		}
+		sprites.end();
+		if(drawDialog){
+			dialog.draw(sprites);
+		}
+		sprites.begin();
 	}
 	
 	public void setDrawPlayer(boolean b){
