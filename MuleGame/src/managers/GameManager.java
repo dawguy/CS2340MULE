@@ -233,7 +233,7 @@ public class GameManager {
 		if(generator.nextFloat()<=0.27f){
 			int m = GameManager.ROUND_BONUS[currentRound]/2;
 			int event;
-			if(!Mule.pm.isLosingPlayer(currentPlayer)){
+			if(Mule.pm.isLosingPlayer(currentPlayer)){
 				event = generator.nextInt(4); //only select good events if losing player
 			}else{
 				event = generator.nextInt(7);
