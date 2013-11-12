@@ -145,6 +145,7 @@ public class TownScreen implements Screen{
 		resourceGUI.draw(sb);
 		sb.end();
 		if(guiOverlay){
+			storeGui.updateValues();
 			drawStoreGui(sb);
 		}
 		sb.dispose();

@@ -89,6 +89,13 @@ public class StoreGui {
 
 	}
 	
+	/**
+	 * Used from the outside to update the store with the correct amount of items
+	 */
+	public void updateValues(){
+		setItemValues();
+	}
+	
 	private void drawBackground(SpriteBatch batch){
 		ShapeRenderer sr = new ShapeRenderer();
 		
