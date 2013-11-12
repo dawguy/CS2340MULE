@@ -84,6 +84,7 @@ public class SelectTilesScreen implements Screen, InputProcessor{
 				firstRound = false;
 			} else {
 				game.setScreen(Mule.MAPSCREEN);
+				game.gm.randomEvent(); //check for random event for first player
 			}
 		}
 	}
