@@ -5,8 +5,8 @@
             <OreMule> 25 </OreMule>
             <FoodMule> 25 </FoodMule>
             <EnergyMule> 25 </EnergyMule>
-            <Food> 10 </Food>
-            <Energy> 10 </Energy>
+            <Food> 16 </Food>
+            <Energy> 16 </Energy>
             <Ore> 0 </Ore>
         </StoreInventory>
         <Difficulty>STANDARD</Difficulty>
@@ -16,7 +16,7 @@
                 <PositionX> 0 </PositionX>
                 <PositionY> 0 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 2 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -44,14 +44,14 @@
                 <PositionX> 0 </PositionX>
                 <PositionY> 4 </PositionY>
                 <TileType> 4 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
                 <PositionX> 1 </PositionX>
                 <PositionY> 0 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 2 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -79,14 +79,14 @@
                 <PositionX> 1 </PositionX>
                 <PositionY> 4 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
                 <PositionX> 2 </PositionX>
                 <PositionY> 0 </PositionY>
                 <TileType> 3 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 2 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -114,14 +114,14 @@
                 <PositionX> 2 </PositionX>
                 <PositionY> 4 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
                 <PositionX> 3 </PositionX>
                 <PositionY> 0 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 2 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -149,7 +149,7 @@
                 <PositionX> 3 </PositionX>
                 <PositionY> 4 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -177,14 +177,14 @@
                 <PositionX> 4 </PositionX>
                 <PositionY> 3 </PositionY>
                 <TileType> 1 </TileType>
-                <Owner> 1 </Owner>
+                <Owner> -1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
                 <PositionX> 4 </PositionX>
                 <PositionY> 4 </PositionY>
                 <TileType> 1 </TileType>
-                <Owner> -1 </Owner>
+                <Owner> 1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -205,14 +205,14 @@
                 <PositionX> 5 </PositionX>
                 <PositionY> 2 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> 2 </Owner>
+                <Owner> -1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
                 <PositionX> 5 </PositionX>
                 <PositionY> 3 </PositionY>
                 <TileType> 5 </TileType>
-                <Owner> 1 </Owner>
+                <Owner> -1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -247,7 +247,7 @@
                 <PositionX> 6 </PositionX>
                 <PositionY> 3 </PositionY>
                 <TileType> 0 </TileType>
-                <Owner> 2 </Owner>
+                <Owner> -1 </Owner>
                 <Mule> -1 </Mule>
             </Tile>
             <Tile>
@@ -331,29 +331,29 @@
     </GameManager>
     <PlayerManager>
         <Player>
-            <Name>PLAYER NAME</Name>
-            <Race>Human</Race>
+            <Name>David</Name>
+            <Race>Flapper</Race>
             <PlayerNumber> 1 </PlayerNumber>
-            <Money> 1028 </Money>
+            <Money> 808 </Money>
             <Color>
-                <Red> 0.0 </Red>
-                <Green> 0.0 </Green>
+                <Red> 1.0 </Red>
+                <Green> 1.0 </Green>
                 <Blue> 0.0 </Blue>
             </Color>
             <Resources>
-                <Food> 10 </Food>
-                <Energy> 8 </Energy>
+                <Food> 4 </Food>
+                <Energy> 2 </Energy>
                 <Ore> 0 </Ore>
                 <Crystite> 0 </Crystite>
             </Resources>
         </Player>
         <Player>
-            <Name>PLAYER NAME</Name>
+            <Name>Wright</Name>
             <Race>Human</Race>
             <PlayerNumber> 2 </PlayerNumber>
-            <Money> 1200 </Money>
+            <Money> 200 </Money>
             <Color>
-                <Red> 0.0 </Red>
+                <Red> 0.9372549 </Red>
                 <Green> 0.0 </Green>
                 <Blue> 0.0 </Blue>
             </Color>

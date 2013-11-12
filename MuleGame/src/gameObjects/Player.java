@@ -48,10 +48,15 @@ public class Player implements Comparable{
 	}
 	
 	public Player(String name, String race, float R, float G, float B, int foo, int enr,int ore,int crys,int pNum, int mons){
-		this(name,race,new Color(R,G,B, (float) 1.0),pNum);
+		this.color = new Color(R,G,B, (float) 1.0);
+		playerNumber = pNum;
+		resources = new Resource();
+		this.race = Race.HUMAN;
+		setRace(race);
+		this.name = name;
 		resources.gainResource(0,mons);
-		resources.gainResource(1, foo);
-		resources.gainResource(2,enr);
+		resources.gainResource(1, foo - 4);
+		resources.gainResource(2,enr - 2);
 		resources.gainResource(3, ore);
 		resources.gainResource(4,crys);
 	}
