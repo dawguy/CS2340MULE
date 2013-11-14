@@ -186,4 +186,9 @@ public class Player implements Comparable{
 	public int getPlayerNumber(){
 		return playerNumber;
 	}
+	
+	public boolean isEquals(Player p){
+		return (p.getName().equals(name) && p.getRace().equals(race) && 
+				p.getPlayerNumber() == playerNumber);
+	}
 }
