@@ -221,11 +221,20 @@ public class GameManager {
 					map.produce(i,j);
 				}
 			}
+			eat();
 		}
 		currentPlayerTime = 0;
 		Mule.pm.nextPlayer();
 		setRoundTime();
 		if(!roundOver) randomEvent();
+	}
+
+	public void eat(){
+		for(int i=0;i<players.getNumberOfPlayers();i++){
+			Player pla=players.getPlayer(i);
+			if(pla.spendResources(1,FOOD_REQUIREMENTS[currentRound])==0)
+				pla.loseResources(1,pla.getNumberOfResource(1));
+		}
 	}
 	
 	public void randomEvent() {

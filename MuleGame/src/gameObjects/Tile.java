@@ -191,11 +191,11 @@ public class Tile {
 	}
 
 	public void produce(){
-		if(isOwned){
+		if(isOwned){ //checks if the tile is owned
 			Player owner = getOwner();
-			if(muleOn!=-1){
+			if(muleOn!=-1){ //checks if theres a mule on or not
 				int value;
-				int[][] howmuch = {{1,0,2,3,4},{2,4,1,1,1},{3,2,1,1,1}};
+				int[][] howmuch = {{1,0,2,3,4},{2,4,1,1,1},{3,2,1,1,1}}; //ore, food, energy production
 				switch(tileType){
 						case 0: value=howmuch[muleOn][0];//plain
 						break;
