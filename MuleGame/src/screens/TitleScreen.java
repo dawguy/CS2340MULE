@@ -32,7 +32,7 @@ public class TitleScreen implements Screen{
 		batch = new SpriteBatch();
 		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 350, 100);
 		startGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")), 350, 200);
-		loadGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/LoadButton.jpeg")),350,300);
+		loadGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/LoadButton.jpeg")),350,25);
 	}
 	
 	@Override
