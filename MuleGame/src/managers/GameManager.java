@@ -286,8 +286,6 @@ public class GameManager {
 	}
 	
 	public int getCurrentRound(){
-		System.out.println("OK");
-		System.out.println(Integer.toString(currentRound));
 		return currentRound;
 	}
 	

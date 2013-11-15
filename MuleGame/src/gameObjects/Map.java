@@ -1,5 +1,6 @@
 package gameObjects;
 
+import java.awt.Point;
 import java.util.Random;
 import java.util.Stack;
 
@@ -254,6 +255,14 @@ public class Map {
 		drawPlayer = b;
 	}
 	
+	public Point getMouseClickPoint(int x, int y){
+		int a = (int) (x / ppuX);
+		int b = (int) ((Mule.HEIGHT - y) / ppuY);
+		if(tiles[a].length <= b){
+			return null;
+		}
+		return new Point(a, b);
+	}
 	
 	public Tile getMouseClickedTile(int x, int y){
 		int a = (int) (x / ppuX);
