@@ -55,7 +55,10 @@ public class Map {
 		UP,RIGHT,LEFT,DOWN;
 	}
 	
-	
+	/**
+	 * This constructor allows for a player to pick whether or not it should be a random map
+	 * @param randomOn
+	 */
 	public Map(boolean randomOn){
 		this.randomOn = randomOn;
 		if(!randomOn){
@@ -67,15 +70,28 @@ public class Map {
 		drawPlayer = true;
 	}
 	
+	/**
+	 * Similar to the other constructor this one can create random maps and takes a parameter
+	 * to decide whether or not to draw the player token
+	 * @param randomOn
+	 * @param drawP
+	 */
 	public Map(boolean randomOn, boolean drawP){
 		this(randomOn);
 		drawPlayer = drawP;
 	}
 	
+	/**
+	 * Basic constructor that takes a parameter, which is the actual tiles of the map
+	 * @param tiles
+	 */
 	public Map(Tile[][] tiles){
 		this.tiles = tiles;
 	}
 	
+	/**
+	 * This method instantiates the map to the default
+	 */
 	public void defaultMap(){
 		tiles = new Tile[9][5];
 		
@@ -109,6 +125,9 @@ public class Map {
 		tiles[5][3].setType(5);
 	}
 	
+	/**
+	 * This method generates a random map
+	 */
 	private void generateRandomMap(){
 		Stack<Integer> tileTypes = new Stack<Integer>();
 		tiles = new Tile[9][5];
@@ -154,15 +173,25 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * Loads all of the tile textures necessary.
+	 */
 	public void loadTextures(){
 		Tile.loadTextures();
 	}
 
+	/**
+	 * Creates a dialog window with the message
+	 * @param message
+	 */
 	public void createDialog(String message){
 		dialog = new DialogWindow(message, 20, 200);
 		drawDialog = true;
 	}
 
+	/**
+	 * Checks to see if a dialog window is closed
+	 */
 	public void checkDialogClosed(){
 		if(drawDialog){
 			if(dialog.isClosed()){
@@ -171,6 +200,10 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * Draws the entire map
+	 * @param sprites
+	 */
 	public void draw(SpriteBatch sprites){
 		ShapeRenderer sr = new ShapeRenderer();
 		
@@ -250,11 +283,21 @@ public class Map {
 		}
 		sprites.begin();
 	}
-	
+	 
+	/**
+	 * Sets the boolean flag for drawing the player token
+	 * @param b
+	 */
 	public void setDrawPlayer(boolean b){
 		drawPlayer = b;
 	}
 	
+	/**
+	 * Gets the integer indexes for the mouse click
+	 * @param x the x mouse position
+	 * @param y the y mouse position
+	 * @return the point representing the index of the mouse click
+	 */
 	public Point getMouseClickPoint(int x, int y){
 		int a = (int) (x / ppuX);
 		int b = (int) ((Mule.HEIGHT - y) / ppuY);
@@ -264,6 +307,12 @@ public class Map {
 		return new Point(a, b);
 	}
 	
+	/**
+	 * Gets the tile at the given mouse click
+	 * @param x the x mouse position
+	 * @param y the y mouse position
+	 * @return the tile at the given position
+	 */
 	public Tile getMouseClickedTile(int x, int y){
 		int a = (int) (x / ppuX);
 		int b = (int) ((Mule.HEIGHT - y) / ppuY);
@@ -328,24 +377,36 @@ public class Map {
 		owner.loseResources(7,1);	
 	}
 	
-	
-	
+	/**	
+	 * Moves the player up
+	 */
 	public void moveUp(){
 		direction = Direction.UP;
 		if(playerT.getY()<=Mule.HEIGHT-135)
 		this.playerT.moveUp();
 	}
 
+	/**
+	 * Moves the player right
+	 */
 	public void moveRight(){
 		direction = Direction.RIGHT;
 		if(playerT.getX()<=Mule.WIDTH-40)
 		this.playerT.moveRight();
 	}
+	
+	/**
+	 * Moves the player down
+	 */
 	public void moveDown(){
 		direction = Direction.DOWN;
 		if(playerT.getY()>=5)
 		this.playerT.moveDown();
 	}
+	
+	/**
+	 * Moves the player left
+	 */
 	public void moveLeft(){
 		direction = Direction.LEFT;
 		if(playerT.getX()>=-10)
@@ -375,12 +436,19 @@ public class Map {
 		return false;
 	}
 
-	
+	/**
+	 * Sets the pixels per unit
+	 * @param x the pixel per units in the x
+	 * @param y the pixel per units in the y
+	 */
 	public void setPPU(float x, float y){
 		ppuX = x;
 		ppuY = y;
 	}
 	
+	/**
+	 * Converts the map to a string representation
+	 */
 	public String toString(){
 		String s = "";
 		s += "RANDOM : " + randomOn;
@@ -394,27 +462,51 @@ public class Map {
 		return s;
 	}
 	
+	/**
+	 * Puts the player token below the town
+	 */
 	public void putBelowTown(){
 		playerT.setX((int)ppuX * TOWN_X);
 		playerT.setY((int)ppuY * (TOWN_Y - 1));
 	}
 	
+	/**
+	 * Get the array representation of the tiles
+	 * @return the tile array
+	 */
 	public Tile[][] getTiles(){
 		return tiles;
 	}
 
+	/**
+	 * Get the number of tiles in the x
+	 * @return
+	 */
 	public int getXSize(){
 		return tiles.length;
 	}
 
+	/**
+	 * Get the number of tiles in the y
+	 * @return
+	 */
 	public int getYSize(){
 		return tiles[0].length;
 	}
 	
+	/**
+	 * Get the player token
+	 * @return
+	 */
 	public PlayerToken getToken(){
 		return playerT;
 	}
 
+	/**
+	 * Calculate the production of a given tiles
+	 * @param i the x position of the tile
+	 * @param j the y position of the tile
+	 */
 	public void produce(int i, int j){
 		tiles[i][j].produce();
 	}

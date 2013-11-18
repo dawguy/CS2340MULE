@@ -42,6 +42,7 @@
 		</javac>
 		<javac destdir="${MuleDesktopBuildDir}">
 			<src path="${MuleDesktopDir}/src" />
+			<excludesfile name="*Test.java" />
 			<classpath refid="MuleGame-desktop.classpath" />
 		</javac>
 	</target>

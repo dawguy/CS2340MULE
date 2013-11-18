@@ -25,6 +25,10 @@ public class Player implements Comparable{
 	private int muleType = -1;
 	private int playerNumber = -1;
 	
+	/**
+	 * Creates a player who's playernumber is indicated
+	 * @param playerNumber
+	 */
 	public Player(int playerNumber){
 		super();
 		name = "";
@@ -35,12 +39,25 @@ public class Player implements Comparable{
 		this.playerNumber = playerNumber;
 	}
 	
+	/**
+	 * Creates a player with a name, color, and playernumber
+	 * @param n the name of the player
+	 * @param c the color of the player
+	 * @param playerNumber
+	 */
 	public Player(String n, Color c, int playerNumber){
 		this(playerNumber);
 		name = n;
 		color = c;
 	}
 	
+	/**
+	 * Creates a player with a name, color, race, and player number
+	 * @param name The name of the player
+	 * @param race the race of the player
+	 * @param c the color of the player
+	 * @param playerNumber
+	 */
 	public Player(String name, String race, Color c, int playerNumber){
 		this(name, c,playerNumber);
 		this.setRace(race);
@@ -71,6 +88,10 @@ public class Player implements Comparable{
 		}
 	}
 	
+	/**
+	 * Get the money of the player
+	 * @return
+	 */
 	public int getMoney(){
 		return resources.getResource(0);
 	}
@@ -83,14 +104,27 @@ public class Player implements Comparable{
 		return resources.getResource(0);
 	}
 	
+	/**
+	 * Increments the money 
+	 * @param i the incrementation amount
+	 */
 	public void incrementMoney(int i){
 		resources.gainResource(0, i);
 	}
 	
+	/**
+	 * Sets the money
+	 * @param i the amount to set it to
+	 */
 	public void setMoney(int i){
 		resources.gainResource(0, i);
 	}
 	
+	/**
+	 * Set the race of the player
+	 * @param s
+	 * @return whether the race exists or not
+	 */
 	public boolean setRace(String s){
 		if(s.toLowerCase().equals("human")){
 			race = Race.HUMAN;
