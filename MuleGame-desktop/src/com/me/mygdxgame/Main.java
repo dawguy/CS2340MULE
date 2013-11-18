@@ -10,7 +10,6 @@ public class Main {
 		cfg.useGL20 = false;
 		cfg.width = com.me.mygdxgame.Mule.WIDTH;
 		cfg.height = com.me.mygdxgame.Mule.HEIGHT;
-		
 		new LwjglApplication(new com.me.mygdxgame.Mule(), cfg);
 	}
 }

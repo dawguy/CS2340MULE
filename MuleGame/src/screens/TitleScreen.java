@@ -1,10 +1,15 @@
 package screens;
 
+import java.io.File;
+
 import interfaces.Button;
 import managers.XMLReader;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -61,6 +66,13 @@ public class TitleScreen implements Screen{
 				xRead.loadGame();
 			}
 		}
+	}
+	
+	public void startMusic(){
+		Audio audio = Gdx.audio;
+		Music test = audio.newMusic(Gdx.files.internal("Sounds/Test.mp3"));
+		test.setLooping(true);
+		test.play();
 	}
 	
 	@Override
