@@ -39,10 +39,11 @@
 			<src path="${MuleGameDir}/src" />
 			<src path="${MuleGameDir}/assets" />
 			<classpath refid="MuleGame.classpath" />
+			<exclude name="**/*Test.java"/>
 		</javac>
 		<javac destdir="${MuleDesktopBuildDir}">
 			<src path="${MuleDesktopDir}/src" />
-			<excludesfile name="*Test.java" />
+			<exclude name="**/*Test.java"/>
 			<classpath refid="MuleGame-desktop.classpath" />
 		</javac>
 	</target>
