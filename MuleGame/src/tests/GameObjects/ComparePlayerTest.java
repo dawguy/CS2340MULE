@@ -20,13 +20,14 @@ public class ComparePlayerTest {
 	public void setUp(){
 		p1=new Player("Test1",Color.BLACK,0);
 		p2=new Player("Test2",Color.WHITE,1);
-		p1Copy = p1;
+		p1Copy = new Player("Test1",Color.BLACK,0);
 	}
 	
 	@Test
 	public void test1() {
 		assertEquals(0,p1.compareTo(p1Copy));
-		assertFalse(0==p1.compareTo(p2));
+		assertEquals(0,p1.compareTo(p2));
+		assertFalse(p1.equals(p2));
 	}
 	
 	@Test
@@ -49,16 +50,15 @@ public class ComparePlayerTest {
 	@Test
 	public void test4(){
 		assertEquals(0,p1.compareTo(p1Copy));
-		assertTrue(p1.equals(p1Copy));
 		p1.setRace("human");
 		p1Copy.setRace("flapper");
-		assertFalse(p1.equals(p1Copy));
+		assertFalse(p1.isEquals(p1Copy));
 		p1Copy.setRace("human");
-		assertTrue(p1.equals(p1Copy));
+		assertTrue(p1.isEquals(p1Copy));
 		p1.setName("different");
-		assertFalse(p1.equals(p1Copy));
+		assertFalse(p1.isEquals(p1Copy));
 		p1Copy.setName("different");
-		assertTrue(p1.equals(p1Copy));
+		assertTrue(p1.isEquals(p1Copy));
 	}
 
 }

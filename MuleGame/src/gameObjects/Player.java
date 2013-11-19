@@ -121,6 +121,7 @@ public class Player implements Comparable{
 	 * @param i the amount to set it to
 	 */
 	public void setMoney(int i){
+		resources.loseResource(0, this.getScore());
 		resources.gainResource(0, i);
 	}
 	
@@ -226,7 +227,7 @@ public class Player implements Comparable{
 	}
 	
 	public boolean isEquals(Player p){
-		return (p.getName().equals(name) && p.getRace().equals(race) && 
+		return (p.getName().equals(name) && p.getRace().equals(this.getRace()) && 
 				p.getPlayerNumber() == playerNumber);
 	}
 }
