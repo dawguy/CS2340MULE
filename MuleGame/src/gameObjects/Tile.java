@@ -76,11 +76,17 @@ public class Tile {
 	}
 	
 	
-	
+	/**
+	 * Returns Cost
+	 * @return
+	 */
 	public int getCost(){
 		return COST;
 	}
-	
+	/**
+	 * Returns boolean if it is owned or not
+	 * @return
+	 */
 	public boolean isOwned(){
 		return isOwned;
 	}
@@ -93,7 +99,10 @@ public class Tile {
 		}
 		return false;
 	}
-
+	/**
+	 * Returns owner number
+	 * @return
+	 */
 	public Player getOwner(){
 		return Mule.pm.getPlayerNumber(owner);
 	}
@@ -123,7 +132,10 @@ public class Tile {
 		sr.end();
 		batch.begin();
 	}
-
+	/**
+	 * Draws the owner of the tile's color
+	 * @param batch
+	 */
 	public void drawOwner(SpriteBatch batch){
 		if(isOwned){
 			batch.end();
@@ -153,16 +165,25 @@ public class Tile {
 			batch.begin();
 		}
 	}
-
+	/**
+	 * Sets the tile to one of the types, mountain 1,2,3, town, river
+	 * @param newType
+	 */
 	public void setType(int newType){
 		tileType = newType;
 	}
 	
+	/**
+	 * Returns tile type
+	 * @return
+	 */
 	public int getTileType(){
 		return tileType;
 	}
 	
-	
+	/**
+	 * Loads all the textures associated with the tiles
+	 */
 	public static void loadTextures(){
 		textures[0] = new Texture("MapScreen/plains.png");
 		textures[1] = new Texture("MapScreen/river.png");
@@ -175,7 +196,9 @@ public class Tile {
 	public Rectangle getRect(){
 		return rect;
 	}
-	
+	/**
+	 * Returns a string for the tile typing in the map
+	 */
 	public String toString(){
 		String s = "";
 		if(tileType == 0){
@@ -190,6 +213,9 @@ public class Tile {
 		return s;
 	}
 
+	/**
+	 * Runs production of mules on tiles
+	 */
 	public void produce(){
 		if(isOwned){ //checks if the tile is owned
 			Player owner = getOwner();
@@ -232,6 +258,11 @@ public class Tile {
 		}
 	}
 	
+	/**
+	 * Sets the owner of the tile when bought
+	 * @param p
+	 * @param b
+	 */
 	public void setOwner(Player p, boolean b){
 		if(b)p.incrementMoney(-1 * COST);
 		owner = p.getPlayerNumber();

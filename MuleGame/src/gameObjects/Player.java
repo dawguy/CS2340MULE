@@ -78,6 +78,10 @@ public class Player implements Comparable{
 		resources.gainResource(4,crys);
 	}
 	
+	/**
+	 * Sets the money of the player
+	 * Called privately by the constructor
+	 */
 	private void setMoney(){
 		if(race.equals(Race.FLAPPER)){
 			resources.gainResource(0,1600);

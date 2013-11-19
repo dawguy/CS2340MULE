@@ -16,12 +16,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class StartGameButton extends Button{
 
 	private final static String START_BUTTON_FILE = "SettingsScreen/StartGameButton.jpg";
-	private PlayerCreationInput input;
+	//private PlayerCreationInput input;
 	private SettingsScreen screen;
 	
 	public StartGameButton(int x, int y, PlayerCreationInput inp, SettingsScreen s){
 		super(new Texture(Gdx.files.internal(START_BUTTON_FILE)), x, y);
-		input = inp;
+		//input = inp;
 		super.addListener(new MyClickListener());
 		screen = s;
 	}

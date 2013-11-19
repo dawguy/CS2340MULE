@@ -17,7 +17,6 @@ import java.text.DecimalFormat;
 
 public class ResourceTracker extends Actor{
 	private static Texture image;
-	private Rectangle rect;
 	private PlayerManager pm;
 	
 	public ResourceTracker(){
