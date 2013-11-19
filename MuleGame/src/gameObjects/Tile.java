@@ -75,6 +75,15 @@ public class Tile {
 		muleOn = mule;
 	}
 	
+	public Tile(int x, int y, boolean testing){
+		this.x = x;
+		this.y = y;
+		rect = new Rectangle(x * MapRenderer.ppuX, MapRenderer.ppuY * y, MapRenderer.ppuX * SIZE, MapRenderer.ppuY * SIZE);
+		isOwned = false;
+		isHighlighted = false;
+		owner = -1;
+	}
+	
 	
 	/**
 	 * Returns Cost
