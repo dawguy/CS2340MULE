@@ -1,0 +1,21 @@
+*~
+*.pyc
+*.save
+.project
+.pydevproject
+.settings
+.metadata
+.gwt-log
+*.launch
+
+*.class
+
+build/
+bin/
+javadoc/
+
+
+# Package Files #
+*.jar
+*.war
+*.ear
