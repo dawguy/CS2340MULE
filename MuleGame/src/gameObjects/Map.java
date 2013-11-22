@@ -269,7 +269,7 @@ public class Map {
 			} else if (direction.equals(Direction.LEFT)){
 				x += 30;
 				y -= offSet;
-				//sr.rect(x, y, 20, 20); test commit comment
+				//sr.rect(x, y, 20, 20);
 				sprites.draw(muleTexture,x,y,20,20,0,0,20,20,true,false);
 			}
 			sr.end();

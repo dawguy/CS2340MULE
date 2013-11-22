@@ -18,6 +18,7 @@ import java.text.DecimalFormat;
 public class ResourceTracker extends Actor{
 	private static Texture image;
 	private PlayerManager pm;
+	private Rectangle rect;
 	
 	public ResourceTracker(){
 		pm = Mule.pm;

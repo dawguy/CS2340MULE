@@ -36,7 +36,11 @@ public class PlayerToken{
 		owner = p;
 		color = p.getColor();
 		race=p.getRace();
-		if(race.equals("HUMAN")){
+		pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		if(race.equals("Human")){
+			pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
+		else{
 			pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
 		}
 		//Placeholder for other race pictures, could become switch statement
