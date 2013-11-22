@@ -1,0 +1,1 @@
+Go to CS2340MULE > build and then run the Mule.jar file
