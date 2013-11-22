@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.Color;
 public class Player implements Comparable{
 	
 	private static enum Race {
-		HUMAN, FLAPPER
+		HUMAN, FLAPPER, BUZZITE, UGAITE
 	};
 	
 	private Race race;
@@ -214,12 +214,7 @@ public class Player implements Comparable{
 	}
 	
 	public String getRace(){
-		if(race.equals(Race.HUMAN)){
-			return "Human";
-		} else if(race.equals(Race.FLAPPER)){
-			return "Flapper";
-		}
-		return "Human";
+		return race.name();
 	}
 	
 	public int getPlayerNumber(){

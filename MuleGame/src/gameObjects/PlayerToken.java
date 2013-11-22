@@ -36,23 +36,23 @@ public class PlayerToken{
 		owner = p;
 		color = p.getColor();
 		race=p.getRace();
-		pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
-		if(race.equals("Human")){
-			pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
-		}
-		else{
-			pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
-		}
-		//Placeholder for other race pictures, could become switch statement
-		/*else{ 
-			pTexture = new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
-		}*/
+		pTexture = setTexture(race);
 	}
 	
 	public PlayerToken(Player p, int x, int y){
 		this(p);
 		setX(x);
 		setY(y);
+		rect = new Rectangle(getX(), getY(), WIDTH, HEIGHT);
+	}
+	
+	private Texture setTexture(String race){
+		if(race.equals("Human")){
+			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
+		else{
+			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
 	}
 	/**
 	 * Draws the playerToken on the screen through the sprite batch
@@ -145,7 +145,7 @@ public class PlayerToken{
 		moveCount++;
 		isLeft=true;
 		setX(getX() - VELOCITY_X);
-		//rect.setX(getX() - VELOCITY_X);
+		rect.setX(getX() - VELOCITY_X);
 	}
 	
 	/**
@@ -155,7 +155,7 @@ public class PlayerToken{
 		moveCount++;
 		isLeft=false;
 		setX(x + VELOCITY_X);
-		//rect.setX(x + VELOCITY_X);
+		rect.setX(x + VELOCITY_X);
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class PlayerToken{
 	public void moveDown(){
 		moveCount++;
 		setY(getY() - VELOCITY_Y);
-		//rect.setY(getY() - VELOCITY_Y);
+		rect.setY(getY() - VELOCITY_Y);
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class PlayerToken{
 	public void moveUp(){
 		moveCount++;
 		setY(getY() + VELOCITY_Y);
-		//rect.setY(getY() + VELOCITY_Y);
+		rect.setY(getY() + VELOCITY_Y);
 	}
 	/**
 	 * Returns the rectangle 
