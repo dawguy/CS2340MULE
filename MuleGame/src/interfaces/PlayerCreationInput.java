@@ -73,7 +73,7 @@ public class PlayerCreationInput {
 	private void addButtons(){
 		addPlayerButton = new AddPlayerButton(100, 50, this);
 		removePlayerButton = new RemovePlayerButton(175, 50, this);
-		startGameButton = new StartGameButton(500, 50, this, screen);
+		startGameButton = new StartGameButton(500, 38, this, screen);
 		stage.addActor(addPlayerButton);
 		stage.addActor(removePlayerButton);
 		stage.addActor(startGameButton);

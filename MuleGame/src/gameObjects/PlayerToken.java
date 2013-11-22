@@ -46,11 +46,25 @@ public class PlayerToken{
 		rect = new Rectangle(getX(), getY(), WIDTH, HEIGHT);
 	}
 	
+	/**
+	 * Helper method that sets texture file bzsed on race
+	 * @param race
+	 * @return
+	 */
 	private Texture setTexture(String race){
 		if(race.equals("Human")){
 			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
 		}
-		else{
+		else if(race.equals("Ugaite")){
+			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
+		else if(race.equals("Buzzite")){
+			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
+		else if(race.equals("Flapper")){
+			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+		}
+		else{ //default
 			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
 		}
 	}

@@ -33,11 +33,11 @@ public class TitleScreen implements Screen{
 	public TitleScreen(Mule g){
 		Texture.setEnforcePotImages(false);
 		currentGame = g;
-		titleBackground = new Texture(Gdx.files.internal("TitleScreen/TitleScreenBackground2.jpeg"));
+		titleBackground = new Texture(Gdx.files.internal("TitleScreen/TitleScreenBackground.jpeg"));
 		batch = new SpriteBatch();
-		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 350, 100);
-		startGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")), 350, 200);
-		loadGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/LoadButton.jpeg")),350,25);
+		exitGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/ExitButton.jpeg")), 350, 110);
+		startGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/StartButton.jpeg")), 350, 210);
+		loadGameButton = new Button(new Texture(Gdx.files.internal("TitleScreen/LoadButton.jpeg")),350,10);
 	}
 	
 	@Override

@@ -117,7 +117,7 @@ public class DropMenu extends Actor{
 	private void drawOutlineRect(float x, float y, float w, float h){
 		ShapeRenderer sr = new ShapeRenderer();
 		sr.begin(ShapeType.Filled);
-		Color c = new Color(0x158fa9);
+		Color c = new Color(0xe1e41b00);
 		sr.setColor(c);
 		sr.rect(x, y, w, h);
 		sr.end();
