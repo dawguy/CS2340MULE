@@ -102,7 +102,7 @@ public class GameManager {
 	}
 	
 	public void setDifficulty(String s){
-		if(s.toUpperCase().equals(Difficulty.TOURNAMENT)){
+		if(s.toUpperCase().equals("TOURNAMENT")){
 			difficulty = Difficulty.TOURNAMENT;
 		} else{
 			difficulty = DEFAULT_DIFFICULTY;

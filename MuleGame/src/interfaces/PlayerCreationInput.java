@@ -118,6 +118,7 @@ public class PlayerCreationInput {
 		for(PlayerVariableInputs player : players){
 			player.addPlayer(manager);
 		}
+		System.out.println(difficultySelect.getCurrentItem());
 		gameManager.setDifficulty(difficultySelect.getCurrentItem());
 		gameManager.setMap(mapSelect.getCurrentItem());
 		gameManager.setPPU();
