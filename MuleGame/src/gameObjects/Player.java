@@ -134,8 +134,17 @@ public class Player implements Comparable{
 		if(s.toLowerCase().equals("human")){
 			race = Race.HUMAN;
 			return true;
+			
 		} else if(s.toLowerCase().equals("flapper")){
 			race = Race.FLAPPER;
+			return true;
+		}
+		else if(s.toLowerCase().equals("ugaite")){
+			race = Race.UGAITE;
+			return true;
+		}
+		else if(s.toLowerCase().equals("buzzite")){
+			race = Race.BUZZITE;
 			return true;
 		}
 		return false;
