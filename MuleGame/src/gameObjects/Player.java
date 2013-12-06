@@ -62,7 +62,6 @@ public class Player implements Comparable{
 	public Player(String name, String race, Color c, int playerNumber){
 		this(name, c,playerNumber);
 		this.setRace(race);
-		setMoney();
 	}
 	
 	public Player(String name, String race, float R, float G, float B, int foo, int enr,int ore,int crys,int pNum, int mons){
@@ -87,14 +86,13 @@ public class Player implements Comparable{
 		int increment = 0;
 		if(Mule.gm.getDifficulty() == "STANDARD"){
 			increment = 300;
-		}
-		if(Mule.gm.getDifficulty() == "BEGINNER"){
+		} else if(Mule.gm.getDifficulty() == "BEGINNER"){
 			increment = 500;
 		}
 		if(race.equals(Race.FLAPPER)){
 			resources.gainResource(0,1600 + increment);
 		} else if(race.equals(Race.HUMAN)){
-			resources.gainResource(0, 600+ increment);
+			resources.gainResource(0, 600 + increment);
 		} else{
 			resources.gainResource(0, 1000+increment);
 		}

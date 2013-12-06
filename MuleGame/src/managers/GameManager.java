@@ -104,7 +104,7 @@ public class GameManager {
 	public void setDifficulty(String s){
 		if(s.toUpperCase().equals("TOURNAMENT")){
 			difficulty = Difficulty.TOURNAMENT;
-		} else if (s.toUpperCase().equals(Difficulty.BEGINNER)){
+		} else if (s.toUpperCase().equals("BEGINNER")){
 			difficulty = Difficulty.BEGINNER;
 		} else {
 			difficulty = DEFAULT_DIFFICULTY;
@@ -286,8 +286,10 @@ public class GameManager {
 			return "STANDARD";
 		} else if(difficulty.equals(Difficulty.TOURNAMENT)){
 			return "TOURNAMENT";
+		} else if(difficulty.equals(Difficulty.BEGINNER)){
+			return "BEGINNER";
 		}
-		return "STANDARD";
+		return "BEGINNER";
 	}
 	
 	public int getCurrentRound(){
