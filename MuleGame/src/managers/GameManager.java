@@ -279,6 +279,9 @@ public class GameManager {
 	}
 
 	public String getDifficulty(){
+		if(difficulty == null){
+			return "STANDARD";
+		}
 		if(difficulty.equals(Difficulty.STANDARD)){
 			return "STANDARD";
 		} else if(difficulty.equals(Difficulty.TOURNAMENT)){
