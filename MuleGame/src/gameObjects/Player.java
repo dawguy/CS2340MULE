@@ -223,7 +223,19 @@ public class Player implements Comparable{
 	}
 	
 	public String getRace(){
-		return race.name();
+		if(race==Race.HUMAN)
+			return "Human";
+			
+		else if(race==Race.UGAITE)
+			return "Ugaite";
+				
+		else if(race==Race.BUZZITE)
+			return "Buzzite";
+					
+		else if(race==Race.FLAPPER)
+			return "Flapper";
+		else
+			return "Human";
 	}
 	
 	public int getPlayerNumber(){
