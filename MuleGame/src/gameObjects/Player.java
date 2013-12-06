@@ -3,6 +3,7 @@ package gameObjects;
 import java.util.Arrays;
 
 import com.badlogic.gdx.graphics.Color;
+import com.me.mygdxgame.Mule;
 
 /**
  * Represents a single player in the MULE game. It will keep track of its own data and allow
@@ -83,12 +84,19 @@ public class Player implements Comparable{
 	 * Called privately by the constructor
 	 */
 	private void setMoney(){
+		int increment = 0;
+		if(Mule.gm.getDifficulty() == "STANDARD"){
+			increment = 300;
+		}
+		if(Mule.gm.getDifficulty() == "BEGINNER"){
+			increment = 500;
+		}
 		if(race.equals(Race.FLAPPER)){
-			resources.gainResource(0,1600);
+			resources.gainResource(0,1600 + increment);
 		} else if(race.equals(Race.HUMAN)){
-			resources.gainResource(0, 600);
+			resources.gainResource(0, 600+ increment);
 		} else{
-			resources.gainResource(0, 1000);
+			resources.gainResource(0, 1000+increment);
 		}
 	}
 	

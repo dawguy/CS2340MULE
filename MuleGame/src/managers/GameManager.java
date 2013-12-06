@@ -18,7 +18,7 @@ import gameObjects.Buildings.Store;
 public class GameManager {
 	
 	public static enum Difficulty {
-		STANDARD, TOURNAMENT 	
+		BEGINNER, STANDARD, TOURNAMENT 	
 	};
 	
 	public static final int[] FOOD_REQUIREMENTS = {3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5};
@@ -104,7 +104,9 @@ public class GameManager {
 	public void setDifficulty(String s){
 		if(s.toUpperCase().equals("TOURNAMENT")){
 			difficulty = Difficulty.TOURNAMENT;
-		} else{
+		} else if (s.toUpperCase().equals(Difficulty.BEGINNER)){
+			difficulty = Difficulty.BEGINNER;
+		} else {
 			difficulty = DEFAULT_DIFFICULTY;
 		}
 	}
