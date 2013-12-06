@@ -56,13 +56,13 @@ public class PlayerToken{
 			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
 		}
 		else if(race.equals("Ugaite")){
-			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+			return new Texture(Gdx.files.internal("MapScreen/ugaSheet.gif"));
 		}
 		else if(race.equals("Buzzite")){
-			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+			return new Texture(Gdx.files.internal("MapScreen/buzzSheet.gif"));
 		}
 		else if(race.equals("Flapper")){
-			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));
+			return new Texture(Gdx.files.internal("MapScreen/flapperSheet.gif"));
 		}
 		else{ //default
 			return new Texture(Gdx.files.internal("MapScreen/playerSheet.gif"));

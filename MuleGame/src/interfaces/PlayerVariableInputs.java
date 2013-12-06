@@ -32,7 +32,7 @@ public class PlayerVariableInputs {
 	private final String TEXTBOX_BACKGROUND = "SettingsScreen/TextboxBackground.jpeg";
 	private final int ENTER_KEY = 13;
 	private final int DELETE_KEY = 8;
-	private final String[] RACES = {"HUMAN", "FLAPPER"};
+	private final String[] RACES = {"HUMAN", "UGAITE", "BUZZITE", "FLAPPER"};
 	//private final int BUFFER_Y = 25;
 	private final int BUFFER_X = 25;
 	
